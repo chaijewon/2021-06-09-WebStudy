@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- 
+     표만들기 (table)
+     table => tr , th , td
+     =====
+       게시물 목록 , 사원 목록 ....
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body><!-- 77페이지 (병합 : colspan , rowspan)-->
+  <table border=1 bordercolor=black width=500>
+    <!-- 한줄 만들기 <tr> => 데이터 첨부 th(제목)|td(데이터 추가) -->
+    <!--  VueJS , ReactJs => thead,tbody가 없을면  table을 출력하지 못한다  -->
+    <thead>
+	    <tr>
+	      <th>이름</th> <!-- 제목 -->
+	      <th>성별</th>
+	      <th>주소</th>
+	    </tr>
+    </thead> <!--  thead => table에서 한번 사용하는 부분 -->
+    <tbody>
+	    <tr>
+	      <td>이순신</td>
+	      <td>남자</td>
+	      <td>서울</td>
+	    </tr>
+	    <tr>
+	      <td>심청이</td>
+	      <td>여자</td>
+	      <td>경기</td>
+	    </tr>
+    </tbody>
+    <tfoot> <!--  통계 (사용하지 않을 수 있다) -->
+      <tr>
+        <td align="center" colspan="3">
+          버튼 (이전/다음)
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+</html>

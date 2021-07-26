@@ -1,0 +1,84 @@
+<!-- 
+     <table>
+       <thead>
+         표 제목 => 한번만 실행
+       </thead>
+       <tbody>
+         표 데이터 => 여러번 수행
+       </tbody>
+       <tfoot>
+         통계 => 버튼 
+       </tfoot>
+     </table>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+tbody tr:hover{
+   background-color: #FC6;
+   cursor: pointer;
+}
+</style>
+</head>
+<body>
+   <table border=1 bordercolor=black width=600 >
+     <caption>사원 정보</caption>
+     <!-- 한번 수행 -->
+     <thead>
+	     <tr height="50" bgcolor="yellow">
+	       <th>영업부</th>
+	       <th>자재부</th>
+	       <th>개발부</th>
+	       <th>자재부</th>
+	     </tr>
+     </thead>
+     <tbody>
+        <tr height="50"> <!-- 1/4 -->
+          <td>10</td>
+          <td>10</td>
+          <td valign="top">10</td>
+          <td valign="bottom">10</td>
+        </tr>
+        <tr> <!-- 2/4 -->
+          <td align="left">30</td>
+          <td align="center">30</td>
+          <td align="right">30</td>
+          <td>30</td>
+        </tr>
+        <tr> <!-- 3/4 -->
+          <td>20</td>
+          <td>20</td>
+          <td>20</td>
+          <td>20</td>
+        </tr>
+        <tr> <!-- 4/4 -->
+          <td>50</td>
+          <td>50</td>
+          <td>50</td>
+          <td>50</td>
+        </tr>
+     </tbody>
+     <tfoot>
+       <tr>
+         <td>110</td>
+         <td>110</td>
+         <td>110</td>
+         <td>110</td>
+       </tr>
+    </tfoot>
+   </table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+<!-- 
+      자바,오라클 , HTML => 용도 
+       = 인터페이스 , 추상 클래스 ( 클래스 여러게 묶어서 관리 ) => 서로 관련 클래스를 연결해서 관리 
+       = 라이브러리 (있는 그대로 사용:포함, 변경해서 사용:상속 => 오버라이딩)
+       = 보안 => view , 자동 증가번호 (MAX()+1) , Sequence
+      = 목록 출력 ==> 목록출력 , 메뉴출력 
+      =========
+      <ul>  : unorder list => 순서없이 출력 , 메뉴 제작  
+              <ul>
+                데이터 출력 => <li>데이터값</li>
+              </ul>
+      <ol>  : order list => 순서를 가지고 있다 
+              <ol>
+                <li>데이터 출력</li>
+              </ol>
+      <dl>  : data list  => 
+              <dl>
+                <dt>제목 출력</dt>
+                <dd>실제 데이터 출력</dd>
+              </dl>
+      <table> : 영역 
+               <table>
+                 <tr>
+                   <th> => 타이틀바 | <td> 실제 데이터가 출력
+                 </tr>
+               </table>
+     
+      = 입력창  ==> 회원가입 , 로그인 , 결제창 , 글쓰기 , 댓글 ....
+      ========
+      <input>
+      <select>
+      <textarea>
+      <form>
+      
+      = 화면 분할  ==> 여러개의 파일을 동시 출력 
+      =========
+      <div> 
+      
+      = 기타 
+      =========
+       링크 <a> : 화면 이동 
+       이미지 출력 <img> : 이미지 출력 
+       
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <h3>과정 소개(UL)</h3>
+  <ul>
+   <li>자바</li>
+   <li>오라클</li>
+   <li>HTML/CSS</li> <!-- 기본 과정 -->
+   <li>JSP</li> <!-- 응용 과정 -->
+   <li>Spring</li> <!-- 통합 -->
+   <li>Kotlin</li> <!-- 모바일 -->
+  </ul>
+  <h3>과정 역할(OL)</h3>
+  <ol>
+   <li>자바:HTML과 오라클을 연결하는 역할</li>
+   <li>오라클:데이터 저장 , 관리</li>
+   <li>HTML/CSS:브라우저 화면 출력</li>
+   <li>연결 : JSP/Servlet(자바+SQL+HTML/CSS)</li>
+   <li>통합 : 표준화 (스프링)</li>
+   <li>CSS:부트스트립,JS:JQuery,DAO:MyBatis,MVC:Spring</li>
+   <li>최신 기술 : 프론트:ReactJS,VueJS, 백엔드:AI </li>
+   <li>모바일:웹/앱</li>
+  </ol>
+  <h3>과정과 관련된 교재(DL)</h3>
+  <dl><!-- description list -->
+    <dt>자바의 정석</dt> <!--description title :제목  -->
+    <dd>1권은 필수/라이브러리:컬렉션,제네릭스,IO</dd><!-- description data  -->
+    <dt>오라클</dt>
+    <dd>DML(SELECT,INSERT,UPDATE,DELETE),View,Sequence,DDL(제약조건,Create,Alter,drop)</dd>
+    <dt>HTML/CSS</dt>
+    <dd>HTML:기본태그(HTML5:템플릿),CSS:변경할 수 있는 정도</dd>
+  </dl>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
