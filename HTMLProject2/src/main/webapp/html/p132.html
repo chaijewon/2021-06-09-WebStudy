@@ -1,0 +1,207 @@
+<!-- 
+     1. 텍스트 관련 태그 
+     2. 목록 관련 태그
+     3. 링크 / 이미지
+     4. 폼 관련 태그 (입력창)
+        ================= 글쓰기 , 로그인, 회원가입 (사용자가 입력 관련)
+        = <input>
+             => 한줄문자열 입력 (ID입력, 검색,이름,주소...)
+                <input type=text>
+                
+             => 한줄문자열 입력 (비밀번호) ...
+                <input type=password> 
+             => 선택 
+                라디오 버튼 <input type=radio> 
+                체크 박스  <input type=checkbox>
+                
+             => 파일 선택: 업로드 , 다운로드 
+                <input type=file>
+            =============================================    
+             => 날짜 선택 
+                <input type=date> 
+                
+             => 숫자만 입력 
+                <input type=number>
+            
+             => 기타 
+                <input type=range> =>    
+            ============================================ HTML5에서 만들어진 태그 (IE에서 사용이 안될 수 있다)
+             => 데이터 감추는 태그
+                <input type=hidden>
+                
+             => 버튼의 종류 
+                일반버튼 : 기능=> 자바스크립트로 제어 
+                <input type=button> : 우편번호검색, 아이디중복체크 , 검색 ....
+                데이터 전송버튼 
+                <input type=submit> => <input type=image> , <button> 
+                입력값 초기화 
+                <input type=reset>
+             
+        = <select>  
+          <select> : 콤보박스 
+             |
+           <option>
+        = <textarea> : 여러 문장을 사용할 수 있다 (글쓰기=> 내용 , 댓글입력...)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css"> <!-- css파일을 읽어 올때 사용 -->
+</head>
+<!-- 
+    id => 중복이 없는 경우
+    class => 중복이 있는 경우에 사용 
+    ======== 디자인(CSS),자바스크립트에서 제어(태그를 제어)
+    
+    <style>
+      #r {color:red}
+      .g {color:green}
+    </style>
+    
+    <a href="" id="r"> : red
+    ==================
+    <a href="" class="g">
+    <a href="" class="g">
+    <a href="" class="g">
+    <a href="" class="g">
+    ================= green
+ -->
+ <!-- 
+      default(값을 지정한다)
+        radio : checked  
+        select : selected 
+        range : value
+        number : value
+  -->
+<body>
+   <center>
+     <h1>입력과 관련된 태그</h1>
+     <form>
+     <table id="table_content" width=800>
+      <tr>
+       <th width=30%>한줄문자입력</th>
+       <td width=70%><input type=text size=20 required autofocus="autofocus" placeholder="아이디"></td><!-- 반드시 입력값을 입력해야 될때 : NOT NULL -->
+       <!-- 속성 : 
+            name => 사용하지 않는 경우 자바에서 값을 받을 수 없다,
+                                  ========= request.getParameter("태그에 name속성값");
+            size => 크기 조절,
+            value => 수정하기(값을 채운다) 
+            =========
+            id 
+            class 
+            ========= 자바와 관련이 없다 (CSS: 화면 디자인,자바스크립트를 이용할때)
+            **** 모든 태그 : id,class,name,style
+            <span name="" id="" class="" style="">
+       -->
+      </tr>
+      <tr>
+       <th width=30%>비밀번호입력</th>
+       <td width=70%><input type=password size=20 readonly></td><!-- 읽기전용 (입력할 수 없다) -->
+       <!--  우편번호 검색 (선택) , 주소 => 상세주소  -->
+      </tr>
+      <tr>
+       <th width=30%>선택(라디오버튼)</th>
+       <td width=70%><input type=radio name=sex checked>남자<input type=radio name=sex>여자</td>
+       <!-- 그룹화 시키다 (한개만 선택) name:그룹화-->
+      </tr>
+      <tr>
+       <th width=30%>선택(체크박스)</th>
+       <td width=70%>
+         <input type="checkbox">운동
+         <input type="checkbox">낚시
+         <input type="checkbox">등산
+         <input type="checkbox">게임
+         <input type="checkbox">여행
+       </td>
+      </tr>
+      <tr>
+       <th width=30%>파일업로드</th>
+       <td width=70%><input type=file size=30></td>
+      </tr>
+      <tr>
+       <th width=30%>숫자입력(나이,연도)</th>
+       <td width=70%><input type=number min="2021" max="2030" value="2021" step="2"></td>
+       <!-- step="1"  i++ (생략) , step="2" i+=2  한번 클릭시마다 증가되는 값-->
+      </tr>
+      <tr>
+       <th width=30%>날짜선택</th><!-- 예매,결재 -->
+       <td width=70%><input type=date size=30></td>
+      </tr>
+      <tr>
+       <th width=30%>검색</th><!-- 예매,결재 -->
+       <td width=70%><input type=search size=30></td>
+      </tr>
+      <tr>
+       <th width=30%>마우스이용 값을 선택</th><!-- 예매,결재 -->
+       <td width=70%><input type=range min="0" max="100" value="0" step="10"></td>
+      </tr>
+      <tr>
+       <th width=30%>히든(값을 감춘다-전송:비밀번호)</th><!-- 예매,결재 -->
+       <td width=70%><input type=hidden value="admin"></td>
+      </tr>
+      <tr>
+       <th width=30%>여러줄 입력</th><!-- 예매,결재 -->
+       <td width=70%>
+         <textarea rows="10" cols="70"></textarea>
+       </td>
+      </tr>
+      <tr>
+       <th width=30%>선택</th><!-- 예매,결재 -->
+       <td width=70%>
+         <select>
+           <option>010</option>
+           <option>011</option>
+           <option selected>017</option>
+           <option>018</option>
+           <option>019</option>
+         </select>
+       </td>
+      </tr>
+      <tr>
+        <td colspan="2" align=center>
+          <input type=button value="확인"><!-- 자바스크립트 이용 -->
+          <input type=submit value="전송">
+          <input type=image src="btn.jpeg">
+          <button>전송</button>
+        </td>
+      </tr>
+      <tr>
+       <th width=30%>전화번호</th>
+       <td width=70%><input type=tel size=30></td>
+      </tr>
+      <tr>
+       <th width=30%>이메일</th>
+       <td width=70%><input type=email size=30></td>
+      </tr>
+      <tr>
+       <th width=30%>URL</th>
+       <td width=70%><input type=url size=30></td>
+      </tr>
+     </table>
+     </form>
+   </center>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
