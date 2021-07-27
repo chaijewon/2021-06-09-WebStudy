@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- 
+      웹에서 이미지 출력 
+      태그명 : <img>
+      속성명 : src : 이미지 파일명 
+             width 
+             height
+             title : 풍선도움말 
+             형식) <img src="파일명" width="" height="" title="">
+      사용가능 한 파일: jpg,gif,png , => bitmap
+                    ============
+      위치 지정 : 폴더  / (서버주소) => 절대 경로는 사용하지 않는다 c:\\~ 
+                http://localhost:8080/image/a.jpg
+                ===================== 생략이 가능하다  
+                http://localhost:8080/HTMLProject1/
+                http://localhost:8080/HTMLProject1/html/p94.html
+                ================================== 루트 (webapp)
+                
+                webapp 
+                  |
+             ---------------
+             |             |
+            images        html
+                           |
+                          img.html , a.jpg   => <img src="a.jpg"> 같은 폴더안에서는 파일명 지정
+              |
+             b.jpg        ==> <img src="../images/b.jpg"> => .. cd(change directory) 
+                           |
+                          image => c.jpg
+                          => <img src="image/c.jpg">
+                             <img src="../../image/../a.jpg"> => include (파일안에 다른 파일을 추가)
+                             원격 => http:// ~~ a.jpg 
+                
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <!--  이미지 출력  -->
+   <!-- <img src="book.jpg">img : inline
+   <img src="book.jpg" width=300 height=300>
+   <img src="book.jpg" width=10%> 자동으로 height가 지정 오토캐드 2022
+   <p> 
+   <figure>이미지 출력하고 밑에 제목을 줄때 card
+     <img src="book.jpg" width=350 height=350 title="오토캐드 2022">
+     <figcaption>오토캐드 2022</figcaption>
+   </figure> -->
+   <!-- 
+       정상 :  속성="값"  ""를 사용하지 않아도 정상 수행
+              속성값을 들어갈때 공백이 있는 경우에는 반드시 ""를 사용한다 
+              수정 => 제목출력 => "" , 중간에 안들어오는 값이 있다 (공백앞에서 제거)  
+    -->
+    <!-- 
+       map , area => 부분을 추출 => 유치원 홈페이지 (메뉴)
+     -->
+    <img src="book.jpg" usemap="#book">
+    <map name="book">
+     <area shape="rect" coords="275,21,370,104" href="http://www.daum.net">
+     <!--                       top , left , bottom , right -->
+    </map> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

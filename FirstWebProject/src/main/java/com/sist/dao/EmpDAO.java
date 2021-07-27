@@ -50,7 +50,7 @@ public class EmpDAO {
 		   ps=conn.prepareStatement(sql);
 		   // 4. 실행 요청
 		   ResultSet rs=ps.executeQuery();
-		   // 4. rs에 있는 데이터를 ArrayList 담아준다 
+		   // 4. rs에 있는 데이터를 ArrayList 담아준다  => 오라클 (COMMIT)
 		   while(rs.next())
 		   {
 			   EmpVO vo=new EmpVO();

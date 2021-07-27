@@ -53,7 +53,7 @@ public class EmpList extends HttpServlet {
 		out.println("</thead>");
 		out.println("<tbody>");
 		EmpDAO dao=new EmpDAO();
-		ArrayList<EmpVO> list=dao.empAllData();
+		ArrayList<EmpVO> list=dao.empAllData(); // DAO
 		for(EmpVO vo:list)
 		{
 			out.println("<tr>");
