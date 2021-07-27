@@ -63,7 +63,8 @@ public class MusicDAO {
 		{
 			getConnection();
 			String sql="SELECT no,poster,title,singer,album "
-					  +"FROM melon_cjw";
+					  +"FROM melon_cjw "
+					  +"ORDER BY no";
 			// 전송(오라클)
 			ps=conn.prepareStatement(sql);
 			// 실행 결과를 받는다 
@@ -98,7 +99,7 @@ public class MusicDAO {
 		{
 			getConnection();
 			String sql="SELECT no,title,singer,key "
-					  +"FROM music_cjw "
+					  +"FROM melon_cjw "
 					  +"WHERE no="+no;
 			ps=conn.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();

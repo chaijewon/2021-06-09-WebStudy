@@ -18,11 +18,14 @@ public class MusicList extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		out.println("<html>");
+		out.println("<head>");
+		out.println("<link rel=stylesheet href=table.css>");
+		out.println("</head>");
 		out.println("<body>");
 		out.println("<center>");
 		out.println("<h1>뮤직 목록</h1>");
-		out.println("<table width=1000 cellpadding=0 cellspacing=0 border=1 bordercolor=black>");
-		out.println("<tr bgcolor=green>");
+		out.println("<table width=1000 id=table_content>");
+		out.println("<tr>");
 		out.println("<th></th>");
 		out.println("<th>노래명</th>");
 		out.println("<th>가수명</th>");
@@ -34,7 +37,7 @@ public class MusicList extends HttpServlet {
 		ArrayList<MusicVO> list=dao.musicListData();
 		for(MusicVO vo:list)
 		{
-			out.println("<tr>");
+			out.println("<tr class=dataTr>");
 			out.println("<td align=center><img src="+vo.getPoster()+" width=30 height=30></td>");
 			out.println("<td><a href=MusicDetail?no="+vo.getNo()+">"+vo.getTitle()+"</a></td>");
 			// 값을 전송 => URL을 이용해서 전송 => ?변수=값  , ?변수=값&변수=값....
