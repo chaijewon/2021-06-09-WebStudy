@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+</head>
+<!-- 
+        GET : 데이터가 노출 , 페이지,영화,게시물 
+        POST : 데이터가 노출이 없다 (중요한 데이터) , 데이터가 많은 경우
+        value => 자바스크립트 
+ -->
+<body>
+  <center>
+    <h1>회원 가입</h1>
+    <table id="table_content" width=700>
+      <tr>
+        <th width="20%" align="right">ID</th>
+        <td width="80%"><!-- align=left -->
+          <input type=text name=id size=15 autofocus="autofocus">
+          <input type=button value="중복체크"> 
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">비밀번호</th>
+        <td width="80%"><!-- align=left -->
+          <input type=password name=pwd size=15>&nbsp;
+          재입력:<input type=password name=pwd1 size=15>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">이름</th>
+        <td width="80%"><!-- align=left -->
+          <input type=text name=name size=15>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">성별</th>
+        <td width="80%"><!-- align=left -->
+          <input type=radio name=sex checked>남자
+          <input type=radio name=sex>여자
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">생년월일</th>
+        <td width="80%"><!-- align=left -->
+          <input type=date name=birthday size=20>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">이메일</th>
+        <td width="80%"><!-- align=left -->
+          <input type=email name=email size=50>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">우편번호</th>
+        <td width="80%"><!-- align=left -->
+          <input type=text name=post1 readonly size=7>-<input type=text name=post2 readonly size=7>
+          <input type=button value="우편번호검색">
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">주소</th>
+        <td width="80%"><!-- align=left -->
+          <input type=text name=addr1 size=50 readonly>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">상세주소</th>
+        <td width="80%"><!-- align=left -->
+          <input type=text name=addr2 size=50>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">전화번호</th>
+        <td width="80%"><!-- align=left -->
+          <select name=tel>
+           <option>010</option>
+           <option>011</option>
+           <option>017</option>
+          </select>
+          <input type=text name=tel1 size=15>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">소개</th>
+        <td width="80%"><!-- align=left -->
+          <textarea rows="10" cols="55" name=content></textarea>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width="20%" align="right">취미</th>
+        <td width="80%"><!-- align=left -->
+          <input type=checkbox>여행
+          <input type=checkbox>게임
+          <input type=checkbox>독서
+          <input type=checkbox>낚시
+          <input type=checkbox>등산
+        </td>
+      </tr>
+      
+      <tr>
+       <td colspan="2" align=center>
+        <input type=submit value="회원가입">
+        <input type=button value="취소">
+       </td>
+      </tr>
+      
+    </table>
+  </center>
+</body>
+</html>
+
+
+
+
+
+
+
+
