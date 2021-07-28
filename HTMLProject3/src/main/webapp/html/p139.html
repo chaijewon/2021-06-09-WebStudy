@@ -1,0 +1,95 @@
+<!DOCTYPE html><!-- HTML5버전 DTD를 가지고 온다 -->
+<!-- 
+     <!ELEMENT html (head?,body?)>
+     <!ELEMENT head (title?,meta?,script?,link?,style?)>
+     ?는 사용할수도 있고 사용하지 않아도 된다(필요하면 사용이 가능)
+     <!ELEMENT body (center?,table?,img?.....)>
+     <!ELEMENT table (tr*,caption?)>  *은 여러번 사용이 가능 
+     <!ELEMENT tr (th|td)> | 둘중에 한개 선택 
+     DTD => 많이 등장 (외부 라이브러리) => 마이바티스,스프링
+                                     ============= ML(XML)
+     <!ELEMENT ul (li*)> 
+     <!ELEMENT ol (li*)> 
+     <!ELEMENT dl (dt*,dd)> 
+     <!ELEMENT input EMPTY>  단독 태그 <input /> HTML에서 /를 생략 
+     XML/HTML의 차이점 
+     XML => 태그의 순서가 존재 => 에러발생 (null) 
+            29명 => 6~7 스프링을 한번도 실행을 못한다 (대소문자 구분)
+     HTML=> 태그의 순서가 없다 => 에러가 없다 
+     
+     
+     =====> 텍스트 관련  : <h1>,<h3>,<br>,<p>,<pre>,<strong>,<span>
+            목록 관련    : <ul> , <dl> , <table>
+            입력 관련   : <input> , <select> , <textarea> , <button>
+                         type=text , password , radio , checkbox , hidden , file , date , number,image
+            기타 태그 : <img> , <a> , <form>
+                         
+            화면 분할 :CSS와 같이 => div,span
+            
+            기타 태그 : <embed>,<iframe> => 동영상 출력 
+                      <fieldset> <label> <legend>  ==> 웹템플릿 => (조별 프로젝트)
+                                      => DAO , CSS 
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#addr').keyup(function(){
+		let a=$('#addr').val();
+		alert(a);
+	})
+	
+})
+</script>
+</head>
+<body>
+  <fieldset>
+    <legend>개인정보</legend><!-- 테두리 -->
+    <ul>
+      <li>
+        <label for="name">이름</label><!-- 기능없이 알림 -->
+        <input type=text id="name" name="name"><!-- 입력창  -->
+        <!-- 
+            input에서는 속성 
+            =======
+            id
+            class
+            ======= 자바에서 제어하는 용도가 아니다 (자바스크립트나 CSS를 제어하기 위한 속성) 구분한다(브라우저에서 제어)
+            name => 자바에서 제어한다 (JSP , 스프링) => 동일하게 적용
+            size 
+         -->
+      </li>
+      <li>
+        <label for="addr">주소</label>
+        <input type=text id="addr">
+      </li>
+    </ul>
+    
+    <legend>로그인정보</legend>
+    <ul>
+      <li>
+        <label for="id" style="width:100px">ID</label>
+        <input type=text id="id">
+      </li>
+      <li>
+        <label for="pwd">Password</label>
+        <input type=text id="pwd">
+      </li>
+    </ul>
+  </fieldset>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
