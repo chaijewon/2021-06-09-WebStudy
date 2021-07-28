@@ -1,6 +1,10 @@
 package com.sist.main;
 
 import java.io.*;
+
+import com.sist.dao.BoardDAO;
+import com.sist.dao.BoardVO;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -82,6 +86,44 @@ public class BoardInsert extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 처리 => INSERT 처리 , UPDATE 처리
+		try
+		{
+           // request => 사용자의 요청값을 가지고 있다
+		   // 1byte => 2byte 디코딩 
+		   request.setCharacterEncoding("UTF-8");// 스프링,JSP 
+		}catch(Exception ex) {}
+		
+		// 값을 받아 온다 
+		String name=request.getParameter("name");//<input type=text name=name>
+		String email=request.getParameter("email");
+		String subject=request.getParameter("subject");
+		String content=request.getParameter("content");
+		String pwd=request.getParameter("pwd");
+		
+		BoardVO vo=new BoardVO();
+		vo.setName(name);
+		vo.setEmail(email);
+		vo.setSubject(subject);
+		vo.setContent(content);
+		vo.setPwd(pwd);
+		
+		// 오라클로 전송 
+		BoardDAO dao=new BoardDAO();
+		dao.boardInsert(vo);
+		
+		// 이동 (목록으로 이동)
+		response.sendRedirect("BoardList");
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+

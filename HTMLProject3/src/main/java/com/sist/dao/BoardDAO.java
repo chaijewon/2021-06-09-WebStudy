@@ -121,6 +121,15 @@ public class BoardDAO {
 		   getConnection();
 		   String sql="INSERT INTO freeboard VALUES("
 				     +"(SELECT NVL(MAX(no)+1,1) FROM freeboard),?,?,?,?,?,SYSDATE,0)";
+		   ps=conn.prepareStatement(sql);
+		   //?에 값을 채운다 
+		   ps.setString(1, vo.getName());
+		   ps.setString(2, vo.getEmail());
+		   ps.setString(3, vo.getSubject());
+		   ps.setString(4, vo.getContent());
+		   ps.setString(5, vo.getPwd());
+		   // 실행 요청
+		   ps.executeUpdate();
 	   }catch(Exception ex)
 	   {
 		   ex.printStackTrace();
