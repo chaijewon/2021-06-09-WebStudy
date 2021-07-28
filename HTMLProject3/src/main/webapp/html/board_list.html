@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../table.css">
+</head>
+<body>
+   <center>
+     <h1>자유 게시판</h1>
+     <table id="table_content" width=800>
+       <tr>
+         <td>
+           <a href="board_insert.html">새글</a>
+         </td>
+       </tr>
+     </table>
+     <table id="table_content" width=800>
+       <tr>
+         <th width=10%>번호</th>
+         <th width=45%>제목</th>
+         <th width=15%>이름</th>
+         <th width=20%>작성일</th>
+         <th width=10%>조회수</th>
+       </tr>
+       <tr>
+         <td width=10% align=center></td>
+         <td width=45%></td>
+         <td width=15% align=center></td>
+         <td width=20% align=center></td>
+         <td width=10% align=center></td>
+       </tr>
+     </table>
+     <table id="table_content" width=800>
+       <tr>
+        <td align=left>
+         Search:
+           <select name=fs>
+            <!-- 
+               fs => <option value="name">이름</option> => column명
+               value가 있는 경우에는  fs=name
+             -->
+            <option value="name">이름</option>
+            <option value="subject">제목</option>
+            <option value="content">내용</option>
+           </select>
+           <input type=text name=ss size=15>
+           <input type=submit value="찾기">
+        </td>
+        <td align=right>
+          <a href="#">이전</a>&nbsp;
+          1 page / 2 pages &nbsp;
+          <a href="#">다음</a>
+        </td>
+       </tr>
+     </table>
+   </center>
+</body>
+</html>
+
+
+
+
+
