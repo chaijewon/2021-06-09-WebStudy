@@ -1,0 +1,52 @@
+<!-- 
+    CSS/JavaScript => selector (태그 선택)
+    => CSS : 어떤 속성
+    => JavaScript : 이벤트의 종료 click,mouseover, change,hover....
+    CSS의 속성 종류 => HTML(문자(텍스트),이미지)
+    1. 텍스트 관련 스타일 
+       font-family : 글꼴 변경 
+       font-size : 글자크기 (px,em) 3em,9px,15px...
+       font-style : <i>,<u>
+       font-weight : <b> => bold
+       color : 글자 색상 
+       text-decoration : underline
+       => 시스템에 없는 글꼴 => @import
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+h1{
+    /*font-family: 'Nanum Gothic', sans-serif;*/
+    font-family: 'Single Day', cursive;
+    font-size:20pt; /*em,px,pt*/
+    font-weight: bold; /*테이블 헤더*/
+    /*font-style: italic;*/
+    color:rgb(154,228,201);
+    /*
+        1. 지정된 색상 
+        2. 16진법 
+        3. rgb(255,255,255)
+    */
+    text-decoration: underline;/* <a> */
+}
+a{
+    font-family: 궁서체;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;/* underline 삭제*/
+}
+a:hover{
+   color:green;
+   text-decoration: underline;
+}
+</style>
+</head>
+<body>
+   <h1>안녕하세요 CSS</h1>
+   <a href="#">Click</a>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!-- 
+   배경색 / 배경이미지 
+   background-color 
+   background-image => 반복을 한다  repeat(default) , no-repeat(반복제거)
+                       url('이미지파일명')
+   background-size => auto(default): 원래 그림
+                      cover : 축소/확대 
+                      width,height를 지정  
+   background-clip => 범위지정 
+   background
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+   background-color: yellow
+}
+h1{
+   background-color: green;
+   color:white;
+   text-align: center;
+}
+div {
+   width: 1000px;
+   height: 500px;
+   border:1px solid black;
+   background:no-repeat url('m2.jpg');
+}
+h3{
+     color: white;
+}
+div#a{
+   width: 1000px;
+   height: 500px;
+   border:1px solid black;
+   background:url('aa.png') no-repeat;
+}
+</style>
+</head>
+<body>
+  
+   <img src="m1.jpg" width=450 height=300>
+   <h1>모가디슈</h1>
+ 
+  <div>
+    <center>
+       <h3>Hello CSS</h3>
+    </center>
+  </div>
+  <div id="a">
+  
+  </div>
+</body>
+</html>

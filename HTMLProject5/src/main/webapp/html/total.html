@@ -1,0 +1,54 @@
+<!-- 
+      1. 텍스트 관련 
+         font-family : 글꼴 => 외부 폰트 (@import()=> font-family변경) 
+         font-size : 글자 크기 
+         글자 => 14px 
+                1.2em  => 14*1.2 => 16.8px
+                => em의 단점은 소속이 있는 경우 크기가 달라진다 (px,pt,em)
+         font-weight : bold
+                
+      2. 텍스트 스타일
+         text-align : 정렬 (left,right,center)
+         text-decoration
+         white-space : pre-wrap => 줄바꿈을 자동
+         text-indent : 줄여쓰기 
+      3. 목록 
+         list-style-type : none (ul,ol)
+      4. 색상/이미지 
+         background 
+         background-color
+         background-image
+         background-size 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+  font-size: 1.2em;
+  color:red;
+}
+</style>
+</head>
+<!-- 
+
+       div
+        |
+       div
+        |
+       div 
+ -->
+<body>
+  <div>
+    Hello CSS <!-- 14px 14*1.2=6.8 -->
+    <div>
+      Hello CSS <!-- 6.8*1.2 => -->
+      <div>
+        Hello CSS <!-- 6.8*1.2*1.2 -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

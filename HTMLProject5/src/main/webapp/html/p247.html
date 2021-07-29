@@ -1,0 +1,38 @@
+<!-- 
+     ul 태그 제어 
+     ==========
+       list-style-type : none (메뉴) => 메뉴 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ul{
+    list-style-type: none;
+}
+/*
+     inline-block : width,height적용가능
+     inline : width,height적용이 불가능 
+*/
+li {
+    display: inline-block;
+    width:120px;
+    height:40px;
+}
+li:hover{
+   background-color: green;
+}
+</style>
+</head>
+<body>
+  <ul>
+    <li>HOME</li>
+    <li>회원가입</li>
+    <li>영화</li>
+    <li>예매하기</li>
+    <li>마이페이지</li>
+  </ul>
+</body>
+</html>

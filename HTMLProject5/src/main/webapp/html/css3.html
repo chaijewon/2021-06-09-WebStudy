@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.box{
+  width:150px;
+  height:100px;
+  display: block;
+  border:1px solid black;
+}
+/* 가상 선택자 : hover(Mouse Over) */
+/*
+     CSS / CSS3 => 브라우저마다 적용하는 방식 
+     -webkit- 
+     -moz-
+     -ms-
+*/
+.box:hover{
+   -webkit-transform:rotate(150deg);/*크롬*/
+}
+
+</style>
+</head>
+<body>
+  <span class="box">Mouse Over</span>
+</body>
+</html>

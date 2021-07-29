@@ -1,0 +1,86 @@
+<!-- 
+     CSS/JavaScript
+     태그를 제어하는 프로그램 
+     CSS : 디자인 목적 
+     JavaScript : 태그를 동적으로 이용 (기능처리:이벤트)
+     
+     태그를 이용하는 프로그램 => 태그 선택 
+     태그를 선택 => 선택자 => 태그 구분 , 태그 찾기 
+     기본 선택자 
+     ========
+     태그명 
+     태그에 ID  <태그명 id="">
+     태그에 class <태그명 class="">
+     *** ID 속성 
+           = 고유속성으로 한개의 HTML에서 하나만 사용하는 속성 
+           = ID속성이 있으면 태그를 따라 제어할 수 있다, 찾기가 용의 하다
+     *** class 속성 
+           = 한개의 HTML문서안에서 중복해서 이름 부할 수 있다(중복적인 이름을 가지고 있다)
+           = HTML에서 전체적인 CSS적용이 편리하다(일괄적으로 처리)
+     ID를 속성를 가지고 있는 경우 => 처리
+      예) <a id="aaa"> => #aaa , a#aaa
+     Class 속성를 가지고 있는 경우 => 처리
+      예) <a class="bbb"> => .aaa , a.aaa
+     일반 태그 => 처리 
+     태그명 {CSS처리}
+     
+     ==> 자손 선택자 : 태그명 태그명{} 
+     ==> 자식 선택자 : 태그명 > 태그명{}
+     ==> 동위 선택자 : 태그명 ~ 태그명{}
+     ==> 인접 선택자 : 태그명 + 태그명{}
+     ==> 의사 선택자 : => 태그명:의사선택자 
+                       a:hover , a:link ...
+                       a:nth-child , a:not...
+     p 211 (접두어)
+       -webkit- : 크롬에서만 적용  CSS3
+       -moz- : 파이어폭스 
+       -ms- : IE
+       ======> round 
+       ======> CSS가 길어지는 이유 (모든 브라우저에서 적용) 
+       
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* div에 포함되어 있는 모든 태그(h1) 
+div h1{
+   color:red
+}
+*/
+/* 자식 selector */
+div > h1{
+   color:red
+}
+</style>
+</head>
+<body>
+  <!-- 자손 선택자 -->
+  <!-- 
+                 div
+          ============
+          |   |      |
+         h1  h1     span ===> 자식  ===>  > div > h1
+         ================
+                     |
+                    h1  ====> 후손 
+                            ====== 자손 " "   div h1
+   -->
+  <div>
+    <h1>Hello CSS</h1>
+    <h1>Hello CSS</h1>
+    <span><h1>Hello CSS</h1></span>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

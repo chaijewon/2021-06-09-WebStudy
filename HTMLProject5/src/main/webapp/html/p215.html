@@ -1,0 +1,52 @@
+<!-- 
+     형제 SELECTOR 
+     
+                     doc.select("dl > dt+dd") => dl.dd => dl dt+dd
+                     div ==> div p+h1 => 옆에 있는 형제
+                             div p~h1 => 전체 형제
+         =============================
+         |       |          |        |
+         p      h1         h1       span  => 자식  div > h1
+                                    |
+                                    h1    => 후손  div h1
+                                    
+         <div>
+           <p></p>
+           <h1></h1>
+           <h1></h1>
+           <span><h1></h1></span>
+         </div>
+         
+         ==> id , class , tag , 복합( 태그 태그, 태그 > 태그)
+             태그 태그+태그 , 태그 태그~태그
+         ==> 여러개를 동시에 적용  태그,태그,....
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*div p+h1{
+  color:red
+}*/
+/*div p~h1{
+   color:blue
+}*/
+/*
+    형제 : p,h1,h1,span(h1)
+*/
+div>h1{
+   color:yellow
+}
+</style>
+</head>
+<body>
+   <div>
+     <p>Hello CSS</p>
+     <h1>Hello CSS</h1>
+     <h1>Hello CSS</h1>
+     <span><h1>Hello CSS</h1><!-- 후손 --></span>
+   </div>
+</body>
+</html>

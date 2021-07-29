@@ -1,0 +1,58 @@
+<!-- 
+   색상 :  color:지정된 색상
+          color:16진법(#FF00FF)
+          color:rgb(255,255,255) white
+          color:rgba() => a=> 투명 (opacity: 0.0~1.0)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img {
+   width: 200px;
+   height: 280px;
+   
+}
+img:hover{
+   /*opacity: 0.3;*/
+   border:3px solid red;
+   cursor: pointer;
+}
+h1{
+    background-color: black;
+}
+#a{
+     color:orange;
+}
+#b{
+     color:rgb(255,0,0); 
+}
+#c{
+      color:#CCCCFF;
+}
+#d{
+     color:rgba(255,255,255,0.3);
+}
+#e{
+     color: white;
+}
+</style>
+</head>
+<body>
+  <!-- img (inline) -->
+  <img src="m1.jpg">
+  <img src="m2.jpg">
+  <img src="m3.jpg">
+  <img src="m4.jpg">
+  <img src="m5.jpg">
+  <img src="m6.jpg">
+  <img src="m7.jpg">
+  <h1 id="a">Hello CSS</h1>
+  <h1 id="b">Hello CSS</h1>
+  <h1 id="c">Hello CSS</h1>
+  <h1 id="d">Hello CSS</h1>
+  <h1 id="e">Hello CSS</h1>
+</body>
+</html>
