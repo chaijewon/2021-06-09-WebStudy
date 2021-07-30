@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.table_content{
+	/*라인선 통합*/
+	border-collapse: collapse; 
+	/*위 선*/
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-top-color: #333;
+	/*아래 선*/
+	border-bottom-width:2px;
+	border-bottom-style: solid;
+	border-bottom-color: #333;
+}
+.table_content th,td{
+	margin: 0px;
+	padding: 8px;
+	font-size: 9pt;
+}
+.table_content th{
+	background-color: #999;
+	color: #fff;
+	border-bottom-width:1px;
+	border-bottom-color:#333;
+}
+.table_content td{
+	border-bottom-width:1px;
+	border-bottom-color:#666;
+	border-bottom-style: dotted;
+}
+.table_content .text-center{
+	text-align: center;
+}
+.table_content .text-left{
+	text-align: left;
+}
+.table_content .text-right{
+	text-align: right;
+}
+
+.table_content a{
+	text-decoration: none;
+	color: black;
+}
+/*
+   마우스를 <a>태그에 올렸을때 (mouseover)
+*/
+.table_content a:hover{
+	text-decoration: underline;
+	color:green;
+}
+.table_content .dataTr:hover{
+	background-color: #FC6;
+	cursor: pointer;
+}
+/* 태그 그룹 */
+/* 형제 , 자손 , 후손 */
+/* 
+    형제 : 인접형제 태그+태그
+    형제 : 같은이름 => 태그~태그 
+    
+    <div>
+      <a></a>
+      <b></b>
+      <c></c>
+      <d><a></a></d>
+    </div> 
+    
+      div의 자손 ==> a,b,c,d  ==> div > a 
+      div의 후손 ==> a        ==> div a
+*/
+/*
+    HTML5 => 주도했던 브라우저 업체 (오페라:유료) 
+*/
+input,select,img,textarea,button{
+	-webkit-border-radius:12px; /* CSS3  크롬*/
+	-moz-border-radius:12px;/* 파이어폭스 */
+	border-radius:12px; /*IE  -o- 오페라  */
+	border:1px #CCC solid;
+}
