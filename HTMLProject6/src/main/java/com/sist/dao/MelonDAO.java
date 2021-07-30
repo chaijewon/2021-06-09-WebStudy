@@ -93,6 +93,36 @@ public class MelonDAO {
 		   }
 		   return vo;
 	   }
+	   // 댓글 추가
+	   // 1. 연결 (형식) 
+	   // 2. SQL문장
+	   public void replyInsert(MelonReplyVO vo)
+	   {
+		   try
+		   {
+			   // 1. 연결
+			   getConnection();
+			   // 2. SQL
+			   String sql="INSERT INTO melonReply VALUES("
+					     +"mr_rno_seq.nextval,?,?,?,SYSDATE)";
+			   ps=conn.prepareStatement(sql);
+			   //?에 값을 채운다
+			   ps.setInt(1, vo.getMno());
+			   ps.setString(2, vo.getName()); // '홍길동'
+			   ps.setString(3, vo.getMsg());
+			   // 실행
+			   ps.executeUpdate();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+	   }
+	   // 댓글 읽기
+	   
 }
 
 
