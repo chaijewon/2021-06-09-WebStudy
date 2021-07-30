@@ -122,6 +122,39 @@ public class MelonDAO {
 		   }
 	   }
 	   // 댓글 읽기
+	   public ArrayList<MelonReplyVO> replyListData(int mno)
+	   {
+		   ArrayList<MelonReplyVO> list=new ArrayList<MelonReplyVO>();
+		   try
+		   {
+			   // 연결 
+			   getConnection();
+			   // SQL => 댓글 (시간) => 오라클에서 읽어 온다 
+			   String sql="SELECT rno,name,msg,TO_CHAR(regdate,'YYYY\"년\" MM\"월\" DD\"일\" HH24:MI:SS') "
+					     +"FROM melonReply "
+					     +"WHERE mno="+mno;
+			   ps=conn.prepareStatement(sql);
+			   ResultSet rs=ps.executeQuery();
+			   while(rs.next())
+			   {
+				   MelonReplyVO vo=new MelonReplyVO();
+				   vo.setRno(rs.getInt(1));
+				   vo.setName(rs.getString(2));
+				   vo.setMsg(rs.getString(3));
+				   vo.setDbday(rs.getString(4)); // TO_CHAR => String (변수=>날짜를 문자열)
+				   list.add(vo);
+			   }
+			   rs.close();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return list;
+	   }
 	   
 }
 

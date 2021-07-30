@@ -1,6 +1,8 @@
 package com.sist.main;
 
 import java.io.*;
+import java.util.ArrayList;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,6 +25,8 @@ public class MusicDetail extends HttpServlet {
 		String no=request.getParameter("no");
 		MelonDAO dao=new MelonDAO();
 		MelonVO vo=dao.melonDetailData(Integer.parseInt(no));
+		// 오라클로부터 데이터를 받는다 
+		ArrayList<MelonReplyVO> list=dao.replyListData(Integer.parseInt(no));
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<link rel=stylesheet href=table.css>");
@@ -40,6 +44,26 @@ public class MusicDetail extends HttpServlet {
 		out.println("</table>");
 		// 댓글 
 		out.println("<div style=\"height:30px\"></div>");//inline style
+		out.println("<table id=table_content width=800>");
+		out.println("<tr><td>");
+		for(MelonReplyVO mvo:list)
+		{
+			out.println("<table id=table_content width=800>");
+			out.println("<tr>");
+			out.println("<td>");
+			out.println("<span style=\"color:blue\">"+mvo.getName()+"</span>");
+			out.println("&nbsp;"+mvo.getDbday());
+			out.println("</td>");
+			out.println("</tr>");
+			out.println("<tr>");
+			out.println("<td valign=top align=left height=150>");
+			out.println("<pre style=\"white-space:pre-wrap;overflow-y:auto\">"+mvo.getMsg()+"</pre>");
+			out.println("</td>");
+			out.println("</tr>");
+			out.println("</table>");
+		}
+		out.println("</td></tr>");
+		out.println("</table>");
 		out.println("<form method=post action=MusicDetail>");
 		// MusicDetail로 데이터를 전송한다 => 호출하는 메소드 doPost
 		// Web에서 데이터를 전송 => 사용자가 보낸 모든 데이터는 request안에 들어 온다 
@@ -117,6 +141,54 @@ public class MusicDetail extends HttpServlet {
 	// 사용자가 넘겨준 데이터 받아서 처리하는 부분
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 데이터베이스 연동 
+		try
+		{
+			// 한글 변환 
+			request.setCharacterEncoding("UTF-8"); // 디코딩으로 받아서 처리 
+			/*
+			 *   한글 => 브라우저 
+			 *          %ED%95%9C%EA%B8%80 => 인코딩
+			 *          
+			 *   브라우저로부터 데이터를 받는 경우 %ED%95%9C%EA%B8%80=>한글 => 디코딩
+			 */
+		}catch(Exception ex) {}
+		// 사용자가 보내준 데이터를 받기 시작 
+		// <input type=hidden name=no value="+vo.getNo()+">"
+		String mno=request.getParameter("no");
+		// <input type=text name=name size=15>
+		String name=request.getParameter("name");
+		// <textarea rows=5 cols=80 style=\"float:left\" name=msg>
+		String msg=request.getParameter("msg");
+		
+		System.out.println("no="+mno);
+		System.out.println("name="+name);
+		System.out.println("msg="+msg);
+		
+		MelonReplyVO vo=new MelonReplyVO();
+		vo.setMno(Integer.parseInt(mno));
+		vo.setName(name);
+		vo.setMsg(msg);
+		
+		// DAO로 전송 => 오라클에 추가 
+		MelonDAO dao=new MelonDAO();
+		dao.replyInsert(vo);
+		
+		// 이동  MusicDetail?no=1
+		response.sendRedirect("MusicDetail?no="+mno); // MusicDetail => 댓글 출력 (새로고침)
+		// web : 흐름  => 동작한 다음 어느 파일로 이동 할지 결정 
+		/*
+		 *   게시판 
+		 *   =====
+		 *      결과 출력 
+		 *      =======
+		 *         1. 목록    
+		 *             => 삭제 => 목록 , 추가 => 목록 
+		 *         2. 상세보기 
+		 *             => 수정 => 상세보기 , 댓글 => 상세보기
+		 *   회원 가입 => 메인 => 로그인 유도 
+		 *   
+		 *   영화예매 => 좌석 => 마이페이지 이동 
+		 */
 		
 	}
 
