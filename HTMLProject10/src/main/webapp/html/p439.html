@@ -1,0 +1,51 @@
+<!-- 
+    enable , disable : 활성화 , 비활성화 
+    input:enable
+    input:disbale
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+input:disabled {
+	background-color: #ddd;
+	border:1px red solid; /*두께 , 스타일 색상*/
+}
+input:checked+span {
+	color:red
+}
+input:enabled {
+	background-color: white;
+	border:1px green solid;
+}
+/*
+    <input type="checkbox">
+    <input type="radio">
+    ========================== checked
+    <select>
+    ========================== selected
+*/
+</style>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>사용자 정보</legend>
+      <label>이름:<input type=text size=15 enabled></label>
+    </fieldset>
+    <fieldset>
+      <legend>취업처</legend>
+      <p>수료시에 갈 취업처</p>
+      <label><input type=radio name="job" value="개발-SM"><span>개발-SM</span></label>
+      <label><input type=radio name="job" value="설계"><span>설계</span></label>
+      <label><input type=radio name="job" value="개발-SI"><span>개발-SI</span></label>
+      <label><input type=radio name="job" value="개발-솔루션"><span>개발-솔루션</span></label>
+      <label><input type=radio name="job" value="개발-프레임워크"><span>개발-프레임워크</span></label>
+      <label><input type=radio name="job" value="기획"><span>기획</span></label>
+      <label><input type=radio name="job" value="디자인"><span>디자인</span></label>
+    </fieldset>
+  </form>
+</body>
+</html>

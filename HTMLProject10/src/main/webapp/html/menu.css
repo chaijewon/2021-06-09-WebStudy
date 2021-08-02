@@ -1,0 +1,58 @@
+@charset "UTF-8";
+#topMenu{
+	width: 1200px;
+	height:30px;
+}
+#topMenu ul{
+	list-style-type: none;
+	margin: 0px;
+	padding:0px;
+}
+#topMenu ul li{
+	color: white;
+	background-color: #2d2d2d;
+	float: left;
+	line-height: 30px;
+	vertical-align: middle;
+	position: relative;
+}
+
+.menuLink,.submenuLink{
+	text-decoration: none;
+	display: block;
+	width: 200px;
+	font-size: 15pt;
+	font-weight: bold;
+	font-family: 맑은 고딕;
+}
+.menuLink{
+	color: white;
+}
+.topMenuLi:hover .menuLink{
+	color:red;
+	background-color: #4d4d4d;
+}
+
+.submenuLink{
+	color: #2d2d2d;
+	background-color: white;
+	border:1px solid black;
+	margin-top: -1px;
+}
+.submenu{
+	z-index: 10;
+	position: absolute;
+	height:0px;
+	overflow: hidden;
+	transition:height .2s;
+	-webkit-transition:height .2s;
+}
+.topMenuLi:hover .submenu{
+	height: 200px;
+}
+.submenuLink:hover{
+	color:red;
+	background-color: #dddddd;
+}
+
+

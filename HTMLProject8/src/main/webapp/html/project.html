@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+
+  <head>
+    <title>CSS Project2</title>
+    <style type="text/css">
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: sans-serif;
+        padding: 10px;
+        background: #f1f1f1;
+    }
+
+    /* Header/Blog Title */
+    .header {
+        padding: 30px;
+        text-align: center;
+        background: white;
+    }
+
+    .header h1 {
+        font-size: 50px;
+    }
+
+    /* navigation and dropdown */
+    nav ul {
+                width: 100%;
+                background-color: rgba(44, 42, 39, 0.983);
+                list-style-type: none;
+                /* 마진 패딩 지정하지 않으면 브라우저 기본 스타일을 따라 설정되므로 오버라이딩 필요 */
+                margin: 0;
+                padding: 0;
+            }
+            /* li 는 블록요소인데 inline-block 으로 인라인속성 부여해서 나란히 배치*/
+            nav ul li {
+                display: inline-block;
+            }
+            
+            .home {
+                background-color: darkorange;
+                width: 100px;
+                text-align: center;
+                font-weight: bold;
+                float: right;
+            }
+
+            .home a {
+                display: block;
+                text-decoration: none;
+                color: white;
+                padding: 16px 16px;
+            }
+
+            .dropdown {
+                position: relative;
+            }
+
+            .dropdown-menu {
+                /*background-color: darkorange; */
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* dropdown-menu 에는 hover 적용이 안됨 */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .dropdown-content a:hover {background-color: #f1f1f1}
+
+            .dropdown-menu:hover:not(.home){
+                background-color: darkorange;
+                color: white;
+            }
+
+    /* End-navigation and dropdown */
+
+
+    /* Create two unequal columns that floats next to each other */
+    /* Left column */
+    .leftcolumn {
+        float: left;
+        width: 75%;
+    }
+
+    /* Right column */
+    .rightcolumn {
+        float: left;
+        width: 25%;
+        padding-left: 20px;
+    }
+
+    /* Fake image */
+    .fakeimg {
+        background-color: rgb(228, 216, 216);
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* Add a card effect for articles */
+    .card {
+        background-color: white;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    /* Clear floats after the columns */
+    .contents:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 20px;
+        text-align: center;
+        background: #ddd;
+        margin-top: 20px;
+    }
+
+    /* 반응형 웹 설정, 폭이 600px 이하인 경우 적용 */
+    @media screen and (max-width: 600px) {
+        .leftcolumn, .rightcolumn {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    /* 반응형 웹 설정, 폭이 400px 이하인 경우 적용 */
+    @media screen and (max-width: 400px) {
+      nav {
+          display: none;
+      }
+    }
+    
+    </style>
+  </head>
+
+<body>
+
+<div class="header">
+  <h1>My Blog</h1>
+  <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur.</p>
+</div>
+
+<nav>
+        <ul>
+            <li class="dropdown">
+                <div class="dropdown-menu">Menu1</div>
+                <div class="dropdown-content">
+                    <a href="#">Menu1-1</a>
+                    <a href="#">Menu1-2</a>
+                    <a href="#">Menu1-3</a>
+                    <a href="#">Menu1-4</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <div class="dropdown-menu">Menu2</div>
+                <div class="dropdown-content">
+                    <a href="#">Menu2-1</a>
+                    <a href="#">Menu2-2</a>
+                    <a href="#">Menu2-3</a>
+                    <a href="#">Menu2-4</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <div class="dropdown-menu">Menu3</div>
+                <div class="dropdown-content">
+                    <a href="#">Menu3-1</a>
+                    <a href="#">Menu3-2</a>
+                    <a href="#">Menu3-3</a>
+                    <a href="#">Menu3-4</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <div class="dropdown-menu">Menu4</div>
+            </li>
+            <li class="home"><a href="#">Home</a></li>
+        </ul>
+    </nav>
+
+
+<div class="contents">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, May 8, 2019</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Mar 20, 2019
+			</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+  </div>
+
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <div class="fakeimg" style="height:100px;">Image</div>
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+    </div>
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+    </div>
+    <div class="card">
+      <h3>Follow Me</h3>
+      <p>Some text..</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+
+</body>
+</html>

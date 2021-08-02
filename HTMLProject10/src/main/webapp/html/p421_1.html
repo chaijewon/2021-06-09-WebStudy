@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body > div {
+  color:green;
+}
+
+/*
+   전체 공통 
+   개별 처리 
+   !important => 우선순위 적용
+   
+   => color:blue !important; => 자바,오라클 ()
+*/
+ body > div+p { 
+  color:blue !important;
+} 
+body > div~p{
+   color:red
+}
+
+</style>
+</head>
+<body>
+  <div>Font-End</div>
+  <p>HTML</p>
+  <p>CSS</p> <!-- Bootstrip -->
+  <p>JavaScript</p><!-- NodeJs,ReactJs,VueJs,AngularJS,JQuery,Ajax -->
+</body>
+</html>

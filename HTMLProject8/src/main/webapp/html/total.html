@@ -1,0 +1,135 @@
+<!-- 
+    1. HTML 태그 
+        => 화면에 출력 (문자,이미지) => 정렬 
+           1) 텍스트 
+              = 제목 h1 ~ h6 (큰제목 => h1 , 부제목 => h3)
+              = p(단락) , br(줄바꿈)
+              = 원하는 부분 => 스타일 적용 (span) span=>메뉴제작시 (서브메뉴)
+              = <sup> : 위첨자(새글 입력 , 주요사항) => 회원가입 (필수입력)
+              = <strong> : 강조체 => <b> 
+              = <pre> : 있는 그대로 출력 
+           2) 이미지
+              = <img> => width,height => px , % => src="이미지경로명"   
+                경로명 
+                =====
+                       image => a.jpg
+                       html => a.html => a.jpg ==> src="../image/a.jpg"
+                       html (a.jpg) => src="a.jpg"
+                       html=>(image=a.jpg) => src="image/a.jpg"
+                       ============================================== css,js
+           3) 화면 이동 
+              = <a> => href="이동할 파일명" => 별도로 브라우저가 생성 => target="_blank"
+           4) 목록 
+              = ul     ul=>li(데이터 출력 태그) 
+              = dl     dl=>dt(제목) , dd(실제 데이터 출력)
+              = table  table
+                         |
+                        tr : 여러개 사용이 가능 
+                     ========
+                     |      |
+                    th     td 
+                    ==     == 실제 데이터 출력 
+                    제목 
+              
+           5) 데이터 전송
+              = <form>  => method , action:어느 파일로 전송할지를 지정 
+                           ======
+                           GET : URL에 뒤에 ?에서 데이터값 전송 : 보안에 취약하다 (페이지전송,영화번호 검색
+                                                                          단순한 검색) 
+                           POST : 감춰서 보낸다 (내부 네트워크를 통해서 전송) => 로그인,회원가입 , 데이터 입력이 많은 경우
+                           ***** "main.jsp? page=10"
+                                          == 오류
+                                 => servlet(자바) => 오류처리
+                                 => jsp(자바+HTML) => 500,404
+           6) 사용자 입력 
+              = input  ==> 속성 => 크기 (size) , id , class , name(자바에서 값을 받는 경우)
+                                               ===========
+                                               CSS/JavaScript
+                           value => setter 
+                           <input type=text value="aaa">
+                           =======
+                           aaa   ==> 수정 => hidden
+                           =======
+                  => type
+                     = text : 한줄 문자열
+                     = password : 비밀번호 입력 
+                     = file : 파일 업로드
+                     = date : 날짜 출력
+                     = hidden : 데이터만 전송
+                     = radio 
+                     = checkbox
+                     = submit : 전송 버튼
+                     = button : 일반 버튼 => JavaScript와 연결 
+              = textarea : 여러줄 입력 (댓글,내용, 소개...)
+              = select : 콤보박스 
+              = button : submit버튼 = 동일한 역할 
+    2. CSS 속성
+       = 선택자 ==> CSS를 할 태그를 가지고 온다 
+         선택자 {
+            속성:값  => 화면의 디자인 변경
+         }
+         
+         => 태그명 
+         => 태그 구분 => id(태그 한개만 제어)/class(여러개 태그를 동시에 제어)
+                       ================ =========================== class명이 중복이 가능 
+                         id명이 중복이 없다
+         사용 방식 
+         태그명 {
+         }
+         #id명 {
+         
+         }
+         .class명{
+         
+         }
+         
+         여러개 태그를 동시에 처리 (그룹)
+         태그명,태그명,태그명{
+            CSS
+         }
+         #id명 , .class명 , 태그 {
+         
+         }
+         
+         직계 , 형제 , 후손 
+         
+              div    ===>  p+span(옆에 있는 span)  p~span(모든 span)
+               |
+         ================
+         |    |    |    |
+         a    p   span span => 자손(직계)    div > p > > >
+                        |
+                        p   => 후손         div p a b ...
+                                           === => 아이디명,클래스명
+                        
+          <div>
+            <a></a>
+            <p></p>
+            <span></span>
+            <span>
+              <p></p>
+            </span>
+          </div>
+      ===============================================================================================
+      => 구체적인 => 선택자 , 가상선택자  태그:hover , 태그:checked , 태그:selected , 태그:nth-child 택,:eq(1)
+      => 속성명 : 값 
+         1) 텍스트 관련 
+            font-
+         2) 텍스트 타입
+         3) 목록
+         4) border
+         5) 여백 (margin / padding)
+         6) background 
+    =======================
+    3. JavaScript => 이벤트 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

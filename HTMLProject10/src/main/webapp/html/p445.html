@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ul > li{
+  margin: 15px;
+}
+/* :: 새글 등록 , 새로운 공지 : 앞(before)뒤(after)에 콘텐츠(문자,이미지) 추가*/
+li.top::after{
+  content: 'NEW!!';
+  font-size: 9px;
+  padding: 2px 4px;
+  margin: 0 10px;
+  border-radius: 2px;
+  background-color: #f00;
+  color: #fff;
+}
+</style>
+</head>
+<body>
+  <ul>
+    <li class="top">제품 A</li>
+    <li>제품 B</li>
+    <li>제품 C</li>
+    <li>제품 D</li>
+    <li class="top">제품 E</li>
+  </ul>
+</body>
+</html>

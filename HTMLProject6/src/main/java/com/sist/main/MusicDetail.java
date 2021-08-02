@@ -136,6 +136,10 @@ public class MusicDetail extends HttpServlet {
 		out.println("</body>");
 		out.println("</html>");
 		
+		// a.common_sp_link img[src*=/recipe/] => src안에 /recipe/가 포함된 데이터만 가지고 온다 
+		//                      src^=/aaa/
+		//                      src$=
+		
 	}
 
 	// 사용자가 넘겨준 데이터 받아서 처리하는 부분

@@ -1,0 +1,91 @@
+<!-- 
+    p441 :nth-child 
+         :first-child
+         :last-child
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+table tr:first-child {
+	color:red;
+}
+table tr:last-child {
+	color:green;
+}
+*/
+/* 홀수번째 */
+/* 게시물 목록 : 테이블 줄수 구분 
+table tr:nth-child(odd) {
+  	color:#CCCCFF;
+}*/
+/* 짝수번째 
+table tr:nth-child(even) {
+	color:#CCFFCC;
+}*/
+/*
+    2n+1 
+    n=0  => 1 
+    n=1  => 3
+    n=2  => 5
+    
+    3n+1
+    n=0 => 1
+    n=1 => 4
+    n=2 => 7
+*/
+/*
+table tr:nth-child(3n+1){
+   color:red;
+}*/
+
+#test tr:nth-child(4n+2){
+   background-color: yellow;
+}
+</style>
+</head>
+<body>
+   <table>
+    <tr><td>홍길동</td></tr><!-- 1 first-child-->
+    <tr><td>심청이</td></tr><!-- 2 -->
+    <tr><td>박문수</td></tr><!-- 3 -->
+    <tr><td>이순신</td></tr><!-- 4 -->
+    <tr><td>춘향이</td></tr><!-- 5 -->
+    <tr><td>강감찬</td></tr><!-- 6 -->
+    <tr><td>이순신</td></tr><!-- 7 last-child-->
+   </table>
+   <table id="test" border=1 bordercolor=black>
+     <tr>
+       <td>A</td>
+       <td>B</td>
+       <td>C</td>
+       <td>D</td>
+       <td>E</td>
+     </tr>
+     <tr>
+       <td>A1</td>
+       <td>B1</td>
+       <td>C1</td>
+       <td>D1</td>
+       <td>E1</td>
+     </tr>
+     <tr>
+       <td>A2</td>
+       <td>B2</td>
+       <td>C2</td>
+       <td>D2</td>
+       <td>E2</td>
+     </tr>
+     <tr>
+       <td>A3</td>
+       <td>B3</td>
+       <td>C3</td>
+       <td>D3</td>
+       <td>E3</td>
+     </tr>
+   </table>
+</body>
+</html>

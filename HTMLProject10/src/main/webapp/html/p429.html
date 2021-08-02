@@ -1,0 +1,47 @@
+<!-- 
+    속성 선택자 
+    태그명[속성명="값"] => equals 
+    태그명[속성명^="값"]  => startswith
+    태그명[속성명$="값"]  => endswith
+    태그명[속성명*="값"]  => contains
+    
+    => p435~p436
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ul {
+   list-style-type: none;
+}
+ul > li {
+  width: 80px;
+  display: inline-block;
+}
+a[href$="bbb"]{ /*마지막 문자열 bbb*/
+   color:#FC6;
+}
+a[href^="aaa"]{ /*시작하는 문자열 aaa*/
+   color:#CCCCFF;
+}
+a[href*="ddd"]{ /* ddd가 포함된 */
+   color:#CCFFCC;
+}
+/*
+    모든 태그의 모든 속성에 적용이 된다 
+    => id명 , class명 찾는 경우 
+*/
+</style>
+</head>
+<body>
+  <ul>
+   <li><a href="aaakkkeee">홈</a></li>
+   <li><a href="bbbpppooo">회원가입</a></li>
+   <li><a href="cccddduuu">영화</a></li>
+   <li><a href="dddsssqqq">예매</a></li>
+   <li><a href="bbbaaabbb">마이페이지</a></li>
+  </ul>
+</body>
+</html>

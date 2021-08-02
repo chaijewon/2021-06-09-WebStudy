@@ -1,0 +1,80 @@
+<!-- 
+    HTML5
+    =====
+     템플릿 
+      header,section,nav,footer,aside,article 
+      ========================================
+     멀티미디어 
+      video , audio => embed , iframe(외부 스트리밍 서비스) ,input => date , week , number...
+      =============
+        실제 파일이 존재명 
+     => 자바스크립트 : canvas : 게임 (플래쉬=>대체) => 웹표준의 문제 (모든 사람이 동일하게 사이트 볼 수 있게)
+                                                장애우들 
+        => 웹디비 : SQLite , 웹 스레드 , 웹 소켓 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#container{
+  width:960px;
+  height: 900px;
+  margin: 0px auto; 
+  font-size: 20px;
+  text-align: center;
+  border:1px solid black;
+}
+header{
+   float: left;
+   width:100%; /* % , px */
+   height: 100px;
+   background-color: #ededed;
+   line-height: 100px;
+}
+nav{
+  float: left;
+  width: 100%;
+  height: 100px;
+  background-color: #FC6;
+  line-height: 100px;
+}
+aside{
+   float: left;
+  width: 300px;
+  height: 600px;
+  background-color: #CCCCFF;
+  line-height: 100px;
+}
+section{
+  float: left;
+  width: 660px;
+  height: 600px;
+  background-color: #CCFFCC;
+  line-height: 100px;
+}
+footer{
+   float: left;
+   width: 960px;
+   height: 100px;
+  background-color: #FF00FF;
+  line-height: 100px;
+}
+</style>
+</head>
+<body>
+   <div id="container">
+     <!-- <div id="header">Header</div> --> <!-- 로그, 검색창 <header> -->
+     <!-- <div id="nav">Nav</div> --><!-- 메뉴 <nav> -->
+     <!-- <div id="aside">Aside</div> --><!-- 부가적인 정보 (로그인 , 인지 공지...) <aside>-->
+     <!-- <div id="section">Section</div> --><!-- 실제 내용 <section>-->
+     <!-- <div id="footer">Footer</div> --><!-- 개인 정보 방침 , 회사소개  <footer>-->
+     <header>Header</header>
+     <nav>Nav</nav>
+     <aside>Aside</aside>
+     <section>Section</section>
+     <footer>Footer</footer>
+   </div>
+</body>
+</html>

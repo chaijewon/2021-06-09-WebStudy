@@ -1,0 +1,67 @@
+<!-- 
+     연결 선택자 
+     = 하위 선택자 
+          <div>
+            |
+        ----------------
+        |    |         |
+        p(1)span(1)  span(2) ==> 자식 (자손)
+                       |
+                      p(2) ==> 후손 
+                   
+       div p ==>  p(1), p(2)
+       div > p ==> p(1)
+     = 형제 선택자 
+       인접 =>  p(1) span(1) ==> p(1)+span => span(1)
+       형제 전체  => p(1) ~ span => span(1),span(2)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">/* javascript,jquery , react , vue */
+/* 자손 */
+#container > ul{
+  border:1px solid #999;
+}
+/* 후손 */
+#container li{
+  color: red;
+}
+/* 자손 */
+#container > ul > li{
+  color:blue;
+}
+/* 인접 형제 (+) */
+span + p{
+  color:magenta;
+}
+p ~ ul {
+  color:yellow;
+}
+/* 전체 형식 (~) */
+</style>
+</head>
+<body>
+  <div id="container"><!--  div : span,p,ul -->
+    <span><h1>영화 예매</h1></span>
+    <p>방법</p>
+    <ul>
+      <li>예매방법
+        <ul>
+          <li>온라인 예매</li>
+          <li>직접 예매</li>
+        </ul>
+      </li>
+      <li>금액
+       <ul>
+        <li>성인:13000원</li>
+        <li>청소년:8000원</li>
+        <li>조조:10000원</li>
+       </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
