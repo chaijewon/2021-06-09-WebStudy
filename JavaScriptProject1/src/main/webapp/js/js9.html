@@ -1,0 +1,77 @@
+<!-- 
+    반복문 
+    => do~while , while , for => forEach (map) , each
+                          ============================
+                          자바에서 => JSON을 전송하면 for => eval()
+                          JSON.parse()
+    1) do~while 
+       초기값  ==========  1
+       do
+       {
+           반복 수행문장 == 2
+           증가식     === 3
+       }while(조건식); === 4 
+                      ========
+                      true  => 2번으로 이동 
+                      false => 종료
+    2) while ===============> 무한루프(반복횟수라 없는 경우)
+       초기값 ====== 1
+       while(조건문) =2   true=> 3=4 , false=종료
+       {
+           반복수행문장 =3
+           증가식    =4
+       }
+       
+       do~while(후조건) => 무조건 한번 이상 수행 
+       while(선조건) => 수행을 안할 수 있다 
+       
+    3) for
+            1       2     4
+       for(초기값 ; 조건식 ; 증가식)
+       {
+          반복 수행문장  3
+       }
+       2번 true => 3, 4
+       2번 false => 종료 
+    4) forEach , map ===> 데이터목록(JSON,Array)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	let i=1;
+	/*do
+	{
+		document.write("i="+i+"<br>");
+		i++;
+	}while(i<=10);*/
+	/*while(i<=10)
+	{
+		document.write("i="+i+"<br>");
+		i++;
+	}*/
+	for(i=1;i<=10;i++)
+	{
+		document.write("i="+i+"<br>"); // 이미지 회전 
+	}
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

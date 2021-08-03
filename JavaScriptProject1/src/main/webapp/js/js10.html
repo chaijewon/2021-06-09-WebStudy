@@ -1,0 +1,49 @@
+<!-- 
+   forEach => Array(배열),JSON
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	let names=["홍길동","심청이","박문수","춘향이","이순신","강감찬","김두한"];
+	let sexs=["남자","여자","남자","여자","남자","남자","남자"]
+	// 일반 for
+	for(let i=0;i<names.length;i++)
+	{
+	     document.write(names[i]+"<br>");	
+	}
+	document.write("============================<p>");
+	// for of => forEach
+	for(let name of names) // for(int n:arr)
+    {
+		document.write(name+"<br>")
+    }
+	document.write("============================<p>");
+	// for in => index를 가지고 온다 
+	for(let index in names)
+	{
+		document.write(names[index]+"("+sexs[index]+")<br>")
+	}
+	// forEach
+	document.write("<hr>");
+	names.forEach(function(name){
+		document.write(name+"<br>")
+	})
+	document.write("<hr>");
+	names.forEach(name=>{ // => function,return을 생략 (람다식) 
+		document.write(name+"<br>")
+	})
+	document.write("<hr>");// map이 가능 많이 사용 
+	names.map(function(name){
+		document.write(name+"<br>")
+	})
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

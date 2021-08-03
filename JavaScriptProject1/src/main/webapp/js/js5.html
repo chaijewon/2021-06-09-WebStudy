@@ -1,0 +1,48 @@
+<!-- 
+     출력 (브라우저)
+     document.write()
+     innerHTML
+     
+     제어문 
+     조건문 : if
+       = 단일 조건문 : 입력값이 정상이냐? (NOT NULL)
+         형식) if(조건문)
+              {
+                 처리  => 조건문이 true일때 
+              }
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//window.onload=function(){
+	//document.querySelector("h1").innerHTML="Hello";
+	//document.querySelector("h3").innerHTML="JavaScript";
+	// 태그를 제어 => DOMScript
+//}
+function login()
+{
+	let id=document.querySelector("#id").value;
+	if(id==="")
+	{
+		document.querySelector("#print").innerHTML="<font color=red>아이디를 입력하세요</font>"
+	}
+	else
+	{
+		document.querySelector("#print").innerHTML=""
+	}
+}
+</script>
+</head>
+<body>
+   <input type=text id="id" size=15>
+   <input type=button value="로그인" onclick="login()">
+   <div id="print"></div>
+</body>
+</html>
+
+
+
+

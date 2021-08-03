@@ -1,0 +1,61 @@
+<!-- 
+   이항 연산자 
+    = 산술연산자  ( + , -  , * , / , % )
+    =============================================
+    = 비교연산자  ( ==(===) , != , < , > ,<= ,>= )
+    = 논리연산자  ( && , || )
+    ============================================= 결과값 (boolean)
+    = 대입연산자  ( = , += , -= )
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <script type="text/javascript">
+     // 산술연산자
+     window.onload=function(){
+    	 let a=10;
+    	 let b=3;
+    	 console.log(a+"+"+b+"="+(a+b));
+    	 console.log(a+"-"+b+"="+(a-b));
+    	 console.log(a+"*"+b+"="+(a*b));
+    	 console.log(a+"/"+b+"="+(a/b));// 정수/정수=정수 , 자바스크립트는 정수/정수=실수
+    	 console.log(a+"%"+b+"="+(a%b));
+    	 /*
+    	       % 
+    	     - % + ===> - 
+    	     - % - ===> -
+    	     + % - ===> +
+    	     + % + ===> +
+    	 */
+    	 // + (산술 , 문자열 결합)
+    	 let i="10";
+    	 let j="20";
+    	 console.log(parseInt(i)+parseInt(j)); // 문자열 결합 
+    	 
+    	 i="100";
+    	 j=20;
+    	 console.log(i+j) // 문자열 결합 
+    	 
+    	 // + 연산자 제외 (문자열 결합)
+    	 i="10"
+    	 j="5"
+    	 console.log(i*j) // * , / , - , % => 정수로 변환후에 처리 
+    	 
+    	 i="A"
+    	 j="2"
+    	 console.log(i*j) // NaN ==> 값이 없는 경우 
+     }
+   </script>
+</body>
+</html>
+
+
+
+
+
+
+

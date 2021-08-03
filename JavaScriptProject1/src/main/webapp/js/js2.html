@@ -1,0 +1,49 @@
+<!--  연산자  -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+ // 연산자 (단항연산자) => 증감 연산자
+ window.onload=function(){
+	 let a=10;
+	 let b=a++;
+	 console.log("a="+a+",b="+b);
+	 
+	 a=10;
+	 b=++a;
+	 console.log("a="+a+",b="+b);
+	 
+	 // 전치(++a) : 선 증가 후 대입, 후치(a++) : 선 대입 후 증가 
+	 let i=10;
+	 let j=!i;// ! => 결과값 true/false 
+	 console.log("j="+j)
+	 // !(자바:true/false) => 자바스크립트에서는 0,0.0이 아닌 수는 모두 true
+	 i=0;
+	 j=0.1;
+	 console.log("i="+Boolean(i)); // type(형변환 연산자)
+	 console.log("j="+Boolean(j)); // (type)변수(자바)
+	 
+	 let k="10";
+	 console.log(typeof k); // k는 string
+	 console.log(typeof Number(k));// k는 숫자형 => number
+	 console.log(typeof parseInt(k)); 
+	 // 숫자 변경 => Number() , parseInt()
+	 
+	 let p=100;
+	 console.log(typeof p);//number
+	 console.log(typeof String(p))// 숫자를 문자로 변경 
+	 /*
+	      => 숫자 변환 : Number() , parseInt() 
+	      => 문자 변환 : String()
+	      => 논리 변환 : Boolean() => 숫자 (0,0.0이 아니면 => 전부 true)
+	 */
+	 
+ }
+</script>
+</head>
+<body>
+
+</body>
+</html>

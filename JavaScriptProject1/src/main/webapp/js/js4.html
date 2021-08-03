@@ -1,0 +1,87 @@
+<!-- 
+      비교연산자 => 결과값 boolean 
+      ** 자바스크립트 : 대소문 구분 , ES5:반드시 문장을 종료하면 ; , ES6: 모든 문장에 ;을 사용할수 있고 , 사용하지 않아도 된다 
+      let a=10
+      === 같다 , == : VueJs,ReactJs => == 경고 , (===)
+      != , < , > , <= , >= : 사용용도 (if이나 , for) => 제어문에서 주로 사용 
+      
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// jquery => $(function(){}) => $ selector (CSS의 선택자와 동일) => 태그를 제어하는 프로그램 
+// window : 브라우저 => 자바스크립트의 main()
+// 브라우저 => 출력하는 위치 => document (브라우저에 출력)
+window.onload=function(){
+	let a=10;
+	let b=5;
+	document.write("a="+(a==b)+"<br>");// false
+	document.write("a="+(a===b)+"<br>");// false
+	document.write("a="+(a!=b)+"<br>");//true
+	document.write("a="+(a<b)+"<br>");//false
+	document.write("a="+(a>b)+"<br>");//true
+	document.write("a="+(a<=b)+"<br>");//false
+	document.write("a="+(a>=b)+"<br>");//true
+	// \n을 사용하지 않는다 ==> <br>을 이용해서 다음줄에 출력 
+	/*
+	     논리 연산자 
+	     &&,||
+	     
+	     (조건) && (조건)
+	     =====    ====
+	       1       2
+	       =========
+	    	   |
+	    	  결과값
+	    	  
+	      && : 두개의 조건이 true만 true => 나머지는 false
+	      || : 둘중에 1개이상의 조건이 true면 true , 나머지 false
+	      
+	                           &&        ||
+	      =========================================
+	    	true true        true       true
+	      =========================================
+	    	true false       false      true
+	      =========================================
+	    	false true       false      true
+	      =========================================
+		    false false      false      false 
+	      =========================================
+	    	  
+	      let a=
+	     
+	*/
+	let i=(6<7) && (6===7) // false
+	let j=(6<7) || (6===7) // true
+	document.write("i="+i+"<br>");
+	document.write("j="+j+"<br>");
+	
+	// 대입 연산자  = , += , -=
+	let k=10;
+	k+=10;
+	document.write("k="+k+"<br>"); // 20  => k=k+10
+	k-=5;
+	document.write("k="+k+"<br>"); // 15  => k=k-5
+}
+</script>
+</head>
+<body>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

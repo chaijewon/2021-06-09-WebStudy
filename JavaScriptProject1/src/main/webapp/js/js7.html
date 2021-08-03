@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<style type="text/css">
+#container{
+  width:100%;
+}
+.row,table{
+  margin: 0px auto;
+}
+h1{
+  text-align: center;
+}
+</style>
+<!--  if ~ else -->
+<script type="text/javascript">
+function login()
+{
+	  // 1. 사용자가 입력한 값을 읽어 온다 => 값이 없는 경우 , 값이 있는 경우 
+	  /*let a=100;
+	  if(a===100)
+	  {
+		 var b=200;
+		 let c=300;// var => let 사용(권장) => {}을 벗어나면 자동으로 사라지게 만든다 
+	  }
+	  console.log("b="+b); // {}을 벗어나도 사용이 가능 (메모리 누수가 있다) => 속도가 느려진다 
+	  console.log("c="+c);
+	  //    if ~ else 처리   => 유지 보수 (var)*/
+	  let id=document.querySelector("input[type=text]").value;// $('input[type=text]').val()
+	  if(id==="")
+	  {
+		  document.querySelector("#sid").innerHTML="<font color=red>아이디 입력하세요</font>"
+	  }
+	  else
+	  {
+		  document.querySelector("#sid").innerHTML=""
+	  }
+	  let pwd=document.querySelector("input[type=password]").value;
+	  if(pwd==="")
+	  {
+		  document.querySelector("#spwd").innerHTML="<font color=red>비밀번호를 입력하세요</font>"
+	  }
+	  else
+	  {
+		  document.querySelector("#spwd").innerHTML=""
+	  }
+}
+</script>
+</head>
+<body>
+  <div id="container">
+   <div class="row">
+     <h1>Login</h1>
+     <table id="table_content" width=250>
+       <tr>
+        <th width=30% align="right">ID</th>
+        <td width=70%>
+         <input type=text id=id size=15>
+        </td>
+       </tr>
+       <tr>
+         <td colspan="2">
+          <span id="sid"></span>
+         </td>
+       </tr>
+       <tr>
+        <th width=30% align="right">PW</th>
+        <td width=70%>
+         <input type=password id=pwd size=15>
+        </td>
+       </tr>
+       <tr>
+         <td colspan="2">
+          <span id="spwd"></span>
+         </td>
+       </tr>
+       <tr>
+         <td colspan="2" align=center>
+          <input type=button value="로그인" onclick="login()">
+          <input type=button value="취소">
+         </td>
+       </tr>
+     </table>
+   </div> 
+  </div>
+</body>
+</html>
+
+
+
+
+

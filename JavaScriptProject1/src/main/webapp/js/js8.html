@@ -1,0 +1,91 @@
+<!-- 
+     다중 조건문 
+     if(조건)
+     {
+         조건 : true => 문장 수행후 종료
+         조건 : false => 밑에 있는 조건으로 이동 
+     }
+     else if(조건)
+     {
+         조건 : true => 문장 수행후 종료
+         조건 : false => 밑에 있는 조건으로 이동 
+     }
+     else if(조건)
+     {
+         조건 : true => 문장 수행후 종료
+         조건 : false => 밑에 있는 조건으로 이동 
+     }
+     else
+     {
+         해당 조건이 없는 경우 처리 => 생략이 가능하다 
+     }
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	let kor=90;
+	let eng=85;
+	let math=78;
+	
+	let total=kor+eng+math;
+	let avg=total/3.0;
+	
+	let score='A';
+	/*if(avg>=90)
+		score='A';
+	else if(avg>=80)
+		score='B';
+	else if(avg>=70)
+		score='C';
+	else if(avg>=60)
+		score='D';
+	else
+		score='F';
+	*/
+	// 사용빈도가 극히 드물다 
+	// if~else
+	switch(Math.round(avg/10))// Math.ceil , Math.round
+	{
+	case 10:case 9:
+		score='A';
+		break;
+	case 8:
+		score='B';
+		break;
+	case 7:
+		score='C';
+		break;
+	case 6:
+		score='D';
+		break;
+	default:
+		score='F';
+	   
+	}
+	document.write("학점:"+score);
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

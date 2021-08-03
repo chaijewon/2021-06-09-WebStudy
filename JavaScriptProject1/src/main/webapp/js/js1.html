@@ -1,0 +1,200 @@
+<!-- 
+      자바스크립트 
+      1) 특징 
+         = 스크립트 언어다 (단순한 언어)
+         = 함수형 언어 (함수를 만들어서 처리:사용자 요청 => 이벤트)
+         = 자바와 다른 프로그램언어
+         *** HTML/CSS  : 문서의 외형 정의 (화면 출력) => 정적
+         *** 자바스크립트 : 문서의 기능(요청 처리) 정의 => 동적 
+      2) 변수 / 데이터 타입
+         = 데이터 타입 (정수형,문자형 , 블린....)
+           1. 숫자 (정수,실수) 
+           2. 문자열 ( "" ,'' ) => 'abc' , "abc"
+           3. Boolean : true/false
+           4. 값이 없는 상태 => null , undefined(일반변수에 값이 없는 경우)
+           5. 객체 (클래스) => JSON => {키:값,키:값...} => CSS
+           6. 배열 (Array) 
+           7. 함수 => 변수 처리가 가능 
+              var s=function(){}
+              
+           => 숫자 
+              var => let (scope를 명확하게 사용) => 사용 범위 => 단점 (오류처리가 없다)
+              5.0    6.0 , const : 상수형 변수 => 변수값을 변경 할 수 없다 
+              형식)
+                   let a=10;  ===> a(int)
+                   let a=10.5;===> a(double)
+                   let a="abc" ==> a(String)
+                   let a=[]    ==> a(Array) ===> [10,"aaa",10.5]
+                   let a={}    ==> a(Object)
+           => 변수의 종류 
+              = 지역변수  : 함수안에서 선언 
+              = 전역변수  : 함수밖에서 선언 => 모든 함수에서 사용이 가능 
+              <script>
+                 let a=10; // 전역변수 
+                 function func()
+                 {
+                    let b=20; // 지역변수
+                 }
+                 function func1()
+                 {
+                    let c=30; // 지역변수
+                 }
+              </script>
+      3) 연산자 
+         단항연산자
+            ++ , -- : 증감연산자 
+            ! : 부정연산자 
+            (type) : 형변환연산자 
+              => Number("6") => parseInt("6")
+              => Boolean(0) => false
+              => Boolean(1) => true
+         이항연산자
+            산술연산자 ( + , - , * , / , % ) => /
+                ***** + (산술연산 , 문자열 결합)
+                      "10"+"abc" => 10abc
+                      "10"+"10"  => 자바("1010")
+                      "10"+"10"  => 20 (자바스크립트) => 문자열이 숫자 => 정수형으로 변환후에 산술연산   
+            비교연산자 ( ==(===) , != , < , > ,<= ,>=) ==> boolean 
+                      -------같다
+            논리연산자 ( && , || ) ==> boolean
+            대입연산자 (=) => +=, -=
+         삼항연산자 ( 조건?값1:값2 )  => 조건이 true => 값1 , false => 값2
+         
+      4) 제어문 
+          조건문 
+            = 단일 조건문 if(조건)
+            = 선택 조건문 if(조건) ~  else
+            = 다중 조건문 if(조건) ~ else if(조건문) ~~ else
+          선택문 
+            = switch ~ case
+          반복문 
+            = while
+            = do~ while
+            = for 
+            ===============
+              for ~ in 
+              for ~ of 
+              map 
+              forEach 
+            =============== forEach
+          반복제어문 
+             = break : 종료
+             = continue : 특정부분 제외
+      5) 배열 : {}(자바) ==> [] => 데이터 혼합이 가능 [10,10.5,"",true] ==> 데이터형이 없다 (let,var)
+               let arr=[1,2,3,4,5];
+                   arr[0] ==> 1
+                   arr[1] ==> 2 ...
+      6) 함수 :
+               리턴형   매개변수 
+               =============
+                 O      O
+                 function func_name(매개변수...) => 리턴형을 표기하지 않는다
+                 {
+                     return 값;
+                 }
+                 O      X
+                 function func_name()
+                 {
+                     return 값;
+                 }
+                 X      O
+                 function func_name(매개변수)  => 매개변수 (변수명 사용)
+                 {
+                 }
+                 X      X
+                 function func_name()
+                 {
+                 }
+                 
+                 예) 
+                     function func_name(name,addr,tel)  
+                     {
+                        
+                     }
+                 
+      7) 클래스 
+      8) 라이브러리 (함수) => substring,indexOf...
+      9) 내장 객체 
+      ***10) DOM Script
+      11) JQuery (자바스크립트 라이브러리) => Ajax
+          웹/앱 (mobile jquery => react native)
+          
+      JSP => HTML/CSS , 브라우저 : JavaScript
+      ===
+      Oracle (DAO) + Java
+      
+      
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- HTML안에서도 가능 -->
+<script type="text/javascript">
+  // 한줄 주석 
+  /*
+      여러줄 주석 
+      화면 출력 
+      = alert() => 팝업창 
+      = document.write() => HTML에 출력 
+      = innerHTML
+      = console.log()
+  */
+  // 메인 => 브라우저에 화면 출력이 된 경우 
+  window.onload=function(){
+     // 변수 선언(정수) 
+     let a=10;
+     console.log("a="+a);
+     // 문자열 
+     let b="Hello Javascript!!";
+     console.log("b="+b);
+     // 실수 
+     let c=10.5;
+     // 코틀린 => var(변수),val(상수)
+     console.log("c="+c);
+     // 배열 선언 
+     let d=[1,2,3,4,5];
+     console.log("d="+d);
+     // 객체 선언 
+     let e={name:"홍길동",age:30,addr:"서울"};
+     console.log("e="+e);
+     let k;
+     console.log("k="+k);
+     
+     // 상수형변수 => 변수값 변경이 불가능 
+     const i="Hello"; 
+     //i="JavaScript";
+     console.log("i="+i)
+     
+     let j=100;
+     console.log("j="+j);
+     j="Hello JS"; // 변수를 선언 => 다른 데이터형으로도 변경 할 수 있다 
+     console.log("j="+j)
+     
+     // 데이터형 확인 => typeof
+     console.log(typeof 10);// number
+     console.log(typeof "Hello");//string
+     console.log(typeof true);//boolean
+     console.log(typeof 10.5);// number
+     console.log(typeof 'A'); // string 
+     console.log(typeof [1,2,3,4,5]);//object
+     console.log(typeof {name:"aaa",age:30})//object  
+     // number , string , object , boolean => typeof (현재 변수 값에 대한 데이터형을 확인)
+     // ; => 문장의 종료 => ;을 사용하지 않을 수 있다 
+  }
+</script>
+</head>
+<body>
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
