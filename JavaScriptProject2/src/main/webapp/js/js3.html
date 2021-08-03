@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let index=1;// 전역변수 
+function prev()
+{
+	index--;
+	
+	if(index<1)
+		index=1;
+	
+	let img=document.getElementById("poster");//ID만 가지고 올 수 있다 
+	// 태그 찾기 => document.querySelector() => 일반 CSS에서 사용하는 선택자와 동일 
+	let path="m"+index+".jpg";
+	img.src=path;
+}
+function next()
+{
+    index++;
+	
+	if(index>5)
+		index=5;
+	
+	let img=document.getElementById("poster");
+	let path="m"+index+".jpg";
+	img.src=path;
+}
+function auto(){
+	    index++;
+		if(index>5)
+			index=1;
+		
+		let img=document.getElementById("poster");
+		let path="m"+index+".jpg";
+		img.src=path;
+	
+}
+function aaa()
+{
+	setInterval(auto,500);// 0.5에 한번씩 => auto()를 호출한다  => setTimeout()
+	// 자바스크립트 (함수기반 => 핵심)
+}
+</script>
+<style type="text/css">
+#poster:hover{
+   opacity: 0.3;
+}
+</style>
+</head>
+<body>
+<img src="m1.jpg" width=300 height=350 id="poster">
+<br>
+<button onclick="prev()">이전</button>
+<button onclick="next()">다음</button>
+<button onclick="aaa()">자동</button>
+</body>
+</html>

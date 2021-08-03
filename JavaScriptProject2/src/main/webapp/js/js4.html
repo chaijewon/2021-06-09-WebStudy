@@ -1,0 +1,92 @@
+<!-- 매개변수 
+     function func_name(변수명) 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<style type="text/css">
+#container{
+  width:100%;
+}
+table{
+  margin: 0px auto;
+}
+</style>
+<script type="text/javascript">
+function sum(a,b)
+{
+	return a+b; 
+}
+/* window.onload=function(){
+	let a=100;
+	let b=200;
+	let c=sum(100,200);
+	document.write(a+"+"+b+"="+c);
+} */
+function calc()
+{
+	let kor=document.querySelector("#kor").value;
+	let eng=document.querySelector("#eng").value;
+	let math=document.querySelector("#math").value;
+	
+	let total=Number(kor)+Number(eng)+Number(math);
+	document.querySelector("#total").value=total;
+	let avg=total/3;
+	document.querySelector("#avg").value=avg;
+}
+</script>
+</head>
+<body>
+  <div id="container">
+    <table id="table_content" width=350>
+      <tr>
+        <th width=30% align=right>국어</th>
+        <td width=70%>
+          <input type=text id=kor size=15>
+        </td>
+      </tr>
+      <tr>
+        <th width=30% align=right>영어</th>
+        <td width=70%>
+          <input type=text id=eng size=15>
+        </td>
+      </tr>
+      <tr>
+        <th width=30% align=right>수학</th>
+        <td width=70%>
+          <input type=text id=math size=15>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width=30% align=right>총점</th>
+        <td width=70%>
+          <input type=text id=total size=15 disabled>
+        </td>
+      </tr>
+      
+      <tr>
+        <th width=30% align=right>평균</th>
+        <td width=70%>
+          <input type=text id=avg size=15 disabled>
+        </td>
+      </tr>
+      
+      <tr>
+        <td colspan="2" align="center">
+          <button onclick="calc()">확인</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
+
+
+
+
+
+

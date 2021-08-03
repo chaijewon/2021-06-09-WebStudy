@@ -1,0 +1,70 @@
+<!-- 
+    배열 => [] (데이터형이 다를수도 있다)
+    [1,2,3,10.5,"Java",true]
+    let a=10;
+    a="Java";
+    
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// main=>브라우저에서 화면을 출력 했을때 => Jquery 
+/*
+ *   $(function(){})
+     $(document).ready(function(){})
+       ================
+    	   
+     => 자바스크립트 : 태그제어 (이벤트) => 댓글 출력  (서버로부터 데이터를 받아서 출력)
+     => 스프링 (서버 : 요청) <==> 브라우저 자체서 연결 
+                         asyn axios await => 크로스 도메인 <=====> JSON
+ */
+window.onload=function(){
+	/*let arr=["홍길동"]
+	console.log(arr)
+	// 추가 
+	arr.push("심청이");
+	console.log(arr)
+	
+	arr.push("강감찬")
+	consol.log(arr)*/
+	let arr=["홍길동",30,"남자","서울",3000]
+	for(let hong of arr)
+	{
+	   console.log(hong)	
+	}
+	/*
+	    let a="Hello"
+	    a=10
+	    a=10.5
+	    a=[]
+	    a={}
+	*/
+	let a="Hello"
+	console.log(a)
+	a=10
+	console.log(a)
+	a=10.5
+	console.log(a)
+	a=["A","B","C"]
+	console.log(a)
+	a={name:"a",sex:"m",age:20}
+	console.log(a)
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

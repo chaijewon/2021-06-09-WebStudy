@@ -1,0 +1,91 @@
+<!-- 
+      함수기반 => 함수 (이벤트) 
+         onclick() : 이미지 , 버튼 , 링크 
+         onchange() : 콤보에서 선택 변경 
+         onmouseover() => hover
+         onmouseout()
+         onkeydown() onkeyup()
+       ======================= 자바(브라우저와 관련이 없다) => 데이터 관리
+       F                B             D  ==========> startup (full)
+       브라우저  ======== 자바  ======== 오라클 
+       ======
+       HTML/CSS
+       JavaScript
+       
+       형식)
+            사용자 정의 함수 => 라이브러리 함수 (String,Math...)
+            리턴형: X   매개변수:X
+            function 함수명()
+            {
+            }
+            ===================================
+            리턴형: X   매개변수:O
+            function 함수명(매개변수...)
+            {
+            }
+            ===================================
+            리턴형: O   매개변수:O
+            function 함수명(매개변수...)
+            {
+                return 값
+            }
+            ==================================
+            리턴형: O   매개변수:X
+            function 함수명()
+            {
+                return 값
+            }
+            =================================
+            
+            const 함수명=function(){}
+            const 함수명=()=>{}
+            ========================== 함수주소를 받아서 처리 (함수 포인터, => 람다식)
+              => function을 생략 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function display()
+{
+	//document.querySelector("h1.a").style.color="red";
+	let h1=document.getElementById("a");
+	h1.style.color="green";
+	
+	h1=document.getElementById("b");
+	h1.style.color="red";
+	
+	// -  font-size => fontSize
+	h1=document.getElementById("c");
+	h1.style.backgroundColor="blue";
+	
+	h1=document.getElementById("d");
+	h1.style.color="yellow";
+}
+window.onload=function(){
+	
+	//display();
+}
+</script>
+</head>
+<body>
+ <h1 id="a">Hello JavaScript</h1>
+ <h1>Hello JavaScript</h1>
+ <h1 id="b">Hello JavaScript</h1>
+ <h1>Hello JavaScript</h1>
+ <h1 id="c">Hello JavaScript</h1>
+ <h1>Hello JavaScript</h1>
+ <h1 id="d">Hello JavaScript</h1>
+ <button onclick="display()">클릭</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
