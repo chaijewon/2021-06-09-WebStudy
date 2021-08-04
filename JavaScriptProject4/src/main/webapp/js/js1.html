@@ -1,0 +1,230 @@
+<!-- 
+      1. 변수 설정 : 자동 지정 변수 
+                   ===========
+                   => 모던 자바스크립트 ( var , let , const ) => ECMAScript5.0 => ES6.0
+                      var은 사용금지(권장) => 지역변수의 영역이 없다 (사용범위(scope)가 명확하지 않다) 
+                      let : 전역변수 (가급적이면 최소화) , 지역변수 (function) => {}을 벗어나면 사라지는 변수 
+                      const : 상수 
+         예)  let a=10  ==> 자동으로 a:int 
+             let a=10.5 ==> 자동으로 a:double 
+             ================================ 숫자형 => Number
+             let a='A'
+             let a="ABC" 
+             ================================ 문자형 => String
+             let a=true/false 
+             ================================ 논리형 => Boolean
+             let a=[]
+             ================================ 배열  => Array
+             let a={}
+             ================================ 객체  => Object
+             let a=function()
+             ================================ 함수형 => function
+             
+       2. 연산자 
+          단항연산자 =>  증감연산자 (++,--) : 전치(++a) , 후치(a++) 
+                      부정연산자 (!) => !true, !false ==> 0,0.0(false) , 그외 나머지 (true)
+                                  => 숫자를 가지고 true/false를 표현한다 
+                                  while(1) => 1(true)  while(0) => 0(false)
+                      형변환 :  숫자 변환 => Number("10") => 10
+                              문자 변환 => String(10) => "10"
+                              논리 변환 => Boolean(1) => true
+                                         Boolean(0) => false
+          이항연산자 => 
+                  산술 연산자 : + , - , * , /  , %
+                             ==         ===
+                             +는 산술처리 , 문자열 결합 
+                             /          정수/정수=실수
+                             *** +를 제외한 나머지 연산자는 문자를 처리한다 
+                             예)  "10"+"10"= "1010"
+                                  "10"-"5" = 5
+                                  "10"*"10"=100
+                  비교 연산자 : 결과값은 논리형으로 제공 (true/false)
+                             == (=== : 권장)
+                             != , < , > , <= ,>=
+                  논리 연산자 : && , ||
+                  대입 연산자 : = , += , -=
+          삼항연산자 => (조건) ? 값1:값2 ==> if~else
+      3. 제어문     var a:Int , var a:String   ==> fun aaa():String => 코틀린(안드로이드)
+         조건문 : 단일 조건문 , 선택 조건문 
+                 ========   ========
+                 if(조건문)  if(조건문) ~ else
+         반복문 : while , for 
+                ====== 자바와 동일 
+                for => 
+                1) 일반 for
+                   for(초기값;조건식;증가식)
+                   {
+                       반복 처리문 
+                   }
+                2) forEach
+                   = for(데이터형 변수 of 배열) => JSON
+                     let arr=[]
+                     for(let a of arr) 
+                   = arr.forEach(function(a){})  => arr에 있는 요소한개를 가지고 온다 
+                                                    (매개변수변수를 통해서 값을 얻어온다)
+                                ============== callback(시스템에 의해서 자동 호출)
+                                => init()  => _jspInit()
+                                => doGet() 
+                                => doPost()
+                                => service() => _jspService()
+                   => 변형 
+                      arr.forEach(a=>{}) : =>(화살표함수:프로그램언어(람다식))
+                                   => function,return 생략이 가능 
+                                   
+                      예)
+                          let func=function(){}
+                          => let func=()=>{}
+                          let func=function(aa){}
+                          => let func=(aa)=>{}
+                          let func=function(a,b){return a+b}
+                          => let func=(a,b)=>a+b
+                   => map (*****) ===> VueJS,Ajax , ReactJS,NodeJS
+                      arr.map(function(a){})
+                      arr.map(a=>{})
+              3) break , continue 
+       4. 배열 []
+          => 배열 함수
+             1) push() => 요소한개 추가 
+             2) pop()  => 마지막에 있는 요소한개 제거 
+             3) slice() => 원하는 위치까지 새로운 배열을 반든다 
+             4) indexOf() 
+             5) find()
+             6) delete : 배열 완전 삭제
+       5. 함수 => 함수 기반 
+          형식)
+               function func_name(매개변수)
+               {
+                   return 값
+               }
+               
+               const func=function(){}
+               const func=()=>{}
+       6. 클래스 : 객체 지향 ====> getter/setter , 멤버함수 , 멤버변수 
+       7. DOM(HTML태그 제외) => 실시간 변경,댓글 추가 ....
+          ================
+           태그를 얻는 방법 
+            = document.getElementsByTagName("태그명")  <tr>
+            = document.getElementById("아이디명")  <tr id="">
+            = document.getElementsByClassName("클래스명") <tr class="">
+            = document.getElementsByName("name명")  <tr name="">
+            = document.querySelector("") => id (#아이디명) , class (.클래스명) 태그 (태그명)
+            = document.querySelectorAll("")
+            ====> Jquery => $(태그명) , $(#아이디명) , $(.클래스명) ==> CSS 선택자와 동일 
+           태그 만드는 방법
+            = createElement("table")
+           태그를 제거하는 방법
+            = removeElement()
+           태그 추가하는 방법
+            = appendElement()
+           태그 변경하는 방법
+            = replaceElement()
+      8. 이벤트 처리 : onClick() , onChange() , onMouseOver() , hover.... onKeyup onKeyDown....
+      ======================================================== 라이브러리 (JQuery) => Ajax
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 배열 정리 [] 
+window.onload=function(){
+	// 배열 선언 
+	let objects=[
+		{name:"홍길동"},
+		{name:"심청이"}
+	]
+	// 배열 출력
+	console.log(objects)
+	// 배열 크기
+	console.log(objects.length)
+	// 배열 추가 (마지막에 추가)
+	objects.push({name:"박문수"})
+	console.log(objects)
+	console.log(objects.length)
+	//배열 제거 
+	objects.pop() // 마지막 요소 제거 
+	console.log(objects)
+	console.log(objects.length)
+	
+	// 함수 => 찾기 (몇번째 존재하는지 확인 ) => indexOf() , find() , findIndex()
+	let arr=["홍길동","박문수","이순신","강감찬","을지문덕","김두한"];
+	let nameIndex=arr.indexOf("강감찬");
+	console.log(arr)
+	console.log(nameIndex)
+	//{} => 데이터가 여러개 있는 경우 => ~VO (클래스 개념) ===> {}(JSON):자바스크립트 객체 표현법
+	// JSON => 서버(Spring)에서 JSON을 만들어서 처리 => 웹/앱  ===> restful 
+	// ArrayList
+	let members=[
+		{
+			id:1,
+			name:"홍길동",
+			sex:"남자",
+			addr:"서울",
+			tel:"010-1111-1111"
+		},
+		{
+			id:2,
+			name:"심청이",
+			sex:"여자",
+			addr:"경기",
+			tel:"010-2222-2222"
+		},
+		{
+			id:3,
+			name:"박문수",
+			sex:"남자",
+			addr:"인천",
+			tel:"010-3333-3333"
+		},
+		{
+			id:4,
+			name:"이순신",
+			sex:"남자",
+			addr:"부산",
+			tel:"010-4444-4444"
+		},
+		{
+			id:5,
+			name:"춘향이",
+			sex:"여자",
+			addr:"강원",
+			tel:"010-5555-5555"
+		}
+	]
+	
+	console.log(members)
+	let member=members.findIndex(member=>member.id===3)
+	console.log(member)
+	// 실제 데이터를 찾아 온다 
+	let member2=members.find(member=>member.id===3)
+	console.log(member2)
+	// 원하는 위치까지만 저장 : slice
+	// 배열 : push():추가, pop():제거 , indexOf():위치 찾기 , find():실제데이터 찾기 , slice() 
+	let numbers=[1,2,3,4,5]
+	console.log(numbers);
+	let num_s=numbers.slice(0,2) // [1,2]
+	console.log(num_s)
+	let num_s1=numbers.slice(2,4) 
+	// slice => 시작 배열 index , 종료 배열 index (제외) => (2,4) => numbers[2]~numbers[3]
+	// substring(1,5) ==> 1,2,3,4
+	console.log(num_s1)
+	
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
