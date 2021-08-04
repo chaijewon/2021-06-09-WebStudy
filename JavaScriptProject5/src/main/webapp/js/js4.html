@@ -1,0 +1,41 @@
+<!-- 
+   class 제작 방식
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+const Sawon=function(name,dept,loc){
+	// 변수 설정 
+	this.name=name;
+	this.dept=dept;
+	this.loc=loc;
+	
+	//멤버 함수 
+	this.display=function(){
+		document.write("이름:"+this.name+"<br>")// 브라우저 console.log() => 개발자 도구 
+		document.write("부서:"+this.dept+"<br>")
+		document.write("근무지:"+this.loc+"<br>")
+	}
+	// 화살표 함수 => function,return
+	this.setName=(name)=>{
+		this.name=name
+	}
+	this.getName=()=>{
+		return this.name
+	}
+}
+window.onload=function(){
+	let sa=new Sawon("박문수","영업부","서울")
+	sa.display()
+	sa.setName("강감찬")
+	sa.display()
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

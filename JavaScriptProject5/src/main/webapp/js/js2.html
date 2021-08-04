@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+    public class Sawon
+    {
+       private int sabun,pay;
+       private String name,dept,job,loc;
+    }
+    
+    ArrayList<Sawon>
+ -->
+<script type="text/javascript">
+// JSON 
+/*
+ *   {키:값,키:값} => Object(객체)
+      키=>멤버변수 
+ */
+const sawons=[
+	{sabun:1,name:"홍길동",dept:"개발부",job:"대리",loc:"서울",pay:4500},
+	{sabun:2,name:"박문수",dept:"영업부",job:"과장",loc:"인천",pay:5500},
+	{sabun:3,name:"심청이",dept:"기획부",job:"부장",loc:"부산",pay:7500},
+	{sabun:4,name:"이순신",dept:"자재부",job:"사원",loc:"경기",pay:3500},
+	{sabun:5,name:"강감찬",dept:"총무부",job:"주임",loc:"강원",pay:4000}
+]
+/*
+const sawonList=function(){
+	console.log(sawons);
+}
+const sawonDetail=function(sabun){
+	let sawon=sawons.find(sa=>sa.sabun===sabun)
+	console.log(sawon)
+}
+const sawonInsert=function()
+{
+	sawons.push({sabun:6,name:"을지문덕",dept:"기획부",job:"사원",loc:"인천",pay:3500})
+}
+*/
+const sawonList=()=>{
+	console.log(sawons);
+}
+const sawonDetail=(sabun)=>{
+	let sawon=sawons.find(sa=>sa.sabun===sabun)
+	console.log(sawon)
+}
+const sawonInsert=()=>
+{
+	sawons.push({sabun:6,name:"을지문덕",dept:"기획부",job:"사원",loc:"인천",pay:3500})
+}
+// 출력
+/*
+window.onload=function(){
+	sawonInsert()
+	sawonList()
+	sawonDetail(6)
+}*/
+</script>
+</head>
+<body>
+  <button onmouseover="sawonList()">목록</button>
+  <button onmouseover="sawonDetail(5)">상세보기</button>
+</body>
+</html>
+
+
+
+
+
+

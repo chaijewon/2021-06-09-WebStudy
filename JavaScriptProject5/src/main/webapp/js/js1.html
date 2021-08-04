@@ -1,0 +1,99 @@
+<!-- 
+    함수 function
+    =============
+    class 제작 => 이벤트 처리 
+    = 현재 사용 (장고)
+      =================================
+      ReactJS => react , redux(O):MVC
+      VueJS   => vue , vuex(O):MVC 
+      ================================= 배포 (webpack)
+      <script src="파일명">
+      JSP : MVC , Spring(MVC)
+      => 데이터 관리 , 화면 출력 
+      1. 일반 함수 (리턴형 => 프로시저) 
+         프로시저 / 함수 차이 ==> 2차 오라클 (Index,PL/SQL,트랜잭션)
+         함수 / 메소드 차이
+         = 리턴값 (O) 매개변수(O)
+           function func_name(매개변수)
+           {
+               return 값;
+           }
+         = 리턴값 (O) 매개변수(X)
+           function func_name()
+           {
+               return 값;
+           }
+         = 리턴값 (X) 매개변수(O)
+           function func_name(매개변수..)
+           {
+           }
+         = 리턴값 (X) 매개변수(X)
+           function func_name()
+           {
+           }
+           *** 매개변수 (let name) => X , (name) : 매개변수명만 설정
+           
+         = 모던 자바스크립트 
+           ============
+           const 함수명=function(매개변수){}
+           const 함수명=()=>{}
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function display(name)
+{
+	document.write(name+"님 환영합니다<br>")
+}
+// 함수 => 주소변경(상수형)
+// 클래스에서 주로 사용 : VueJS
+const display4=function(name)
+{
+	document.write(name+"님 환영합니다<br>")
+}
+// map, forEach
+const display5=(name)=>{
+	document.write(name+"님 환영합니다<br>")
+}
+////////////////////////////////////////////
+function display1()
+{
+	return "홍길동님 환영합니다<br>";
+}
+const display2=function(){
+	return "심청이님 환영합니다<br>";
+}
+const display3=()=>{
+	return "박문수님 환영합니다<br>";
+}
+/////////////////////////////////////////////
+
+
+// 호출 => 동작(버튼 클릭,마우스 클릭,키보드 입력,브라우저에 화면이 출력)
+window.onload=function(){
+	display("홍길동")// 호출 
+	let msg=display1();//msg="홍길동님 환영합니다<br>"
+	document.write(msg);
+	let msg2=display2();
+	document.write(msg2);
+	let msg3=display3();
+	document.write(msg3);
+	
+	display4("홍길동1")
+	display5("홍길동2")
+	
+	
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+

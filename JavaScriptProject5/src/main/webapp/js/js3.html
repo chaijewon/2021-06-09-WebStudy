@@ -1,0 +1,117 @@
+<!-- 
+   관련된 내용을 모아서 관리 => 모듈화 
+   = 함수 모듈화 : C언어
+   = 클래스 모듈화 : 자바, C++,C# ==> 재사용 , 변경이 가능 (상속)
+   ============================= 함수,클래스 : 자바스크립트 , 파이썬 , 코틀린
+   = 공통 모듈화 
+   ==============
+   class : 멤버변수+멤버함수 => 함수형 
+   ======================
+   JSON => 멤버변수+멤버함수  => 데이터 전송
+   
+   class => 변수 , 함수 , 생성자 
+            =================
+   형식)
+        class ClassName
+        {
+           //1. 생성자
+           constructor(name,sex,age)
+           {
+              //2. 멤버변수 설정 
+              this.name=name
+              this.sex=sex
+              this.age=age
+           }
+           // 3. 멤버 함수
+           함수명(){
+           }
+           함수명(){
+           }
+        }
+        
+        let sa=new Sawon(값,값,값);
+        sa.함수명()
+        
+        ==> 함수형 
+        ================================
+        const Sawon=function(name){
+            this.name=name => this.name(멤버변수)
+            this.display=function(){}
+            this.함수명=function(){}
+            this.함수명=()=>{}
+        }
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+class Sawon{
+	//1. 멤버변수 설정
+	constructor(name,dept,loc)
+	{
+		this.name=name;
+		this.dept=dept;
+		this.loc=loc;
+	}
+	//2. 멤버함수 
+	getName(){
+		return this.name
+	}
+	setName(name)
+	{
+		this.name=name
+	}
+	getDept()
+	{
+		return this.dept
+	}
+	setDept(dept)
+	{
+		this.dept=dept
+	}
+	getLoc(){
+		return this.loc
+	}
+	setLoc(loc)
+	{
+		this.loc=loc
+	}
+	// 출력담당 
+	print(){
+		document.write("이름:"+this.name+"<br>")
+		document.write("부서:"+this.dept+"<br>")
+		document.write("근무지:"+this.loc+"<br>")
+	}
+}
+//  let sa={name:"",dept:"",loc:""} => 주로 사용하는 객체 (JSON) => Ajax (JSON,XML)=>JSON
+window.onload=function(){
+	let sa=new Sawon("홍길동","개발부","서울") // 객체 생성 
+	
+	sa.print(); // 멤버함수 호출 
+	document.write("<hr>")
+	sa.setName("심청이") // 멤버변수 지정 
+	sa.setDept("총무부") // 멤버변수 지정 
+	sa.setLoc("경기")
+	sa.print()
+	
+	let sa1=new Sawon("홍길동","개발부","서울")
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

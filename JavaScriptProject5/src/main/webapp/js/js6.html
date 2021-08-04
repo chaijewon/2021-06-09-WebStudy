@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function send()
+{
+	let f=document.frm;
+	let name=f.name.value;
+	if(name=="")
+	{
+		alert("이름을 입력하세요")
+		return;
+	}
+	f.method="post"
+	f.action="js7.html"
+	f.submit()
+	
+}
+const send2=function(){
+	let f=document.frm;
+	let name=f.name.value;
+	if(name=="")
+	{
+		alert("이름을 입력하세요")
+		return;
+	}
+	f.method="post"
+	f.action="js7.html"
+	f.submit()
+}
+const send3=()=>{
+	let f=document.frm;
+	let name=f.name.value;
+	if(name=="")
+	{
+		alert("이름을 입력하세요")
+		return;
+	}
+	f.method="post"
+	f.action="js7.html"
+	f.submit()
+}
+</script>
+</head>
+<body>
+  <form name="frm">
+   <input type=text name=name size=15>
+   <input type=button value="전송" onclick="send3()">
+  </form>
+</body>
+</html>
