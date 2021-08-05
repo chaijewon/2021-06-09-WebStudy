@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+// change => <select> , <input type=radio>
+$(function(){
+	$('#sel').change(function(){
+		let s=$('#sel').val();
+		$('img').attr("src","m"+s+".jpg");
+	})
+})
+</script>
 <style type="text/css">
 #container{
   width:100%;

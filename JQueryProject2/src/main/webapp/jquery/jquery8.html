@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<style type="text/css">
+#container{
+  width:100%;
+}
+.row{
+  margin: 0px auto;
+}
+table{
+  margin: 0px auto;
+}
+</style>
+<!--  searchbar : autocomplete(자동 완성기) => 쿠키 :서제스트 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#fd').keyup(function(){
+		let k=$('#fd').val();
+		$('.list > tbody > tr').hide();
+		let temp=$('.list > tbody > tr > td:nth-child(5n+2):contains("'+k+'")')
+		// contains=> 포함된 문자를 찾는다  nth-child=>위치 ==> td
+		$(temp).parent().show()
+		// td => tr => parent:상위태그
+	})
+})
+</script>
+</head>
+<body>
+  <div style="height:50px"></div>
+  <div id="container">
+    <div class="row">
+      <table id="table_content" width=700>
+        <tr>
+         <td>
+          <input type=text id="fd" size=20 placeholder="검색어 입력">
+         </td>
+        </tr>
+      </table>
+      <table id="table_content" width=700 class="list">
+       <thead>
+        <tr>
+         <th>사번</th>
+         <th>이름</th>
+         <th>부서</th>
+         <th>근무지</th>
+         <th>연봉</th>
+        </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td align=center>1</td>
+           <td align=center>홍길동</td>
+           <td align=center>개발부</td>
+           <td align=center>서울</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>2</td>
+           <td align=center>심청이</td>
+           <td align=center>영업부</td>
+           <td align=center>부산</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>3</td>
+           <td align=center>박문수</td>
+           <td align=center>개발부</td>
+           <td align=center>서울</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>4</td>
+           <td align=center>이순신</td>
+           <td align=center>총무부</td>
+           <td align=center>부산</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>5</td>
+           <td align=center>춘향이</td>
+           <td align=center>기획부</td>
+           <td align=center>서울</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>6</td>
+           <td align=center>강감찬</td>
+           <td align=center>개발부</td>
+           <td align=center>서울</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>7</td>
+           <td align=center>을지문덕</td>
+           <td align=center>총무부</td>
+           <td align=center>부산</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>8</td>
+           <td align=center>전봉준</td>
+           <td align=center>개발부</td>
+           <td align=center>서울</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>9</td>
+           <td align=center>김두한</td>
+           <td align=center>총무부</td>
+           <td align=center>부산</td>
+           <td align=center>3000</td>
+         </tr>
+         <tr>
+           <td align=center>10</td>
+           <td align=center>이산</td>
+           <td align=center>개발부</td>
+           <td align=center>서울</td>
+           <td align=center>3000</td>
+         </tr>
+       </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
