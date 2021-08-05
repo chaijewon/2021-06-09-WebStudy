@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<style type="text/css">
+#container{
+  width:100%
+}
+table{
+  margin: 0px auto
+}
+</style>
+<!-- 
+     이벤트 
+       => click (모든 태그가 click) 
+          $('태그명').click(function(){
+              처리하는 부분 
+          })
+       => change(<select>)
+          $('태그명').change(function(){
+              처리하는 부분
+          })
+       => hover
+          $('태그명').hover(function(){
+              처리하는 부분(if)
+          },function(){
+              else
+          })
+       => mouseover
+          $('태그명').mouseover(function(){
+              처리하는 부분
+          })
+       => keyup
+          $('태그명').keyup(function(){
+              처리하는 부분
+          })
+       ==========================
+ -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#btn').click(function(){
+		//1. id입력 여부 확인 , 2. 비밀번호 확인 3. 데이터 전송 (자바)
+		let id=$('#id').val();  // val() => value값을 읽는 경우 ==> <input>
+		if(id.trim()=="") // trim()은 공백 제거 (space)
+		{
+			$('#id').focus();
+			return;
+		}
+		
+		let pwd=$('#pwd').val();  // val() => value값을 읽는 경우 ==> <input>
+		if(pwd.trim()=="") // trim()은 공백 제거 (space)
+		{
+			$('#pwd').focus(); // document.getElementById("pwd").focus()
+			                   // ============================== $('#pwd')
+			                   // document.getElementsByClass("a") => $('.a')
+			                   // document.querySelector() => $()
+			return;
+		}
+		
+		alert("로그인 실행합니다"); // $('form').submit()
+	})
+})
+</script>
+</head>
+<body>
+  <div style="height:50px"></div> 
+  <div id="container">
+    <table id="table_content" width=300>
+      <tr>
+        <th width=30% align=right>ID</th>
+        <td width=70%>
+          <input type=text id=id size=15> <!-- 입력값 읽는 경우 val() -->
+        </td>
+      </tr>
+      <tr>
+        <th width=30% align=right>PW</th><!-- text() -->
+        <td width=70%><!-- html() -->
+          <input type=password id=pwd size=15>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align=center>
+         <input type=button value="로그인" id="btn">
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

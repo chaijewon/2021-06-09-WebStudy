@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<style type="text/css">
+.container{
+   width:100%;
+}
+table{
+   margin: 0px auto;
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+// 예매시 , 장바구니 => 금액 계산 
+$(function(){
+	// 계산 버튼을 클릭시 처리 
+	$('#btn').click(function(){
+		// 입력창 => val() : value
+		// <input> , <textarea> , <select> => val()
+		// 나머지 태그는 text(),html() 
+		// 단독태그 : <img> , <a> => attr()
+		let first_num=parseInt($('#first').val()); // 문자열을 정수로 변환 => 계산 
+		// 정수 => parseInt() , 숫자 => Number()
+		let op=$('#op').val();
+		let second_num=parseInt($('#second').val())
+		// 문법 ==> 자바스크립트
+		if(op=="+")
+		{
+			let result=first_num+second_num
+			$('#result').val(result) //<input>태그에 값을 입력할 때 
+		}
+		else if(op=="-")
+		{
+			let result=first_num-second_num
+			$('#result').val(result) //<input>태그에 값을 입력할 때 
+		}
+		else if(op=="*")
+		{
+			let result=first_num*second_num
+			$('#result').val(result) //<input>태그에 값을 입력할 때 
+		}
+		else if(op=="/")
+		{
+			if(second_num==0)
+			{
+				alert("0으로 나눌수 없습니다!!") // try~catch
+			}
+			else
+			{
+				let result=first_num/second_num
+				$('#result').val(result) //<input>태그에 값을 입력할 때 
+			}
+		}
+		
+	})
+})
+</script>
+</head>
+<body>
+  <div class="container">
+    <table id="table_content" width=500>
+     <tr>
+       <td>
+         <input type=text id="first" size=10>
+         <select id="op">
+          <option>+</option>
+          <option>-</option>
+          <option>*</option>
+          <option>/</option>
+         </select>
+         <input type=text id="second" size=10>
+          =
+         <input type=text id="result" size=10 disabled="disabled">
+         <input type=button value=계산 id="btn">
+       </td>
+     </tr>
+    </table>
+  </div>
+</body>
+</html>

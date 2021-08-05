@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	/*$('#a').click(function(){
+		let data=$('#a').text();
+		alert(data);
+	})
+	$('#b').click(function(){
+		let data=$('#b').text();
+		alert(data);
+	})
+	$('#c').click(function(){
+		let data=$('#c').text();
+		alert(data);
+	})
+	$('#d').click(function(){
+		let data=$('#d').text();
+		alert(data);
+	})
+	$('#e').click(function(){
+		let data=$('#e').text();
+		alert(data);
+		keyup , keydown ==> 채팅 (챗봇)
+	})*/
+	$('.a').click(function(){
+		let data=$(this).text(); // 클릭한 태그를 읽어올때 => $(this)
+	    alert(data);
+	})
+})
+</script>
+</head>
+<body>
+  <button class="a">A</button>
+  <button class="a">B</button>
+  <button class="a">C</button>
+  <button class="a">D</button>
+  <button class="a">E</button>
+</body>
+</html>

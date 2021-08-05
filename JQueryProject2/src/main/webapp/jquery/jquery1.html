@@ -1,0 +1,82 @@
+<!-- 
+     JQuery => 태그를 제어하는 프로그램 (DOMScript) => 태그의 CSS변경,태그추가 , 태그의 값을 읽기,태그제거,데이터값추가
+               애니메이션 , => 지도(줌)
+     ======
+     1. selector ==> CSS의 선택자
+        태그명 => $('a') , $('tr') 
+        아이디명 => $('#id명') , $("#id명")
+        클래스명 => $('.클래스명')
+        복합(여러개 태그를 동시 처리) => $('태그명,태그명')
+                                => $('#id명,#id명') 
+        직계 => $('태그명 > 태그명')
+        후손 => $('태그명 태그명')
+        형제 => $('태그명 + 태그명')  , $('태그명 ~ 태그명')
+        출력된 위치 => :eq(0~n) , :odd(홀수) , :even(짝수)
+                     :nth-child(2n) 
+        기타 => 속성 
+               태그명[속성=값] , 태그명[속성$=값] , 태그명[속성^=값] , 태그명[속성*=값] 
+    2. 값읽기 (ML은 데이터를 저장할때 => 태그와 태그사이에 값,속성에 값을 저장)
+         <td>값</td>, <img src=""> <a href=""> 
+       = <태그>값<태그>  ==> text()  예) $('태그').text()  ==> 반드시 입력값이 필요한 경우(NOT NULL)                 
+       = 속성의 값을 읽어 올때 ==> attr(속성명)  예) $('a').attr("href")
+       = html을 읽어 올때 
+         <tr>
+          <td><span>aaaaa</span></td>   ==> $('td').text() ==> aaaaa
+         </tr>                          ==> $('td').html() ==> <span>aaaaa</span>
+         
+         <td>aaaaa</td> => text() ==> getter
+         <td>aaaaa</td> => text("bbbbb") ==> <td>bbbbb</td> ==> setter
+    3. 데이터추가(태그 추가) ==> 댓글 ,리뷰 ...
+       = text("값"),attr("속성명","값"),html("<span></span>"),append()
+         ================================================= ========= 계속추가 
+               한번씩만 설정
+    4. 애니메이션 : animate()
+    5. 라이브러리 (UI)
+    6. Ajax => 화면을 이동하지 않고 서버에서 값을 읽어오는 과정 (실시간)
+    
+    자바 => 오라클 => HTML => CSS => JavaScript(Jquery) ====> Basic
+    ================================================= + JSP (통합=> 같은 형태의 프로그램:Spring)
+    
+    Jquery를 사용하기 위해서는 라이브러리를 로드한다 : 다운로드 , 원격 
+    ======================================================
+       http://code.jquery.com/jquery.js
+       
+       => 태그찾기 ==> $('CSS Selector')
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script><!-- import -->
+<script type="text/javascript">
+  // 태그가 가지고 있는 값을 읽는 방법 
+  $(function(){
+	  /*let data1=$('#a').text();
+	  console.log("data1="+data1)
+	  let data2=$('#b').text();
+	  console.log('data2='+data2)
+	  let data3=$('#b').html();
+	  console.log('data3='+data3)
+	  let data4=$('#c').attr("value")
+	  console.log('data4='+data4)*/
+	  $('#a').text("안녕하세요 제이쿼리1")
+	  $('#b').html("<span style=\"color:red\">안녕하세요 제이쿼리2</span>")
+	  $('#c').attr("value","안녕하세요 제이쿼리3")
+  })
+</script>
+</head>
+<body>
+   <h1 id="a">Hello Jquery1</h1>
+   <h1 id="b"><span>Hello Jquery2</span></h1>
+   <h1 id="c" value="Hello Jquery3">속성</h1>
+</body>
+</html>
+
+
+
+
+
+
+
+

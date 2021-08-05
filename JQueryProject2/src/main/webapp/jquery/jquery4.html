@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+// show() : display:'', hide():display:none 
+// 태그에 값을 입력하는 경우 : text(값)
+// 태그선택하는 내용 => selector
+let bCheck=true;
+$(function(){
+	$('#btn').click(function(){
+		if(bCheck===true)
+		{
+			bCheck=false;
+			$('#btn').text("취소");
+			$('#sh').show("slow")
+		}
+		else
+		{
+			bCheck=true;
+			$('#btn').text("삭제");
+			$('#sh').hide("slow")
+		}
+	})
+	$('#s').css("cursor","pointer");// 링크 
+	$('#s').click(function(){
+		$('#s').hide();
+		$('#data').show();
+	})
+})
+</script>
+</head>
+<body>
+  <button id="btn">삭제</button>
+  <div id="sh" style="display:none">
+   비밀번호:<input type=password name=pwd size=10><input type=button value="삭제">
+  </div>
+  <pre>lamooo 가든호텔점 점심 오마카세 방문해봤는데. 전반적으로 무척 만족스러웠어요. 
+  구성도 맛도 재료도 무엇하나가 엄청 튀게 맛있다기 보다는 전체적으로 깔끔하고 비린 맛 
+  하나 없이 부드럽고 몇 몇 피스는<span id="s" style="color:orange">...더보기</span><div id="data" style="display:none">넣자마자 녹아없어지는 느낌이 좋네요. 
+  밥 양도 적당하고 셰프님들도 친절하셨는데. 일 이부로 나뉘어져 있어 조금 여유가 부족했단 점. 
+  고등어 토치한 피스는 정도가 심해서 탄맛이 많이 났다는 점을 제외하고는. 
+  저도 친구도 만족. 재방문 의사 있어요 ;)</div></pre>
+</body>
+</html>
+
+
+
+
+
