@@ -1,0 +1,127 @@
+<!-- 
+     개발자마다 => 개발 방법 틀리다 (본인 => 최상) => 합치는 과정 (통일성문제)
+     JQuery : JavaScript라이브러리 => 표준화 (프레임워크:동일한 코딩)
+                                         =================== 유지보수시 교육시간이 짧아진다
+                                         자바스크립트 : Jquery (신입)
+                                         자바 : Spring,Mybatis 
+     => Jquery => 문법은 자바스크립트를 이용한다 => let 
+        1) selector : 선택자 => 태그를 제어하는 프로그램 (태그를 찾는다)
+           ========
+           태그에 아이디가 있는 경우 ===============> #아이디명 
+           태그에 클래스명을 가지고 있는 경우 ========> .클래스명 
+           태그를 변경  ====> 태그명 
+           계층 구조   ===> 태그명 태그명
+           형제       ===> 태그명+태그명 , 태그명~태그명
+           직계       ===> 태그명 > 태그명
+           후손       ===> 태그명 태그명
+           중복       ===> 태그명,태그명 
+           속성       ===> 태그명[속성명=값]  같은 값을 가지고 있는 태그 
+                          태그명[속성명*=값] 값이 포함된 경우
+                          태그명[속성명^=값] 시작하는 문자열
+                          태그명[속성명$=값] 끝나는 문자열
+           가상       ===> :nth-child(n) , :eq , :not , :disabled , :enabled
+           
+           ===> 태그를 제어하는 프로그램 => DOMScript 
+           ===> document.querySelector('#id')  ===> $('#id')
+                document.querySelector('.name') ===> $('.name')
+                document.querySelector('tr')    ===> $('tr')
+                
+           window.onload=function(){
+           }
+           ==> $(function(){})
+           ==> $(document).ready(function(){})
+                 ================생략이 가능
+           ==> Ajax 
+               HttpXMLRequest => 객체 생성 (브라우저 내장된 객체)
+               request=new HttpXMLRequest()
+               =============================
+               
+               1. 웹사이트와 연결 
+                  request.open("파일명","GET/POST",true)  // true(비동기)/false(동기) 
+               2. 결과값을 읽어 온다 
+                  request.onreadychangestate=callback ; // Callback함수 지정 => 결과값을 가지고 오면 자동 호출 
+               3. 필요한 데이터를 전송 
+                  request.send("name=aaa&sex=man....")
+                  
+               4. Callback함수를 만들어서 결과값 처리 
+                  function callback()
+                  {
+                     if(request.readyState==4) => 0~4 => 0:준비,1.open전상태 ,2.open(연결)
+                                                         3.데이터전송전 , 4.데이터 전송완료
+                     {
+                        if(request.status==200) => 서버에서 정상수행을 한 상태
+                        {
+                            처리 => 값을 받아서 해당 파일에서 출력  
+                        }
+                     }
+                  }
+              ===> $.ajax({})  ==> VueJS / ReactJS ==> ajax를 포함 
+              
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+     jquery라이브러리는 충돌되면 오류난다 
+ -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script><!-- import -->
+<script type="text/javascript">
+// main => window.onload=function(){}
+$(function(){
+	// 선택자 => 태그 => CSS변경 
+	//$('h1').css("color","red");// 일반 자바스크립트 ==> $('h1') , $("h1")
+	/* let h1=document.querySelectorAll("h1");
+	for(let h of h1)
+	{
+	    h.style.color="red"
+	} */
+	// $('h1:eq(3)').css("color","green")  // eq => 0번부터 시작한다
+	// 스타일을 변경할 태그를 가지고 온다 => selector
+	//$('h1:even').css("backgroundColor","yellow") // 0 1 2 3 4   :even=>짝수
+	//$('h1:odd').css("backgroundColor","#CCCCFF") // :odd => 홀수 ==> 테이블에서 주소 (게시판)
+	$('.c').css("color","blue")
+	$('#a,#b').css("color","red") // 동시에 변경 ==> id="a" id="b" => 그룹별 처리
+	
+	$('div>h1').css("color","pink")
+	$('div>span>h1').css("color","magenta")
+	// CSS => 선택자 
+	/* $('a[href^=aaa]').css("color","yellow")
+	$('a[href*=eee]').css("color","green")
+	$('a[href$=ppp]').css("color","gray") */
+	
+	$('div a:eq(0)').css("color","yellow")
+	$('div a:eq(1)').css("color","green")
+	$('div a:eq(2)').css("color","gray")
+})
+</script>
+</head>
+<body>
+  <h1 id="a">Hello Jquery1</h1><!--  h1:eq(0) -->
+  <h1 class="c">Hello Jquery2</h1>
+  <h1 id="b">Hello Jquery3</h1>
+  <h1 class="c">Hello Jquery4</h1>
+  <h1 class="c">Hello Jquery5</h1>
+  <div>
+    <h1>Hello Jquery6</h1>
+    <span>
+      <h1>Hello Jquery7</h1>
+    </span>
+  </div>
+  <div>
+    <a href="aaabbbccc">Hello Jquery8</a><!-- yellow -->
+    <a href="bbbdddeee">Hello Jquery9</a><!-- green -->
+    <a href="kkkoooppp">Hello Jquery10</a><!-- gray -->
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
