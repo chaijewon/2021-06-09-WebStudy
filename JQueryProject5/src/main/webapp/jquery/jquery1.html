@@ -1,0 +1,254 @@
+<!-- 
+      JQuery : 자바스크립트 라이브러리 
+      =========
+         1. 입력 안된 경우 처리 => 오라클에서 에러 (NOT NULL)
+            =============== PRIMARY KEY , CHECK (필수 입력)
+            글쓰기 , 댓글 , 회원가입 , 로그인 
+        ======================================================= Ajax
+         2. 실시간 : setInterval() => 새로고침 동일 : 스프링(스케쥴러)
+         3. 페이지이동 없이 화면 전환 , 데이터 변경 
+            예매처리 , 페이징처리 
+         4. 화면 UI => 동적 (이미지 슬라이딩:애니메이션)
+            ==================================== Juqery UI 
+      =============================================================
+      Jquery : HTML의 태그를 제어 (DOMScript) 
+               태그가 가지고 있는 값을 가지고 온다 , 속성값 읽기 
+               필요한 경우에는 태그를 제거,태그를 추가 
+               태그에 CSS추가 
+               DOM => HTML (Document Object Model) => 트리구조
+               === 계층 구조로 되어 있다 (XML)
+                     HTML
+                     ====
+                      |
+                -------------------
+                |                 |
+              head              body
+              ====             ======
+               |                  |
+           -----------     ------------------ DOM Parse
+           |    |    |     |   |   |     |    |
+         title meta ... 
+         
+         HTML , Jquery , JavaScript => 단점 : 수정시에 전체를 지우고 다시 트리형태를 다시 만든다 => 화면에 출력
+                ==================== 속도 최적화 , 변경 부분 최소화 : Vue,React
+         태그를 제어 => 태그를 가지고 온다 (선택자) => selector
+         
+         => 태그를 읽어 올때 : $('태그')
+                           ========= CSS의 선택자와 동일  => 모든 태그는 속성 (id,class) : 태그를 찾기 위한 구분 
+                                     id  ====> Primary Key (중복이 없게 만드는 태그)
+                                     === <table> , <ul>
+                                     class ===> 중복 허용 (여러개 동시에 처리) 
+                                     =====
+                                       <li> , <a> , <tr> , <td> , <th> , <img>
+                           1. 태그명 ======> $('태그명')  ======> document.querySelector("태그")
+                           2. ID사용법  ===> $('#id_name')  ===> document.querySelector("#id")
+                                                               ======================= $
+                           3. 클래스사용법 => $('.class_name') ==> document.querySelector(".class")
+                           
+                           ========> 문제: $(jquery의 함수)  ==> JSP에서 출력 out.println("<html>")
+                                                                         =====================
+                                                                           ${출력} => <%= %>
+                                                                           $() ==> mybatis
+                           4. 속성 태그명[속성=값] , 태그명[속성*=값] , 태그명[속성^=값] , 태그명[속성$=값]
+                           5. 계층 
+                              태그안에 포함된 태그 
+                                <div>
+                                  <p></p>
+                                  ========
+                                  <span><p></p></span>
+                                        =======
+                                </div>  
+                                  p 전체   ==> $('div p')
+                                
+                              태그안에 바로 밑에 있는 태그
+                                <div>
+                                  <p></p>
+                                  ========
+                                  <span><p></p></span>
+                                </div> 
+                                  ===> $('div > p')
+                           6. 복합 : 여러개 동시에 선택 ==> $('태그명,태그명,태그명')
+                                                       $('th , td')
+                           7. :button
+                              .ab:button
+                              :contains ==> 문자가 포함 된 것을 가지고 온다 
+                              $('p:contains("b")')
+                              <p>aaa</p>
+                              <p>bbbaaa</p>
+                              <p>cccaaabbb</p>
+                              
+                          8.    <div>
+                                  <p></p>
+                                  ========
+                                  <span><p></p></span>
+                                </div> 
+                             ===> $('div:has(span)') => 특정 요소가 포함될 때 
+                          9. :nth-child(2n) n=0 부터 
+                             :eq(n) => n=0
+                             :odd , :even 
+                         ==========================================================
+                         ***** 여러개를 동시에 읽어 올때
+                               해당 태그 ==> $(this)
+                         ***** 이벤트 
+                               click : 모든 태그에 해당 
+                               change : <select>
+                               hover , mouseover
+                               keyup : 키보드 입력 (<input type=text> <textarea>)
+                         ***** 주요 함수 
+                               css() : 해당 태그에 스타일 변경 
+                               text() : <태그>(여기 값 읽기)</태그>  => 값을 설정 text(값)
+                               val()  : 입력창 => <input>,<textarea>,<select> 
+                               html() : 태그와 태그사이의 모든 HTML을 읽어 온다 
+                               =========================================create()
+                               append() : 여러개를 계속 추가
+                               remove() : 태그를 제거할 때 사용 
+                        ***** 처리과정 : 자바스크립트 문법을 이용한다 
+                              변수 => let , const..
+                                     [] , {}
+                              연산자 , 제어문 ....
+                              필요한 경우에는 함수 => 함수호출이 가능 
+                        ***** Jquery의 시작점 => 브라우저에 화면 출력 (window.onload=function(){})
+                              $(function(){여기서 코딩})
+                              $(document).ready(function(){})
+                                ================ 생략 
+                        요구사항 분석 
+                        ==========
+                        1. 연결  (모방= 없는 내용 추가)
+                           ===
+                           예) 영화 => 예매하기 (영화 ==> 근처 맛집) , 최단거리 
+                           예) 맛집 => 예약하기 (맛집 ==> 레시피)
+                           예) 취업 => 추천 (로직) => 회원가입 (여러개:성향 , 취미) => 20000정도 
+                           예) 여행 => 경로 추천 (호텔,맛집) , 행사,축제 , 최단거리 
+              *** Ajax : 한페이지에서 모든 작업을 수행 (화면 변경이 없는 상태) 
+                  ==== 상세보기 , 검색 (팝업,모달) , 페이지 이동 , 여러개 선택 (예매) 
+                                                           =========
+                                                           영화 출력 => 극장 선택 => 날짜 => 시간 => 인원
+                                                           =======================================
+                                                                  예매정보=>예매(이동,좌석=>마이페이지)
+                  
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<style type="text/css">
+#container{
+  width:100%; /*브라우저 전체 크기*/
+  margin-top: 50px;
+}
+h1 {
+    text-align:center;
+}
+table {
+    margin: 0px auto; /*가운데 정렬*/
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let box=[{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20204117",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/07/thumb/thn_9e61ddf5d3564062af12a3c141148936.jpg",movieNm:"모가디슈",movieNmEn:"Escape from Mogadishu",synop:"내전으로 고립된 낯선 도시, 모가디슈 \r\n지금부터 우리의 목표는 오로지 생존이다!\r\n \r\n대한민국이 UN가입을 위해 동분서주하던 시기 \r\n1991년 소말리아의 수도 모가디슈에서는 일촉즉발의 내전이 일어난다.\r\n통신마저 끊긴 그 곳에 고립된 대한민국 대사관의 직원과 가족들은\r\n총알과 포탄이 빗발치는 가운데, 살아남기 위해 하루하루를 버텨낸다.\r\n그러던 어느 날 밤, 북한 대사관의 일행들이 도움을 요청하며 문을 두드리는데…\r\n \r\n목표는 하나, 모가디슈에서 탈출해야 한다!\r\n",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"121",showTs:"2",director:"류승완",prNm:"(주)덱스터스튜디오,(주)외유내강,(주)필름케이",dtNm:"롯데컬처웍스(주)롯데엔터테인먼트",repNationCd:"한국",movieType:"장편",moviePrdtStat:"개봉",genre:"액션,드라마",watchGradeNm:"15세이상관람가",openDt:"20210728",salesAmt:1191914250,audiCnt:125912,scrCnt:1620,showCnt:6750,rank:1,rankInten:0,rankOldAndNew:"OLD",rownum:1},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20218391",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/06/thumb/thn_6e687a6bb696424ca376bbbe98c7277e.jpg",movieNm:"보스 베이비 2",movieNmEn:"Boss Baby: Family Business",synop:"가족 같은 회사로 모십니다\r\n\r\n베이비 주식회사의 레전드 보스 베이비에서 인생 만렙 CEO가 된 ‘테드’.\r\n베이비인 줄 알았던 조카 ‘티나’가 알고 보니 베이비 주식회사 소속 임원으로 밝혀진다.\r\n뉴 보스 베이비 ‘티나’의 지시로 다시 베이비로 돌아간 ‘테드’와 형 ‘팀’에게 주어진 시간은 48시간!\r\n\r\n세상을 구하기 위한 미션을 무사히 완수할 수 있을 것인가?",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"107",showTs:"13",director:"톰 맥그라스",prNm:null,dtNm:"유니버설픽쳐스인터내셔널 코리아(유)",repNationCd:"미국",movieType:"장편",moviePrdtStat:"개봉",genre:"애니메이션,코미디,어드벤처",watchGradeNm:"전체관람가",openDt:"20210721",salesAmt:312377280,audiCnt:36113,scrCnt:804,showCnt:1961,rank:2,rankInten:0,rankOldAndNew:"OLD",rownum:2},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20191951",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/06/thumb/thn_f5b9324a8a5b4c01977419a6e6442ab9.jpg",movieNm:"블랙 위도우",movieNmEn:"Black Widow",synop:"“모든 것을 바꾼 그녀의 선택”\r\n어벤져스의 운명을 바꾼 블랙 위도우, 그녀의 진짜 이야기가 시작된다!\r\n\r\n어벤져스의 히어로 블랙 위도우, ‘나타샤 로마노프’ (스칼렛 요한슨)는\r\n자신의 과거와 연결된 레드룸의 거대한 음모와 실체를 깨닫게 된다.\r\n\r\n상대의 능력을 복제하는 빌런 ‘태스크마스터’와 새로운 위도우들의 위협에 맞서\r\n목숨을 건 반격을 시작하는 ‘나타샤’는 스파이로 활약했던 자신의 과거 뿐 아니라,\r\n어벤져스가 되기 전 함께했던 동료들을 마주해야만 하는데…\r\n\r\n폭발하는 리얼 액션 카타르시스!\r\n7월, MCU의 새로운 시대를 시작할 첫 액션 블록버스터를 만끽하라!",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"133",showTs:"36",director:"케이트 쇼트랜드",prNm:null,dtNm:"월트디즈니컴퍼니코리아 유한책임회사",repNationCd:"미국",movieType:"장편",moviePrdtStat:"개봉",genre:"액션,어드벤처,SF",watchGradeNm:"12세이상관람가",openDt:"20210707",salesAmt:201727820,audiCnt:21101,scrCnt:611,showCnt:1309,rank:3,rankInten:1,rankOldAndNew:"OLD",rownum:3},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20218349",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/07/thumb/thn_0c8342c1d11d4f5d86285040c1db7cec.jpg",movieNm:"정글 크루즈",movieNmEn:"Jungle Cruise",synop:"<캐리비안의 해적> 디즈니 제작! 이번엔 아마존이다!\r\n\r\n미지의 세계 아마존에서 관광객들에게 최고의 스릴을 선사하는\r\n재치 넘치는 크루즈 선장 프랭크(드웨인 존슨).\r\n\r\n고대 아마존의 전설을 쫓아 영국에서 온 식물 탐험가 릴리 박사(에밀리 블런트)가\r\n의학의 미래를 바꿀 치유의 나무를 찾는 여정에 함께 할 것을 제안하면서,\r\n순탄치 않은 모험을 시작하게 된다.\r\n\r\n달라도 너무 다른 두 사람은 아름답지만 온갖 위험이 도사리는 열대우림으로 함께 모험을 떠나고\r\n수많은 역경과 초자연적인 힘을 마주하게 된다.\r\n\r\n고대 나무에 얽힌 비밀이 드러날수록 릴리와 프랭크는 더욱더 커다란 위험에 처하고\r\n인류의 운명도 위태로워지는데…\r\n\r\n전설을 믿는다면 저주도 믿어야 한다!",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"127",showTs:"9",director:"자움 콜렛 세라",prNm:null,dtNm:"월트디즈니컴퍼니코리아 유한책임회사",repNationCd:"미국",movieType:"장편",moviePrdtStat:"개봉",genre:"액션,어드벤처",watchGradeNm:"12세이상관람가",openDt:"20210728",salesAmt:184771660,audiCnt:19916,scrCnt:720,showCnt:2173,rank:4,rankInten:-1,rankOldAndNew:"OLD",rownum:4},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20202185",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/07/thumb/thn_9de2b8cc7bdc4b43869b53dc9055531d.jpg",movieNm:"방법: 재차의",movieNmEn:"The Cursed: Dead Man’s Prey",synop:"되살아난 시체 '재차의'(在此矣)가 살인을 저질렀다!\r\n\r\n살인사건 현장에서 피해자와 함께 용의자도 사체로 발견된다.\r\n그러나 용의자의 시신은 이미 3개월 전 사망한 것으로 밝혀져 경찰은 혼란에 빠진다.\r\n\r\n한편 미스터리를 추적하는 기자 임진희는 라디오 출연 중\r\n자신이 바로 그 살인사건의 진범이며 생방송 인터뷰를 진행하고 싶다는 전화를 받게 된다.\r\n경찰과 네티즌은 임진희 기자의 온라인 생방송을 일제히 주목하고\r\n인터뷰 당일 그 곳에 나타난 범인은 되살아난 시체 '재차의'에 의한 3번의 살인을 예고하는데…\r\n\r\n첫 번째 살인이 예고된 날,\r\n엄청난 수의 ‘재차의’ 군단이 나타나 무차별 습격을 시작하고\r\n총력 방어에 나선 경찰 당국은 속수무책으로 당하고 만다.\r\n과연 이들을 조종하고 있는 배후는 누구일까?\r\n\r\n올여름, 이들을 막아낼 유일한 ‘방법'(謗法)이 온다!",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"109",showTs:"22",director:"김용완",prNm:"클라이맥스 스튜디오(주),(주)씨제이이엔엠,스튜디오 드래곤,(주)키이스트",dtNm:"(주)씨제이이엔엠",repNationCd:"한국",movieType:"장편",moviePrdtStat:"개봉",genre:"미스터리,스릴러",watchGradeNm:"15세이상관람가",openDt:"20210728",salesAmt:110236970,audiCnt:11538,scrCnt:640,showCnt:1868,rank:5,rankInten:0,rankOldAndNew:"OLD",rownum:5},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20218364",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/06/thumb/thn_63210612cf2e477c9a6b22d7dc089352.jpg",movieNm:"랑종",movieNmEn:"The Medium",synop:"태국 북동부 ‘이산’ 지역 낯선 시골 마을. \r\n집 안, 숲, 산, 나무, 논밭까지, \r\n이곳의 사람들은 \r\n모든 것에 혼이 깃들어 있다고 믿는다. \r\n\r\n가문의 대를 이어 조상신 ‘바얀 신’을 모시는 랑종(무당) ‘님’은 \r\n조카 ‘밍’의 상태가 심상치 않음을 직감한다. \r\n날이 갈수록 이상 증세가 점점 심각해지는 ‘밍’. \r\n무당을 취재하기 위해 ‘님’과 동행했던 촬영팀은 \r\n신내림이 대물림되는 순간을 포착하기 위해 \r\n‘밍’과 ‘님’, 그리고 가족에게 벌어지는 미스터리한 현상을 카메라에 담기 시작한다.\r\n\r\n신내림이 대물림되는 무당 가문\r\n피에 관한 세 달간의 기록 \r\n",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"130",showTs:"48",director:"반종 피산다나쿤",prNm:"(주)노던크로스",dtNm:"(주)쇼박스",repNationCd:"한국",movieType:"장편",moviePrdtStat:"개봉",genre:"공포(호러),스릴러,드라마",watchGradeNm:"청소년관람불가",openDt:"20210714",salesAmt:25067520,audiCnt:2452,scrCnt:155,showCnt:202,rank:6,rankInten:0,rankOldAndNew:"OLD",rownum:6},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20196270",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/07/thumb/thn_1244e3eee57149aa8542763d572a1253.jpg",movieNm:"싱크홀",movieNmEn:"Sinkhole",synop:"사.상.초.유! 도심 속 초대형 재난 발생!\r\n\r\n서울 입성과 함께 내 집 마련의 꿈을 이룬 가장 ‘동원(김성균)’ \r\n이사 첫날부터 프로 참견러 ‘만수’(차승원)와 사사건건 부딪힌다.\r\n \r\n‘동원’은 자가취득을 기념하며 직장 동료들을 집들이에 초대하지만\r\n행복한 단꿈도 잠시, 순식간에 빌라 전체가 땅 속으로 떨어지고 만다.\r\n \r\n마주치기만 하면 투닥거리는 빌라 주민 ‘만수’와 ‘동원’\r\n‘동원’의 집들이에 왔던 ‘김대리’(이광수)와 인턴사원 ‘은주’(김혜준)까지!\r\n지하 500m 싱크홀 속으로 떨어진 이들은 과연 무사히 빠져나갈 수 있을까?\r\n\r\n“한 500m 정도는 떨어진 것 같아”\r\n“우리… 나갈 수 있을까요?” \r\n",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"113",showTs:"56",director:"김지훈",prNm:"(주)더타워픽쳐스",dtNm:"(주)쇼박스",repNationCd:"한국",movieType:"장편",moviePrdtStat:"개봉예정",genre:"코미디",watchGradeNm:"12세이상관람가",openDt:"20210811",salesAmt:17981000,audiCnt:1997,scrCnt:7,showCnt:13,rank:7,rankInten:-7,rankOldAndNew:"NEW",rownum:7},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20218348",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/07/thumb/thn_9a78faac368440e799fa4235fab10f89.jpg",movieNm:"이스케이프 룸 2: 노 웨이 아웃",movieNmEn:"Escape Room: Tournament of Champions",synop:"글로벌 흥행 시리즈의 완벽한 컴백!\r\n살아남은 자들을 노린 업그레이드된 게임이 시작된다!\r\n\r\n출구 없는 탈출 게임에서 가까스로 살아남은 ‘조이’와 ‘벤’.\r\n게임을 설계한 의문의 조직 ‘미노스’의 실체를 밝히기 위해\r\n뉴욕에 도착한 두 사람은 정체불명의 남자에게 휘말려 지하철에 갇히고 만다.\r\n\r\n순간 다른 칸과 분리된 열차 안에는 초고압 전류가 흐르기 시작하고,\r\n그곳에 있는 6명 모두 게임의 생존자라는 것이 밝혀진다.\r\n목숨을 건 탈출 게임이 다시 시작됐음을 직감한 그들은\r\n뉴욕을 배경으로 벌어지는 극한의 상황에서\r\n살아남기 위한 사투를 벌이는데….",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"87",showTs:"55",director:"애덤 로비텔",prNm:null,dtNm:"소니픽쳐스엔터테인먼트코리아주식회사극장배급지점",repNationCd:"미국",movieType:"장편",moviePrdtStat:"개봉",genre:"액션,공포(호러),스릴러",watchGradeNm:"15세이상관람가",openDt:"20210714",salesAmt:13800880,audiCnt:1380,scrCnt:102,showCnt:117,rank:8,rankInten:-1,rankOldAndNew:"OLD",rownum:8},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20216362",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/05/thumb/thn_0b53e623d9ac45c59dc32414823ca371.jpg",movieNm:"크루엘라",movieNmEn:"Cruella",synop:" 처음부터 난 알았어. 내가 특별하단 걸\r\n 그게 불편한 인간들도 있겠지만 모두의 비위를 맞출 수는 없잖아?\r\n 그러다 보니 결국, 학교를 계속 다닐 수가 없었지\r\n \r\n 우여곡절 런던에 오게 된 나, 에스텔라는 재스퍼와 호레이스를 운명처럼 만났고\r\n 나의 뛰어난 패션 감각을 이용해 완벽한 변장과 빠른 손놀림으로 런던 거리를 싹쓸이했어\r\n \r\n 도둑질이 지겹게 느껴질 때쯤, 꿈에 그리던 리버티 백화점에 낙하산(?)으로 들어가게 됐어\r\n 거리를 떠돌았지만 패션을 향한 나의 열정만큼은 언제나 진심이었거든\r\n \r\n 근데 이게 뭐야, 옷에는 손도 못 대보고 하루 종일 바닥 청소라니\r\n 인내심에 한계를 느끼고 있을 때, 런던 패션계를 꽉 쥐고 있는 남작 부인이 나타났어\r\n 천재는 천재를 알아보는 법! 난 남작 부인의 브랜드 디자이너로 들어가게 되었지\r\n \r\n 꿈을 이룰 것 같았던 순간도 잠시, 세상에 남작 부인이 ‘그런 사람’이었을 줄이야…\r\n \r\n 그래서 난 내가 누군지 보여주기로 했어\r\n 잘가, 에스텔라\r\n \r\n 난 이제 크루엘라야!",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"133",showTs:"45",director:"크레이그 질레스피",prNm:null,dtNm:"월트디즈니컴퍼니코리아 유한책임회사",repNationCd:"미국",movieType:"장편",moviePrdtStat:"개봉",genre:"드라마,범죄,코미디",watchGradeNm:"12세이상관람가",openDt:"20210526",salesAmt:11456780,audiCnt:1161,scrCnt:59,showCnt:81,rank:9,rankInten:-1,rankOldAndNew:"OLD",rownum:9},{startYearDate:"2021.08.02",endYearDate:"2021.08.02",startDate:"2021년 08월 02일(월)",endDate:"2021년 08월 02일(월)",movieCd:"20192986",showDt:"20210802",thumbUrl:"/common/mast/movie/2021/07/thumb/thn_f8b91a89cc974c8abb03b84fa3c22555.jpg",movieNm:"프리 가이 ",movieNmEn:"Free Guy",synop:"“내 안의 히어로가 깨어난다!”\r\n\r\n평범한 직장, 절친 그리고 한 잔의 커피.\r\n평화로운 일상 속 때론 총격전과 날강도가 나타나는\r\n버라이어티한 ‘프리시티’에 살고 있는 ‘가이’.\r\n\r\n그에겐 뭐 하나 부족한 것이 없었다.\r\n우연히 마주친 그녀에게 한눈에 반하기 전까지는…\r\n\r\n갖은 노력 끝에 다시 만난 그녀는\r\n‘가이’가 비디오 게임 ‘프리시티’에 사는 배경 캐릭터이고,\r\n이 세상은 곧 파괴될 거라 경고한다.\r\n\r\n혼란에 빠진 ‘가이’\r\n그러나 그는 ‘프리시티’의 파괴를 막기 위해\r\n더 이상 배경 캐릭터가 아닌, 히어로가 되기로 결심한다.\r\n\r\n올여름, 시원하게 터지는 상상초월 엔터테이닝 액션 블록버스터\r\n8월, 인생의 판을 바꿀 짜릿한 반란이 시작된다!",prdtYear:"2021",indieYn:null,artmovieYn:null,multmovieYn:null,showTm:"115",showTs:"0",director:"숀 레비",prNm:null,dtNm:"월트디즈니컴퍼니코리아 유한책임회사",repNationCd:"미국",movieType:"장편",moviePrdtStat:"개봉예정",genre:"액션,어드벤처",watchGradeNm:"12세이상관람가",openDt:"20210811",salesAmt:14490000,audiCnt:966,scrCnt:5,showCnt:5,rank:10,rankInten:-10,rankOldAndNew:"NEW",rownum:10}]	
+// JSP => 오라클 
+$(function(){ // JQUERY 시작점
+	//box.forEach(function(movie){
+	//box.map((movie)=>{
+	//box.forEach((movie)=>{ 
+    // map,forEach ==> for
+    // for(MovieVo vo:list) => 자바 (자바스크립트:map,forEach) , each() , eval() : 문자열 => JSON변경
+    // eval() => JSON.parse()
+    let data="";
+    let index=0;
+    // 태그는 사용자 정의가 없다 (태그안에 속성은 사용자 정의가 있다)
+	box.map(function(movie){
+		data+="<tr class='dataTr movies' onclick=ok("+index+")>"
+		    +"<td width=30% align=center><img src=https://www.kobis.or.kr"+movie.thumbUrl+" width=20 height=20></td>"
+		    +"<td width=70%>"+movie.movieNm+"</td>"
+		    +"</tr>"
+		    
+		    index++;
+	})
+	$('#movie_info').html(data);
+})
+function ok(index)
+{
+	let movie=box[index];
+	$('#poster').attr("src","https://www.kobis.or.kr"+movie.thumbUrl);
+	$('#title').text(movie.movieNm)
+	
+}
+</script>
+</head>
+<body>
+  <div id="container">
+    <h1>예매</h1>
+    <table class="table_content" width=1200 height=900>
+      <tr>
+        <td width=250 height=700 valign="top">
+          <table class="table_content" width=250>
+            <tr>
+              <th colspan="2">영화 정보</th>
+            </tr>
+            <tbody id="movie_info">
+             
+            </tbody>
+          </table>
+        </td>
+        <td width=250 height=700 valign="top">
+          <table class="table_content" width=250>
+            <tr>
+              <th valign="top">극장 정보</th>
+            </tr>
+          </table>
+        </td>
+        <td width=400 height=700 valign="top">
+          <table class="table_content" width=400>
+            <tr>
+              <th>예매일 정보</th>
+            </tr>
+          </table>
+        </td>
+        <td width=300 rowspan=2 valign="top">
+          <table class="table_content" width=300>
+            <tr>
+              <th>예매 정보</th>
+            </tr>
+            <tr>
+              <td align="center">
+               <img src="" width=200 height=250 id="poster">
+              </td>
+            </tr>
+            <tr>
+              <td align="center">
+               <b id="title"></b>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" height=200 valign="top">
+          <table class="table_content" width=500>
+            <tr>
+              <th>시간 정보</th>
+            </tr>
+          </table>
+        </td>
+        <td width=300 height=200 valign="top">
+          <table class="table_content" width=300>
+            <tr>
+              <th>인원 정보</th>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
