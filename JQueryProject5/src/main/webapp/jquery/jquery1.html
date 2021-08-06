@@ -159,7 +159,36 @@ $(function(){ // JQUERY 시작점
     let data="";
     let index=0;
     // 태그는 사용자 정의가 없다 (태그안에 속성은 사용자 정의가 있다)
-	box.map(function(movie){
+    /*
+         for(let i=0;i<box.length;i++)
+         {
+        	 let movie=box[i];  [{},{},{},{},{}]
+        	 
+         }
+         Map: 저장 
+         map() => for
+         
+         let arr=[1,2,3,4,5]
+         arr.map(function(value){  for(int i:arr) => callback => 자동으로 호출 
+        	value=1 
+        	value=2
+        	value=3
+        	value=4
+        	value=5 ===> 종료
+         })
+         
+         arr.forEach(function(value){  for(int i:arr) => callback => 자동으로 호출 
+        	value=1 
+        	value=2
+        	value=3
+        	value=4
+        	value=5 ===> 종료
+         })
+         
+         for(let i of box)
+    */
+	box.forEach(function(movie){
+		// 
 		data+="<tr class='dataTr movies' onclick=ok("+index+")>"
 		    +"<td width=30% align=center><img src=https://www.kobis.or.kr"+movie.thumbUrl+" width=20 height=20></td>"
 		    +"<td width=70%>"+movie.movieNm+"</td>"
@@ -167,13 +196,20 @@ $(function(){ // JQUERY 시작점
 		    
 		    index++;
 	})
-	$('#movie_info').html(data);
+	/*$('.movies').click(function(){
+		let i=$(this).attr("value");
+		let movie=box[i];
+		$('#poster').attr("src","https://www.kobis.or.kr"+movie.thumbUrl);
+		$('#title').text(movie.movieNm)
+	})*/
+	  $('#movie_info').html(data);
+     // $('#movie_info').text(data);
 })
 function ok(index)
 {
 	let movie=box[index];
 	$('#poster').attr("src","https://www.kobis.or.kr"+movie.thumbUrl);
-	$('#title').text(movie.movieNm)
+	$('#title').html("<font color=red>"+movie.movieNm+"</font>")
 	
 }
 </script>

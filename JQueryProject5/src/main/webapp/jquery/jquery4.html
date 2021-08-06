@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+  margin-top: 50px;
+}
+.row{
+   margin: 0px auto;
+   width:700px;/*table 크기*/
+}
+h1{
+  text-align: center
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>글쓰기</h1>
+    <div class="row">
+     <table class="table">
+       <tr>
+        <th class="text-right success">이름</th>
+        <td>
+          <input type=text size=15 class="input-sm">
+        </td>
+       </tr>
+       
+       <tr>
+        <th class="text-right success">제목</th>
+        <td>
+          <input type=text size=50 class="input-sm">
+        </td>
+       </tr>
+       
+       <tr>
+        <th class="text-right success">내용</th>
+        <td>
+          <textarea rows="8" cols="55"></textarea>
+        </td>
+       </tr>
+       
+       <tr>
+        <th class="text-right success">비밀번호</th>
+        <td>
+          <input type=password size=10 class="input-sm">
+        </td>
+       </tr>
+       
+       <tr>
+         <td colspan="2" class="text-center">
+           <input type=submit class="btn btn-sm btn-danger" value="글쓰기">
+           <input type=button class="btn btn-sm btn-success" value="취소">
+         </td>
+       </tr>
+       
+     </table>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

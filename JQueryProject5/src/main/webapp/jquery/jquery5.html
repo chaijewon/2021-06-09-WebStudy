@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+  margin-top: 50px;
+}
+.row{
+   margin: 0px auto;
+   width:700px;/*table 크기*/
+}
+h1{
+  text-align: center
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let i=0;
+$(function(){
+	$('.btn-primary').click(function(){
+		if(i==0)
+		{
+			$('.btn-primary').text("취소")
+			$('#del').show();
+			i=1;
+		}
+		else
+		{
+			$('.btn-primary').text("삭제")
+			$('#del').hide();
+			i=0;
+		}
+	})
+})
+</script>
+</head>
+<body>
+   <div class="container">
+    <h1>내용보기</h1>
+    <div class="row">
+     <table class="table">
+      <tr>
+        <th class="text-center danger" width=20%>번호</th>
+        <td class="text-center" width=30%>1</td>
+        <th class="text-center danger" width=20%>작성일</th>
+        <td class="text-center" width=30%>2021-08-06</td>
+      </tr>
+      <tr>
+        <th class="text-center danger" width=20%>이름</th>
+        <td class="text-center" width=30%>홍길동</td>
+        <th class="text-center danger" width=20%>조회수</th>
+        <td class="text-center" width=30%>100</td>
+      </tr>
+      <tr>
+        <th class="text-center danger" width=20%>제목</th>
+        <td colspan="3">부트스트립으로 CSS적용</td>
+      </tr>
+      <tr>
+        <td colspan="4" height="200" valign="top">
+<pre style="white-space: pre-wrap;background-color:white;border:none">한국 여자배구대표팀과 도쿄올림픽 4강전을 앞둔 브라질. 주포 탄다라 카이세타가 도핑 적발로 비상이 걸렸다. 
+브라질 매체 'R7' 등은 6일 "브라질올림픽위원회는 탄다라가 도핑 적발로 올림픽에서 제외된다고 발표했다"고 했다. 
+이에 따르면 탄다라는 올림픽 이전인 지난 7월 7일 실시한 도핑 테스트에서 금지약물 반응을 보인 것으로 알려졌다. 
+한 매체는 "이미 탄다라는 브라질로 돌아오고 있다"고도 했다. 
+한국과 브라질은 6일 오후 9시 일본 도쿄 아리아케 아레나에서 결승행 티켓을 놓고 격돌한다. 
+한국은 사상 첫 결승행 그리고 1976년 몬트리올 대회 동메달 이후 두 번째 메달 획득에 도전한다. 
+브라질은 2012년 런던 대회 금메달 이후 9년 만의 우승을 노리는 상황.</pre> 
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="text-right">
+          <a href="#" class="btn btn-xs btn-danger">답변</a>
+          <a href="#" class="btn btn-xs btn-warning">수정</a>
+          <span class="btn btn-xs btn-primary">삭제</span>
+          <a href="#" class="btn btn-xs btn-success">목록</a>
+        </td>
+      </tr>
+      <tr id="del" style="display:none">
+        <td colspan="4" class="text-right">
+         비밀번호:<input type=password class="input-sm" size=15>
+         <input type=button class="btn btn-sm btn-primary" value="삭제">
+        </td>
+      </tr>
+     </table>
+    </div>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
