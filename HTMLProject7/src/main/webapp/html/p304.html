@@ -1,0 +1,71 @@
+<!-- 
+    border : 태그의 테두리 설정 
+             border-width
+             border-style
+             border-color
+             ============ border:width,style,color
+                                 ===== ====== solid(가장 많이 사용) , dotted, dashed ,double
+                                 px 
+                                 width => border-top-width
+                                          border-bottom-width
+                                          border-left-width
+                                          border-right-width
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+      width:100px;
+      height: 100px;
+      display: inline-block;
+      margin: 20px;
+      border-width: 5px;/* 5px 5px 5px 5px*/
+      border-color: red;
+      /*border-style: solid*/
+}
+#a{
+     border-style: solid;
+     border-bottom-width: 7px;
+     border-bottom-color: green;
+}
+#b{
+     border-style: dotted;
+     border-top-width: 7px;
+     border-top-color: blue;
+}
+#c{
+     border-style: dashed;
+     border-left-width: 7px;
+     border-left-color: pink;
+}
+#d{
+     border-style: double;
+     border-right-width: 7px;
+     border-right-color: gray;
+}
+#e{
+     border-style: solid;
+     border-radius: 50px;
+}
+</style>
+</head>
+<body>
+  <div id="a"></div>
+  <div id="b"></div>
+  <div id="c"></div>
+  <div id="d"></div>
+  <div id="e"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

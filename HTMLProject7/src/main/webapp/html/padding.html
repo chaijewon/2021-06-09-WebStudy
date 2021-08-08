@@ -1,0 +1,70 @@
+<!-- 
+     1. inline,block 
+     2. width,height 
+     3. 여백주는 방법 : margin , padding => 출력물
+                     태그와 태그사이 
+                     순서 => top left bottom right
+     4. 테두리 설정 : border-
+                   border-width : 두께 
+                   border-color : 색상
+                   border-style : 모양 (선, 점선,다시, 이중선) 
+                   ==============
+                   border : 두께 모양 색상 
+                            1px solid red
+                   border-radius => 둥근 모양 
+     5. display : inline,block , table... 
+                  display:none , display:' '
+                  =============  ===========
+                      hide          show
+     6. position : 절대좌표 , 상대좌표 , 고정
+     7. z-index : 레이어 => 챗봇 
+     8. HTML5 => 템플릿 태그 (header,section,footer,aside,nav) => div
+        => 멀티미디어 (video , audio) 
+     ======================================================
+        로그       
+                  검색기 
+                   메뉴    ===> header
+     ======================================================
+     로그인 |                                       | 인기 검색어
+     부메뉴 |               내용 section             |  이벤트
+      nav |                                       |  aside
+          |                                       |
+          |                                       |
+          |                                       |
+          |                                       |
+          |                                       |
+          |                                       |
+     ======================================================
+                          회사정보 footer
+     ======================================================
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+   width:200px;
+   height: auto; /* 자동 지정 */
+   background-color: blue;
+   color:white;
+   margin: 20px;
+}
+.box1{
+   padding: 10px 30px 10px 30px;
+}
+.box2{
+   padding:10px 30px; /* 10px 30px 10px 30px*/
+}
+.box3{
+   padding: 10px; /* 10px 10px 10px 10px*/
+}
+</style>
+</head>
+<body>
+  <div class="box1">선발등판한 류현진은 6이닝을 무실점으로 틀어막으며 승리투수가 됐다. 지난 경기 부진을 깔끔하게 씻어냈고 </div>
+  <div class="box2">선발등판한 류현진은 6이닝을 무실점으로 틀어막으며 승리투수가 됐다. 지난 경기 부진을 깔끔하게 씻어냈고 </div>
+  <div class="box3">선발등판한 류현진은 6이닝을 무실점으로 틀어막으며 승리투수가 됐다. 지난 경기 부진을 깔끔하게 씻어냈고 </div>
+</body>
+</html>
