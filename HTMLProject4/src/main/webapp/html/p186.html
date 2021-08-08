@@ -1,0 +1,116 @@
+<!-- 
+     CSS : 화면디자인 
+     ====
+      = 외부 CSS => 파일로 만들어서 처리 
+          <link rel="stylesheet" href="파일위치 지정"> => 본인 컴퓨터(경로 지정),외부(http://~~)
+          => 파일로 저장 
+      = 내부 CSS
+          <style></style>
+          => 오버라이딩 
+      = 인라인 CSS
+         <태그 style=""> <div style="height:400px"> => HTML의 모든 태그는 style속성을 가지고 있다 
+         
+      CSS 사용방법 
+      selector {
+          속성명 : 값;
+          속성명 : 값;
+      }
+      
+      ==> selector (태그) 이미지 => img{} => 구분 , 전체 
+          ========
+          1. 태그명 
+          ===============
+          2. class명 => 동일하게 CSS적용 (여러개) => class명은 같은 이름이 여러개 있다(중복허용) 
+          3. id명    => 한개만 CSS적용  => 1개만 사용이 가능 
+          =============== 태그의 구분자 
+         
+         1) 태그 
+            *{         ==> 파일에 있는 모든 태그에 대해서 적용 (글꼴)
+               속성:값;
+               속성:값;
+               --
+               --
+               --
+            }
+            img{
+               이미지 제어
+            }
+            p {
+               p태그에 대한 CSS
+            }
+            
+            p,span{
+                p와 span에 적용 CSS
+            }
+         2) ID
+            #id명 {
+                CSS처리;
+            }
+         3) CLASS
+            .class명 {
+                CSS처리;
+            }
+            
+            1. 한개파일 사용  =================== 인라인,내부CSS
+            2. 여러개 파일에서 사용 =============== 외부 CSS 
+            
+            191~193 
+            인라인 CSS => 태그마다 한개씩 지정 
+            <h1 style="text-align:center">출력</h1>
+            내부 CSS
+            <head>
+              <style>
+                선택자{  ====> 선택자 (태그) 
+                  속성명:값;
+                  속성명:값;
+                }
+              </style>
+            </head>
+            외부 CSS 
+            <head>
+              <link rel="stylesheet" href="파일명">
+            </head>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+h1 {
+   color:red;
+}
+.y{
+   color:yellow;
+}
+.b{
+   color:blue;
+}
+.g {
+   color:green;
+}
+#m {
+   color:magenta;
+}
+</style>
+</head>
+<body>
+  <h1 class="y">Hello CSS</h1><!-- yellow -->
+  <h1 id="m">Hello CSS</h1><!-- magenta -->
+  <h1 class="y">Hello CSS</h1><!-- yellow -->
+  <h1 class="b">Hello CSS</h1><!-- blue -->
+  <h1 class="b">Hello CSS</h1><!-- blue -->
+  <h1 class="b">Hello CSS</h1><!-- blue -->
+  <h1 class="y">Hello CSS</h1><!-- yellow -->
+  <h1 class="g">Hello CSS</h1><!-- green -->
+  <h1 class="g">Hello CSS</h1><!-- green -->
+  <h1 class="g">Hello CSS</h1><!-- green -->
+</body>
+</html>
+
+
+
+
+
+
+

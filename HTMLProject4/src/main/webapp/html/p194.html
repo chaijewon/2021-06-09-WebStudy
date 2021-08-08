@@ -1,0 +1,66 @@
+<!-- 
+   selector(선택자 => 태그) => 데이터 수집 , 자바스크립트 
+   ========
+    전체 : *
+    태그명: span , div ....
+    id명 : 중복없는 태그 
+    class명: 중복있는 태그 
+    
+    내부 CSS , 인라인 , 외부 CSS ,   라이브러리 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+span,div{
+   border:1px solid red;
+   width:100px;
+   height:100px;
+   display:block;
+}
+span#blue{
+   border:1px solid blue;
+   
+}
+span#yellow{
+   border:1px solid yellow;
+  
+}
+span.pink{
+   border:1px solid pink;
+  
+}
+/*
+     Elements title=doc.select("span#title"); <span id="title"></span>
+     $('selector').click()
+*/
+</style>
+</head>
+<body>
+  <span class="pink"></span>
+  <span class="pink"></span>
+  <span style="border:1px solid green;width:100px;height:100px;display:block"></span>
+  <span id="yellow"></span>
+  <span id="blue"></span>
+  <!-- <span style="border:1px solid red;width:100px;height:100px;display:block"></span>
+  <span style="border:1px solid red;width:100px;height:100px;display:block"></span>
+  <span style="border:1px solid red;width:100px;height:100px;display:block"></span>
+  <span style="border:1px solid red;width:100px;height:100px;display:block"></span> -->
+  <div class="pink"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
