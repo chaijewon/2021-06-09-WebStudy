@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+https://www.kobis.or.kr/kobis/business/main/searchMainDailyBoxOffice.do
+ -->
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+     $("#testBtn").click(function(){
+         $.getJSON("https://www.kobis.or.kr/kobis/business/main/searchMainDailyBoxOffice.do", function(d){
+             $.each(d, function(k, v){
+                 $("#getjson").append("<div>" + k + " : " + v + "</div>");
+             });
+             $("#getjson").show();
+         });
+                      
+         $.ajax({
+             url : "https://www.kobis.or.kr/kobis/business/main/searchMainDailyBoxOffice.do",
+             dataType : "jsonp",
+             jsonp : "callback",
+             success : function(d){
+                 $.each(d, function(k, v){
+                     $("#ajax").append("<div>" + k + " : " + v + "</div>");
+                 });
+                 $("#ajax").show();
+             }
+         });
+     });
+ });
+</script>
+
+<style>
+ div{margin-bottom:10px;padding:2px;}
+ #getjson{border:1px solid red;display:none;}
+ #ajax{border:1px solid blue;display:none;}
+</style>
+</head>
+
+<body>
+<button id="testBtn">테스트!</button>
+<div id="getjson"></div>
+<div id="ajax"></div>
+</body>
+</html>

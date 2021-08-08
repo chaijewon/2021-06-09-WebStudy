@@ -1,0 +1,75 @@
+<!-- 
+     자바,오라클 => JSP
+     JavaScript => Ajax , JSON
+     =============================== Spring (XML,Annotation,Mybatis)
+                                     ======= 실무 (80%) 
+                                     BootStrip , Jquery-UI
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#wrap{
+  width:100%;
+  margin-top: 50px;
+}
+.row{
+  margin: 0px auto;
+  width:1200px;
+}
+</style>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	$('#btn1').click(function(){
+		$.ajax({
+		   type:'GET',
+		   url:'movie.jsp',
+		   data:{"id":"hong","pwd":"1234"},
+		   success:function(data)
+		   {
+			   $('#print').html(data)
+		   }
+		})
+		
+	})
+    $('#btn2').click(function(){
+    	$.ajax({
+ 		   type:'GET',
+ 		   url:'music.jsp',
+ 		   success:function(data)
+ 		   {
+ 			   $('#print').html(data)
+ 		   }
+ 		})
+    })
+    $('#btn3').click(function(){
+    	$.ajax({
+ 		   type:'GET',
+ 		   url:'food.jsp',
+ 		   success:function(data)
+ 		   {
+ 			   $('#print').html(data)
+ 		   }
+ 		})
+	})
+})
+</script>
+</head>
+<body>
+  <div id="wrap">
+   <div class="row">
+     <div>
+	     <button id="btn1">영화</button>
+	     <button id="btn2">뮤직</button>
+	     <button id="btn3">맛집</button>
+	  </div>
+	  <div id="print"></div>
+   </div>
+  </div>
+</body>
+</html>
