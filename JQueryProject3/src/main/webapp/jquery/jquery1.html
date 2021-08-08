@@ -1,0 +1,121 @@
+<!-- 
+    Jquery : 자바스크립트 라이브러리 (자바와 관련없다 => 브라우저에서 출력한 내용) 
+             *** 자바 관련 (Ajax,JSON) 
+    =======
+    1) 선택자 (태그) => CSS 
+       = 태그 $(태그명)  => $('태그명') , $("태그명")  => 실수/정수  => 숫자(Number) , 문자/문자열 => 문자열 
+       = 태그구분 => id, name, class => id,class,name(자바에서 값을 받을 수 있게 만든다)
+                   => getParameter("name명")
+                   id,class(여러개,중복이 있는 경우)
+                   id구분 => $('#id명') , class구분 => $('.클래스명')
+       = 태그가 여러개 동시에 처리 ==> $('태그명(#id,.class),태그명(#id,.class),태그명(#id,.class)')
+       = $(태그명 > 태그명 > 태그명)
+       = $(태그명 태그명)
+       = 속성  => $(태그명[속성=값]) $(태그명[속성^=값]) $(태그명[속성$=값]) $(태그명[속성*=값])
+                                                                  =================
+                 => <img> <a> <input>
+       = 가상선택자  :  => :checked, :selected(<select> , :odd , :even , :nth-child
+                        ========= ==========  ==========================<table>,<ul>
+                          checkbox,radio
+    2) 이벤트 처리(사용자 행위) 
+        => click : 모든 태그가 가능하다 
+        => <select> : change 
+        => keyup : 검색 
+        => 효과 => hover
+    3) 함수 
+        => text() 
+        => val()
+        => attr()
+        => html() => create()
+        ========================> set()
+        => append() 
+        => hide()
+        => show()
+        => remove()
+        => prop()
+        ======================== jquery가 무너진 이유 (욕심=> 라이브러리가 많이 생성 => 무겁다)
+    4) Ajax : Async(비동기) JavaScript And XML(JSON)
+              ==          ==         ==  ==  
+              => $.ajax()
+    5) JSON : JavaScript Object Notation => 자바스크립트 객체 표현법 
+                                            {키:값,키:값} => Map
+              => $.getJSON() 
+    6) 자바스크립트의 기본 
+       => 변수 (var => let,const)
+       => 연산자 
+       => 제어문 (if,for) => forEach , map , for of
+       => 함수기반 
+          함수 처리 =>  ( => 권장)
+       => 클래스 기반 
+    ==================================> 2018(JQuery) => Vue,React (jquery mobile => react-native)
+       
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<!-- 
+    리뷰 , 댓글 , 페이지 이동 , 검색 , 실시간으로 날씨 출력 , 실시간 인기 검색 , 좌석예매, 예매
+    JSP => 단점 =>  동작(엔터,버튼) => 새로운 JSP가 생성 , 
+    A a=new A()
+    a=null
+    a=new A()
+ -->
+<script type="text/javascript">
+$(function(){
+   $('#btn').click(function(){
+	 $.ajax({
+			type:'get', // GET/POST => 현재HTML에서 서버로 전송(요청) => 결과값을 현재 HTML에서 받아서 출력 
+			url:'ajax.html', // 요청 파일 => 실행된 결과를 가지고 온다 
+			success:function(data) // 정상수행을 했을때 
+			{
+				/*
+				     404 : 파일명이 틀렸을때  
+				     500 : 자바가 있는 경우 (자바소스에러)
+				     403 : 접근거부 
+				     412 : 데이터를 잘못 전송된 경우 (파일업로드)
+				     200 : 정상수행 => success은 200이라면 
+				     if(request.status==200)
+				     => 데이터 전송 
+				     data:{"id":"admin","pwd":"1234"} => HTML,JavaScript => 전송된 데이터를 받을 수 없다
+				                                         Java : 전송된데이터를 받는다
+				                                         =========================================
+				                                        	  => Servlet,JSP
+				                                        	  => Java,Oracle,HTML,CSS,JS
+				                                        	  => JSP 구분 
+				                                        	  HTML / CSS / JavaScript
+				                                        	  ========================
+				                                        		  자바 
+				                                        		  === <% 자바 코딩 %>
+				*/
+				alert(data)
+				$('#print').html(data)
+			},
+			error:function(e)
+			{
+				alert(e)
+			}
+			
+		})
+    })
+	
+})
+</script>
+</head>
+<body>
+   <button id="btn">포스트 읽기</button>
+   <div id="print"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
