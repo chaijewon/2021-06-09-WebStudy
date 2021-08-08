@@ -1,0 +1,207 @@
+<!-- 
+     HTML => Web프로그램의 핵심 (화면 UI)
+             === Servlet / JSP
+     => 기본 태그 
+        문자출력 (텍스트 관련 태그) 
+          h1~h6 :제목 , <strong> , <pre> , <span> , <sup> , <font> , <hr>
+                                                           ======(X) CSS로 대체
+        목록출력 
+          <ul>  , <dl> , <table> 
+           |       |       |
+          <li>    <dt>    <tr>
+                  <dd>     |
+                        -------
+                        |     |
+                       th    td
+        기타(줄바꿈, 단락) 
+           <br> : 줄바꿈 
+           <p> : 단락 (<br><br>)
+        화면분할  
+           <div> ==> HTML5 (header,section,footer,aside) ==> CSS로 처리 (width,height,border-)
+                     ===================================
+        입력창 
+           <input type="">   type="text": 한줄 입력 (ID,Name,제목...)
+                             type="password" : 비밀번호 입력
+                             type="checkbox" , type="radio" , type="file" , type="hidden" , type="date"
+                             type="submit" , type="button" , type="reset"(X)
+                             type="number" 
+           <textarea> : 여러줄 입력 
+           <select> : 콤보 박스
+           <button> : <input type="submit"> , <input type="image"> => submit : 전송 버튼 
+        기타 : 입력데이터를 모아서 한번에 전송 => <form>
+              다른 파일로 이동 : <a>
+              이미지 출력 : <img>
+        ========================================================================================
+        ML => 태그+속성 
+              => id,class,name (자바에서 사용자가 입력한 값을 받는 경우)
+                 ======== ====
+                  CSS/JavaScript => 태그를 제어 (CSS:화면디자인 , 이벤트:자바스크립트)
+                                                             ===== 태그를 클릭 , 값변경 , 마우스오버
+                                                                  ==========  =====   ========
+                                                                   onclick    onchange  hover,onmouseover
+                  => JSP/Spring => 단점 (항상 화면을 변경후에 출력) => 새로고침 (서버로 갔다가 다시 화면으로 돌아온다)
+                     =====> 새롭게 출력  => 
+                     =====> class A 
+                            new A() => new A() => 기존의 입력된 데이터가 사라진다 (새로고침,다른 파일로 이동=> 메모리가 삭제)
+                     =====> 화면 변경없이 처리 기술 (Ajax) => React,Vue
+                            Ajax 
+                             ===  JavaScript AND XML => 여러개를 동시에 처리 
+        1. 화면 디자인 (CSS)
+           => 선택자 (태그를 찾는다)
+              태그명 {속성:값} => 여러개 속성을 사용할 수 있다
+              =============================================================
+              ID명 {속성:값}
+              Class명{속성:값;속성:값} => 사용자 정의 속성은 없다 => 값만 가지고 디자인 
+              ============================================================
+                id는 값이 1개만 존재 (중복없이 제어)  =======> #
+                class는 같은 값이 여러개 존재 (중복적으로) ===> .
+              
+              HTML , XML (ML) => 계층 구조 (소속)
+                      <html>
+                        |
+                   --------------
+                   |            |
+                 <head>       <body>
+                   |            |  화면 출력하는 태그를 가지고 있다 
+                 <title>
+                 <script>
+                 <style>
+                 <meta>
+                 
+              그룹 : 다른 태그 여러개를 모아서 화면 디자인 
+                    태그명,태그명 ....
+              자손 :  태그명 > 태그명
+              후손 :  태그명 태그명
+              형제 :  태그명 + 태그명 
+                     태그명 ~ 태그명 
+              ======> 가상 셀렉터 
+                      ========= 태그명:hover,태그명:focus, 태그명:enabled , 태그명:disabled 
+                      ========= 태그명:first-child , 태그명:last-child , 태그명:nth-child(n)
+                      ========= ::before  , ::after
+                      ========= input[type="button"] , img[src*="a"](포함), a[href$="a"](끝) a[href^="a"](시작_)
+              ==> CSS를 코딩하는 방법 
+                  1. 인라인 CSS
+                     <div style="CSS">
+                  2. 내부 CSS
+                     <style>
+                       태그명 {
+                       
+                       }
+                     </style>
+                  3. 외부 CSS : 파일로 제작 => 재사용 
+                     <link href="외부/내부">
+                           href="http://~"
+                           href="경로명/파일명"
+                  4. css3 
+                     크롬  : -webkit-
+                     파이어폭스 : -moz-
+                     MS   : -ms-
+                     오페라 : -o-
+            => 속성 (CSS에서 제공하는 속성) : www  => w3c 
+               = 글꼴 관련 스타일 : font-family (웹은 => 모든 폰트가 동일) => 폰트 지정 (@import())
+                                 font-size : em,px,pt 
+                                 font-weight: bold
+               = 텍스트 스타일 : color(글자 색상) , text-decoration,white-space(자동 줄바꿈)
+               = 문자 스타일 : text-align : 정렬 
+               = 목록 스타일 : list-style-type => none :메뉴 제작 
+               = 색상 관련 
+                 => 일반 지정된 색상사용 
+                    color:red ....
+                    color:rgb(값,값,값) => 그림판
+                    color:#fff  => 16진법 
+                    color:rgba() => 투명화 
+               = background관련 
+                 background-image:url('파일명')
+                 background-size: width=값,height=값 , cover:축소/확대 
+                 background-color
+               = 박스모델 
+                 ======
+                  inline,block,inline-black(width,height) => 해당 태그
+                  width,height:크기 지정 
+                  여백주기 : margin(태그밖) , padding(태그안)
+                           margin-left
+                           margin-right
+                           margin-top
+                           margin-bottom
+                           =============
+                           margin: top,left,bottom,right
+                                   ======================
+                                   20px ===> 20,20,20
+                                   20,30 ==> 20 30 20 30
+                                   20,30,40 => 20 30 40 30 
+                  테두리 : border 
+                         border-style : solid , dotted , dashed 
+                         border-width : 두께 
+                         border-color : 색상 
+                         ==============
+                         border: 두께 스타일 색상 => 순서는 상관없다 
+                         *** border-collapse => 통합 (라인선 통합 => table)
+                         *** border-radius => 둥근 선 
+                  정렬 : float => left , right
+                        clear:both => 통합 
+              ===========================================================
+              1. position 
+                 ========
+                 1) static : default 
+                 2) relative : 상대 좌표 
+                 3) absolute : 절대 좌표
+                 4) fixed : 고정 좌표 
+                 5) z-index : 레이어 
+                 
+              2. 화면 분할 
+               
+              
+        2. 태그 제어 (JavaScript) : CSS에서 활용하는 Selector와 동일 , Jsoup   => 태그명, id,class 
+        ============================================> Front-End
+        3. 자바 => JSP/Spring : 오라클,파일,웹에서 읽어온 데이터를 전송     Front-End+Back-End => Full Stack(스타트업)
+        ============================================> Back-End 
+        
+         
+           
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.box1{
+   float: left;
+   width:200px;
+   height:100px;
+   background-color: blue;
+   padding:30px; /* top:30px left:30px bottom:30px right:30px*/
+}
+.box2{
+  position:relative;
+  left:-50px;
+  top:30px;
+  width: 200px;
+  height:100px;
+  background-color: yellow;
+  float: left;
+  padding: 30px;
+}
+</style>
+</head>
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<!-- 
+   실시간 상담 : 위에 고정  => z-index (레이어 개념)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img {
+   width:150px;
+   height:300px;
+   position: absolute;/*브라우자 좌표이용 */
+}
+#a{
+   z-index: 1;
+   left:10px;
+   top:20px;
+}
+#b{
+   z-index: 2;
+   left:40px;
+   top:30px;
+}
+#c{
+   z-index: 3;
+   left:80px;
+   top:40px;
+}
+#d{
+   z-index: 4;
+   left:120px;
+   top:50px;
+}
+#e{
+   z-index: 5;
+   left:140px;
+   top:60px;
+}
+div#container{
+  position: relative;/*div안에서 처리*/
+}
+</style>
+</head>
+<body>
+ <div id="container">
+   <img src="m1.jpg" id="a">
+   <img src="m2.jpg" id="b">
+   <img src="m3.jpg" id="c">
+   <img src="m4.jpg" id="d">
+   <img src="m5.jpg" id="e">
+ </div>
+  
+</body>
+</html>

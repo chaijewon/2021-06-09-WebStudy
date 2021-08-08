@@ -1,0 +1,54 @@
+<!-- 
+     left: , top: , right: , bottom:
+     절대좌표 중심 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#container{
+   position:relative;
+   width: 300px;
+   height: 300px;
+   border: 1px solid #CCC;
+}
+.box{
+   position:absolute;
+   width:50px;
+   height:50px;
+   background-color: blue;
+}
+#a{
+    top:0;
+    left:0;
+}
+#b{
+    top:0;
+    right:0;
+}
+#c{
+    bottom:0;
+    left:0
+}
+#d{
+    bottom:0;
+    right:0
+}
+#e{
+    top:100px;
+    left:100px
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <div class="box" id="a"></div><!-- class : 공통으로 적용 , id: 따로 적용 -->
+    <div class="box" id="b"></div>
+    <div class="box" id="c"></div>
+    <div class="box" id="d"></div>
+    <div class="box" id="e"></div>
+  </div>
+</body>
+</html>
