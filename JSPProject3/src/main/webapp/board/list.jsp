@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*"%>
 <%
+     
      String strPage=request.getParameter("page"); // page=> (이전) (다음)을 클릭시 page값을 받는다 
      // 처음에 구동 => 이전,다음을 클릭하지 못한다 => page가 null이 들어 온다 (null을 처리한다) => 500
      // list.jsp?page=  ====>  String strPage=request.getParameter("page"); strPage=""
@@ -26,6 +27,7 @@
             	HTML에 출력 
             }
      */
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -72,7 +74,15 @@ h1{
       %>
               <tr>
                 <td width=10% class="text-center"><%=vo.getNo() %></td>
-                <td width=45%><%=vo.getSubject() %></td>
+                <td width=45%><a href="detail.jsp?no=<%=vo.getNo()%>"><%=vo.getSubject() %></a></td>
+                <%--
+                     jsp ==> jsp로 데이터 전송 
+                     받는파일명?변수=값 
+                     =======
+                     list.jsp ====> detail.jsp ===> 번호전송
+                     detail.jsp?no=1
+                     detail.jsp?no=1&page=1  ==> 보내는 데이터가 2개 이상   &로 구분해서 보낸다 
+                 --%>
                 <td width=15% class="text-center"><%=vo.getName() %></td>
                 <td width=20% class="text-center"><%=vo.getRegdate().toString() %></td>
                 <td width=10% class="text-center"><%=vo.getHit() %></td>

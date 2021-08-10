@@ -16,7 +16,7 @@ import java.sql.*;
 public class BoardDAO {
 	private Connection conn;
     private PreparedStatement ps;
-    private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+    private final String URL="jdbc:oracle:thin:@localhost:1521:XE"; // this.conn = null
     
     // 드라이버 등록 
     public BoardDAO()
@@ -57,7 +57,8 @@ public class BoardDAO {
     		// 1. 연결 
     		getConnection();
     		// 2. SQL문장 
-    		String sql="SELECT no,subject,name,regdate,hit,num "
+    		// 
+    		String sql="SELECT no,subject,name,regdate,hit,num " 
     				  +"FROM (SELECT no,subject,name,regdate,hit,rownum as num "
     				  +"FROM (SELECT no,subject,name,regdate,hit "
     				  +"FROM jspBoard ORDER BY no DESC)) "
@@ -90,18 +91,20 @@ public class BoardDAO {
     			vo.setRegdate(rs.getDate(4));
     			vo.setHit(rs.getInt(5));
     			
-    			list.add(vo);
+    			list.add(vo);// 에러 없는 상태 => 데이터 출력이 안된다 , commit
+    			// 톰캣 => 이미 사용중 => ctrl+alt+delete ==> httped.exe, javaw.exe => 제거 
     		}
     		// 6. 메모리 닫기 
     		rs.close();
     	}catch(Exception ex)
     	{
     		//오류처리 
-    		ex.printStackTrace();
+    		ex.printStackTrace();//output창
     	}
     	finally
     	{
     		disConnection();// 연결 해제
+    		
     	}
     	return list;
     }
@@ -134,9 +137,56 @@ public class BoardDAO {
     	return total;
     }
     // 2. 상세보기  ==> VO한개 출력 
+    // JSP => 요청 ==> 요청값 받기 => DAO연결 ==> 오라클 데이터 받기 ==> JSP에서 화면 출력 
+    // JSP 모양 잡기 ==> DAO코딩 => 화면 출력 
+    // JSP => DAO => JSP
     public BoardVO boardDetailData(int no)
     {
     	BoardVO vo=new BoardVO();
+    	try
+    	{
+    		// 1. 연결
+    		getConnection();
+    		// 2. sql ===> sql문장 2번 수행 
+    		// 2-1. 조회수 증가 
+    		String sql="UPDATE jspBoard SET "
+    				  +"hit=hit+1 "
+    				  +"WHERE no=?";
+    		ps=conn.prepareStatement(sql);
+    		// ?에 값을 채운다 
+    		ps.setInt(1, no);
+    		// 실행 
+    		ps.executeUpdate(); // commit() => INSERT,UPDATE,DELETE
+    		// SELECT => executeQuery()
+    		
+    		sql="SELECT no,name,subject,content,regdate,hit "
+    		   +"FROM jspBoard "
+    		   +"WHERE no=?";
+    		
+    		ps=conn.prepareStatement(sql);
+    		ps.setInt(1, no);
+    		
+    		// 결과값 받기 
+    		ResultSet rs=ps.executeQuery();
+    		rs.next();
+    		
+    		vo.setNo(rs.getInt(1));
+    		vo.setName(rs.getString(2));
+    		vo.setSubject(rs.getString(3));
+    		vo.setContent(rs.getString(4));
+    		vo.setRegdate(rs.getDate(5));
+    		vo.setHit(rs.getInt(6));
+    		
+    		rs.close();
+    		
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
     	return vo;
     }
     // 3. 글쓰기   ==> VO한개 첨부
