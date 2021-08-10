@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*"%>
 <%
@@ -55,7 +56,7 @@ h1{
      <table class="table">
       <tr>
        <td>
-         <a href="#" class="btn btn-sm btn-primary">새글</a>
+         <a href="insert.jsp" class="btn btn-sm btn-primary">새글</a>
        </td>
       </tr>
      </table>
@@ -74,7 +75,18 @@ h1{
       %>
               <tr>
                 <td width=10% class="text-center"><%=vo.getNo() %></td>
-                <td width=45%><a href="detail.jsp?no=<%=vo.getNo()%>"><%=vo.getSubject() %></a></td>
+                <td width=45%><a href="detail.jsp?no=<%=vo.getNo()%>"><%=vo.getSubject() %></a>
+                  <%
+                      String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                      String dbday=vo.getRegdate().toString(); // yyyy-MM-dd
+                      if(today.equals(dbday))
+                      {
+                  %>
+                         &nbsp;<sup style="color:red">new</sup>
+                  <%
+                      }
+                  %>
+                </td>
                 <%--
                      jsp ==> jsp로 데이터 전송 
                      받는파일명?변수=값 

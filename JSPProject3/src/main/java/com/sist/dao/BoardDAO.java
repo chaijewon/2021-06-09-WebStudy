@@ -192,7 +192,30 @@ public class BoardDAO {
     // 3. 글쓰기   ==> VO한개 첨부
     public void boardInsert(BoardVO vo) // vo가 게시물 한개 
     {
-    	
+    	try
+    	{
+    		getConnection();
+    		String sql="INSERT INTO jspBoard(no,name,subject,content,pwd) VALUES("
+    				  +"jb_no_seq.nextval,?,?,?,?)";
+    	    // 전송 
+    		// 나중에 ? 에 값을 채워서 실행 
+    		ps=conn.prepareStatement(sql);
+    		// ?
+    		ps.setString(1, vo.getName());
+    		ps.setString(2, vo.getSubject());
+    		ps.setString(3, vo.getContent());
+    		ps.setString(4, vo.getPwd());
+    		
+    		// 실행
+    		ps.executeUpdate();
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
     }
     // 4. 수정하기  ==> VO한개 
     // 5. 삭제하기  ==> 게시물번호 
