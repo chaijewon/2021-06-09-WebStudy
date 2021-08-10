@@ -5,7 +5,7 @@
     String no=request.getParameter("no");
     // DAO연결 => 데이터를 읽어 온다 
     BoardDAO dao=new BoardDAO();
-    BoardVO vo=dao.boardDetailData(Integer.parseInt(no));
+    BoardVO vo=dao.boardUpdateData(Integer.parseInt(no));
     // web , mobile , window => 단점 (모든 데이터가 문자열)
 %>
 <!DOCTYPE html>
