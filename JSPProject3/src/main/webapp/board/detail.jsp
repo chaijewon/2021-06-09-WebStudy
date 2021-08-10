@@ -56,8 +56,14 @@ h1{
        </tr>
        <tr>
          <td colspan="4" class="text-right">
+          <%--
+             데이터는 한개만 제어 ==> 반드시 primary key값중에 한개를 넘긴다
+             *** 모든 데이터베이스 테이블른 primary key반드시 한개를 가지고 있어야 한다 (여러개 있을 수도 있다)
+             primary key=>정수 
+             => 문자열 (id)
+           --%>
           <a href="update.jsp?no=<%=vo.getNo() %>" class="btn btn-xs btn-success">수정</a>
-          <a href="#" class="btn btn-xs btn-info">삭제</a>
+          <a href="delete.jsp?no=<%=vo.getNo() %>" class="btn btn-xs btn-info">삭제</a>
           <a href="list.jsp" class="btn btn-xs btn-warning">목록</a>
          </td>
        </tr>

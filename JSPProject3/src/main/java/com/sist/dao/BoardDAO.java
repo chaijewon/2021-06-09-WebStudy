@@ -310,6 +310,76 @@ public class BoardDAO {
     	return bCheck;
     }
     // 5. 삭제하기  ==> 게시물번호 
+    // 매개변수 => 3개이상 (클래스,배열) 
+    public boolean boardDelete(int no,String pwd)
+    {
+    	boolean bCheck=false;
+    	try
+    	{
+    		//1. 연결
+    		getConnection();
+    		//2. sql
+    		String sql="SELECT pwd FROM jspBoard "
+    				  +"WHERE no=?";
+    		//3. 오라클 전송
+    		ps=conn.prepareStatement(sql);
+    		//4. 실행전에 ?에 값을 채운다
+    		ps.setInt(1, no);
+    		//5. 실행
+    		ResultSet rs=ps.executeQuery();
+    		rs.next();
+    		String db_pwd=rs.getString(1);
+    		rs.close();
+    		/////////////////////////////////// 비밀번호 읽기 완료 
+    		if(db_pwd.equals(pwd))
+    		{
+    			bCheck=true;
+    			// 실제 데이터 삭제
+    			sql="DELETE FROM jspBoard "
+    			   +"WHERE no=?";
+    			ps=conn.prepareStatement(sql);
+    			ps.setInt(1, no);
+    			ps.executeUpdate();//commit => DELETE , UPDATE , INSERT 
+    			// SELECT => executeQuery() => commit이 없다 
+    		}
+    		else
+    		{
+    			bCheck=false;
+    		}
+    		
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return bCheck;
+    }
+    // 5-1
+    public int boardCount()
+    {
+    	int count=0;
+    	try
+    	{
+    		getConnection();
+    		String sql="SELECT COUNT(*) FROM jspBoard";
+    		ps=conn.prepareStatement(sql);
+    		ResultSet rs=ps.executeQuery();
+    		rs.next();
+    		count=rs.getInt(1);
+    		rs.close();
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return count;
+    }
     // 6. 찾기     ==> VO가 여러개 ==> ArrayList 
 }
 

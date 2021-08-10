@@ -28,7 +28,20 @@
             	HTML에 출력 
             }
      */
-    
+     
+     int count=dao.boardCount();
+     count=count-((curpage*10)-(10));
+     // 번호 출력은 => 게시물번호 출력이 아니고 => 일괄적 숫자 출력 (count(*))
+     
+    /*
+          A a=new A();
+          a=null;
+          a=new A();
+          
+          list.jsp => new 새로운 객체가 생성 
+          
+          
+    */
 %>
 <!DOCTYPE html>
 <html>
@@ -74,7 +87,7 @@ h1{
           {
       %>
               <tr>
-                <td width=10% class="text-center"><%=vo.getNo() %></td>
+                <td width=10% class="text-center"><%=count-- %></td>
                 <td width=45%><a href="detail.jsp?no=<%=vo.getNo()%>"><%=vo.getSubject() %></a>
                   <%
                       String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
