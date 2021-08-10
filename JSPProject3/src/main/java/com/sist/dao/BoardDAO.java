@@ -218,6 +218,97 @@ public class BoardDAO {
     	}
     }
     // 4. 수정하기  ==> VO한개 
+    // 4-1 . 기존에 입력된 데이터를 가지고 온다
+    public BoardVO boardUpdateData(int no) // int no 사용자 보내준 데이터  => ?no=1
+    {
+    	BoardVO vo=new BoardVO();
+    	try
+    	{
+    		//1. 연결 
+    		getConnection();
+    		//2. SQL문장 
+    		String sql="SELECT no,name,subject,content "
+    				  +"FROM jspBoard "
+    				  +"WHERE no=?";
+    		//3. 오라클로 전송 
+    		ps=conn.prepareStatement(sql);
+    		//4. ?에 값을 채운다 
+    		ps.setInt(1, no);
+    		//5. 실행 요청 => 메모리에 결과값 담기
+    		ResultSet rs=ps.executeQuery();
+    		// 6. 출력위치에 커서
+    		rs.next();
+    		// 7. rs.에 들어간 값 받기 
+    		vo.setNo(rs.getInt(1));
+    		vo.setName(rs.getString(2));
+    		vo.setSubject(rs.getString(3));
+    		vo.setContent(rs.getString(4));
+    		// 8. rs닫기
+    		rs.close();
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		// 오라클 해제
+    		disConnection();
+    	}
+    	return vo;
+    }
+    // 4-2 . 비밀번호 확인후 수정/다시입력요청 
+    public boolean boardUpdate(BoardVO vo)
+    {
+    	boolean bCheck=false;
+    	try
+    	{
+    		//1. 연결 
+    		getConnection();
+    		//2. SQL문장 
+    		String sql="SELECT pwd FROM jspBoard "
+    				  +"WHERE no=?";
+    		//3. 오라클 전송
+    		ps=conn.prepareStatement(sql);
+    		//4.?에 값을 채운다
+    		ps.setInt(1, vo.getNo());
+    		//5. 실행
+    		ResultSet rs=ps.executeQuery();
+    		rs.next();
+    		String db_pwd=rs.getString(1);
+    		rs.close();
+    		
+    		// 비교
+    		if(db_pwd.equals(vo.getPwd()))
+    		{
+    			bCheck=true;
+    			// 실제 수정 
+    			sql="UPDATE jspBoard SET "
+    			   +"name=?,subject=?,content=? "
+    			   +"WHERE no=?";
+    			// 전송
+    			ps=conn.prepareStatement(sql);
+    			// ?에 값을채운다
+    			ps.setString(1, vo.getName());
+    			ps.setString(2, vo.getSubject());
+    			ps.setString(3, vo.getContent());
+    			ps.setInt(4, vo.getNo());
+    			
+    			ps.executeUpdate();
+    		}
+    		else
+    		{
+    			bCheck=false;
+    		}
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return bCheck;
+    }
     // 5. 삭제하기  ==> 게시물번호 
     // 6. 찾기     ==> VO가 여러개 ==> ArrayList 
 }

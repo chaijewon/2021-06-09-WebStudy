@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.sist.dao.*"%>
+<%
+    // detail.jsp => 보낸 no값을 받는다  ?no=10
+    String no=request.getParameter("no");
+    // DAO연결 => 데이터를 읽어 온다 
+    BoardDAO dao=new BoardDAO();
+    BoardVO vo=dao.boardDetailData(Integer.parseInt(no));
+    // web , mobile , window => 단점 (모든 데이터가 문자열)
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +77,11 @@ $(function(){
        update.jsp       update_ok.jsp
        delete.jsp       delete_ok.jsp
        =============================== 한번에 처리 (Ajax)
-       
+      
+       2가지 
+       ====
+       입력폼 
+       입력값을 받아서 처리 => _ok.jsp (HTML을 출력하지 않고 처리) 
  --%>
 <body>
   <div class="container">
@@ -80,7 +92,9 @@ $(function(){
        <tr>
         <th width=15% class="text-right success">이름</th>
         <td width=85%>
-          <input type=text name=name id=name size=15 class="input-sm">
+          <input type=text name=name id=name size=15 class="input-sm" value="<%=vo.getName() %>">
+          <%-- 번호를 전송  no : 비밀번호 , ID => hidden--%>
+          <input type=hidden name=no value="<%=vo.getNo()%>">
           <%-- 
               name : 자바에서 값을 받을때 구분된 속성 
               id : 자바스크립트 , CSS
@@ -91,14 +105,18 @@ $(function(){
        <tr>
         <th width=15% class="text-right success">제목</th>
         <td width=85%>
-          <input type=text name=subject id=subject size=50 class="input-sm">
+          <%--
+                value=홍길동
+                value="ㅁㅁㅁ"
+           --%>
+          <input type=text name=subject id=subject size=50 class="input-sm" value="<%=vo.getSubject()%>">
         </td>
        </tr>
        
        <tr>
         <th width=15% class="text-right success">내용</th>
         <td width=85%>
-          <textarea rows="8" cols="55" name=content id=content></textarea>
+          <textarea rows="8" cols="55" name=content id=content><%=vo.getContent() %></textarea>
         </td>
        </tr>
        
