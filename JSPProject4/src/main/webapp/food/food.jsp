@@ -46,10 +46,11 @@ h1,h3{
 	             <table class="table">
 	               <tr>
 	                 <td width=40% class="text-center" rowspan="4">
-	                  <img src="<%=fvo.getPoster() %>" width=330 height=190 class="img-rounded">
+	                  <a href="detail.jsp?no=<%=fvo.getNo()%>">
+	                  <img src="<%=fvo.getPoster() %>" width=330 height=190 class="img-rounded"></a>
 	                 </td>
 	                 <td width=60%>
-	                   <h3><%=fvo.getName() %>&nbsp;<span style="color:orange"><%=fvo.getScore() %></span></h3>
+	                   <h3><a href="detail.jsp?no=<%=fvo.getNo()%>"><%=fvo.getName() %></a>&nbsp;<span style="color:orange"><%=fvo.getScore() %></span></h3>
 	                 </td>
 	               </tr>   
 	               <tr>

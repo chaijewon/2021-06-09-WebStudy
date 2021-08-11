@@ -17,9 +17,9 @@ package com.sist.dao;
 	BAD              NUMBER        
  */
 public class FoodVO {
-    private int no,cno,good,soso,bad;
-    private double score;
-    private String name,address,tel,type,price,parking,time,menu,poster;
+    private int no,cno,good,soso,bad; // rs.getInt()
+    private double score;// rs.getDouble()
+    private String name,address,tel,type,price,parking,time,menu,poster; // rs.getString()
 	public int getNo() {
 		return no;
 	}

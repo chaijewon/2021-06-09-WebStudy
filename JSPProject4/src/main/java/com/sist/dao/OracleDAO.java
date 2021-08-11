@@ -216,7 +216,7 @@ public class OracleDAO {
     	try
     	{
     		getConnection();
-    		String sql="SELECT no,name,tel,address,poster "
+    		String sql="SELECT no,name,tel,address,poster,score "
     			      +"FROM food_house "
     				  +"WHERE cno=?";
     		// no 고유번호 (primary key) => 상세보기  , cno => category 번호
@@ -236,6 +236,7 @@ public class OracleDAO {
     			s=rs.getString(5);// 5개가 동시에 저장 ==> a.jpg^~a.jpg^
     			s=s.substring(0,s.indexOf("^"));
     			vo.setPoster(s);
+    			vo.setScore(rs.getDouble(6));
     			list.add(vo);
     		}
     		rs.close();
@@ -250,6 +251,86 @@ public class OracleDAO {
     	return list;
     }
     // 음식점 상세보기 
+    /*
+     *   NO      NOT NULL NUMBER         
+	CNO              NUMBER         
+	NAME    NOT NULL VARCHAR2(100)  
+	SCORE   NOT NULL NUMBER(2,1)    
+	ADDRESS NOT NULL VARCHAR2(200)  
+	TEL     NOT NULL VARCHAR2(20)   
+	TYPE    NOT NULL VARCHAR2(100)  
+	PRICE   NOT NULL VARCHAR2(100)  
+	PARKING NOT NULL VARCHAR2(100)  
+	TIME             VARCHAR2(200)  
+	MENU             VARCHAR2(2000) 
+	POSTER  NOT NULL VARCHAR2(1000) 
+	GOOD             NUMBER         
+	SOSO             NUMBER         
+	BAD              NUMBER    
+     */
+    public FoodVO foodDetailData(int no)
+    {
+    	FoodVO vo=new FoodVO();
+    	try
+    	{
+    		getConnection();
+    		String sql="SELECT no,name,score,address,tel,type,price,parking,time,menu,poster,good,soso,bad,cno "
+    				  +"FROM food_house "
+    				  +"WHERE no=?";
+    	    ps=conn.prepareStatement(sql);
+    	    ps.setInt(1, no);
+    	    ResultSet rs=ps.executeQuery();
+    	    rs.next();
+    	    // 값을 vo에 저장 
+    	    vo.setNo(rs.getInt(1));
+    	    vo.setName(rs.getString(2));
+    	    vo.setScore(rs.getDouble(3));
+    	    vo.setAddress(rs.getString(4));
+    	    vo.setTel(rs.getString(5));
+    	    vo.setType(rs.getString(6));
+    	    vo.setPrice(rs.getString(7));
+    	    vo.setParking(rs.getString(8));
+    	    vo.setTime(rs.getString(9));
+    	    vo.setMenu(rs.getString(10));
+    	    vo.setPoster(rs.getString(11));
+    	    vo.setGood(rs.getInt(12));
+    	    vo.setSoso(rs.getInt(13));
+    	    vo.setBad(rs.getInt(14));
+    	    vo.setCno(rs.getInt(15));
+    	    rs.close();
+    	    
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return vo;
+    }
+    // 3-1 근처 맛집 => 이미지 , 맛집명 , 평점 , 주소 , 가격대 , 음식종류 
+    public ArrayList<FoodVO> houseLocationData(String addr)
+    {
+    	ArrayList<FoodVO> list=new ArrayList<FoodVO>();
+    	try
+    	{
+    		getConnection();
+    		String sql="SELECT poster,name,address,price,type "
+    				  +"FROM food_house "
+    				  +"WHERE address LIKE '%'||?||'%'";
+    		
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return list;
+    }
+    
 }
 
 
