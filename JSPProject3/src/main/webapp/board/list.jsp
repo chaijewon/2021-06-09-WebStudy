@@ -49,9 +49,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
 .container{
    margin-top: 30px;
+   font-family: 'Single Day', cursive;
 }
 .row {
     margin: 0px auto;
@@ -61,6 +64,21 @@ h1{
   text-align: center;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#findBtn').click(function(){
+		let ss=$('#ss').val();
+		// 검색어가 입력이 되었는지 확인
+		if(ss.trim()==="") // 사용자가 실수로 space를 공백이 들어간다 (값이 입력된것으로 확인) trim():좌우공백제거
+		{
+			$('#ss').focus();
+			return; // 종료
+		}
+		$('form').submit(); // action에 있는 파일로 데이터를 전송한다 <input type=submit>
+	})
+})
+</script>
 </head>
 <body>
   <div class="container">
@@ -119,14 +137,19 @@ h1{
      <table class="table">
        <tr>
          <td>
-           Search:
-           <select name=fs class="input-sm">
-            <option value="name">이름</option>
-            <option value="subject">제목</option>
-            <option value="content">내용</option>
-           </select>
-           <input type=text name=ss size=15 class="input-sm">
-           <input type=submit value="찾기" class="btn btn-sm btn-primary">
+          <%--
+              버튼 클릭 
+           --%>
+             <form method=post action="find.jsp">
+	           <select name=fs class="input-sm">
+	            <option value="name">이름</option>
+	            <%-- value가 있는 경우에는 value값이 넘어간다 , value가 없는 경우 태그와 태그사이의 값이 넘어간다--%>
+	            <option value="subject">제목</option>
+	            <option value="content">내용</option>
+	           </select>
+	           <input type=text name=ss size=15 class="input-sm" id="ss">
+	           <input type=button value="찾기" class="btn btn-sm btn-primary" id="findBtn">
+            </form>
          </td>
          <td class="text-right">
            <a href="list.jsp?page=<%=curpage>1?curpage-1:curpage %>" class="btn btn-sm btn-danger">이전</a>

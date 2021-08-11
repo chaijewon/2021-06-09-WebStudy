@@ -381,6 +381,51 @@ public class BoardDAO {
     	return count;
     }
     // 6. 찾기     ==> VO가 여러개 ==> ArrayList 
+    /*
+     *   JSP에서 요청 ==========> JSP ========> 오라클연동(DAO) ======> find.jsp ======> 화면 
+     *   list.jsp(submit) find.jsp => 동작순서
+     */
+    public ArrayList<BoardVO> boardFindData(String fs,String ss)
+    {
+    	ArrayList<BoardVO> list=new ArrayList<BoardVO>();
+    	try 
+    	{
+    		getConnection();
+    		String sql="SELECT no,subject,name,regdate,hit "
+    				  +"FROM jspBoard "
+    				  +"WHERE "+fs+" LIKE '%'||?||'%'";
+    		/*
+    		 *   테이블 / 컬럼명 => ?를 사용하면 안된다 
+    		 *   "WHERE ? LIKE '%'||?||'%'"
+    		 *   ps.setString(1,fs) 'subject'
+    		 *   ps.setString(2,ss) 
+    		 *   
+    		 *   => WHERE 'name' LIKE '%'||'이'||'%'
+    		 */
+    		ps=conn.prepareStatement(sql);
+    		ps.setString(1, ss); // 홍길동 ==> '홍길동' => ''를 첨부한다 
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next())
+    		{
+    			BoardVO vo=new BoardVO();
+    			vo.setNo(rs.getInt(1));
+    			vo.setSubject(rs.getString(2));
+    			vo.setName(rs.getString(3));
+    			vo.setRegdate(rs.getDate(4));
+    			vo.setHit(rs.getInt(5));
+    			list.add(vo);
+    		}
+    		rs.close();
+    	}catch(Exception ex)
+    	{
+    		ex.printStackTrace();
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return list;
+    }
 }
 
 
