@@ -7,6 +7,14 @@
    OracleDAO dao=new OracleDAO();
    // 화면 출력 (HTML)
    FoodVO vo=dao.foodDetailData(Integer.parseInt(no)); // web , mobile => 전송된 데이터는 무조건 String이다  
+   /*
+        서대문구
+   */
+   String addr=vo.getAddress();
+   addr=addr.substring(addr.indexOf(" ")+1);
+   addr=addr.substring(0,addr.indexOf(" "));
+   //System.out.println("addr="+addr);// 구 , 시
+   ArrayList<FoodVO> list=dao.houseLocationData(addr);
 %>
 <!DOCTYPE html>
 <html>
@@ -83,7 +91,7 @@ h1{
            <td width=80%>
              <ul>
 	             <%
-	                 if(!vo.getMenu().equals("no") || vo.getMenu()!=null)
+	                 if(!vo.getMenu().equals("no"))
 	                 {
 	                	 st=new StringTokenizer(vo.getMenu(),"원");
 	                	 while(st.hasMoreTokens())
@@ -113,7 +121,40 @@ h1{
         </table>
       </div>
       <div class="col-sm-4">
-        
+        <table clas="table">
+          <tr>
+            <td>
+              <% 
+                 int i=0;
+                 for(FoodVO fvo:list)
+                 {
+                	 
+                	if(i>4) break;//5개 출력 
+              %>
+                    <table class="table">
+                     <tr>
+                       <td width=30% class="text-center" rowspan="4">
+                         <img src="<%=fvo.getPoster().substring(0,fvo.getPoster().indexOf("^")) %>" width=90 height=90>
+                       </td>
+                       <td width=70%><%=fvo.getName() %>&nbsp;<span style="color:orange"><%=fvo.getScore() %></span></td>
+                     </tr>
+                     <tr>
+                       <td width=70%>주소:<%=addr %></td>
+                     </tr>
+                     <tr>
+                       <td width=70%>음식종류:<%=fvo.getType() %></td>
+                     </tr>
+                     <tr>
+                       <td width=70%>가격대:<%=fvo.getPrice() %></td>
+                     </tr>
+                    </table>
+              <%
+                    i++;
+                 }
+              %>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

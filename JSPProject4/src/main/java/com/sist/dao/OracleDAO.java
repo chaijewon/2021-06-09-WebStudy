@@ -274,7 +274,7 @@ public class OracleDAO {
     	try
     	{
     		getConnection();
-    		String sql="SELECT no,name,score,address,tel,type,price,parking,time,menu,poster,good,soso,bad,cno "
+    		String sql="SELECT no,name,score,address,tel,type,price,parking,time,NVL(menu,'no'),poster,good,soso,bad,cno "
     				  +"FROM food_house "
     				  +"WHERE no=?";
     	    ps=conn.prepareStatement(sql);
@@ -319,6 +319,20 @@ public class OracleDAO {
     		String sql="SELECT poster,name,address,price,type "
     				  +"FROM food_house "
     				  +"WHERE address LIKE '%'||?||'%'";
+    		ps=conn.prepareStatement(sql);
+    		ps.setString(1, addr);
+    		ResultSet rs=ps.executeQuery();
+    		while(rs.next())
+    		{
+    			FoodVO vo=new FoodVO();
+    			vo.setPoster(rs.getString(1));
+    			vo.setName(rs.getString(2));
+    			vo.setAddress(rs.getString(3));
+    			vo.setPrice(rs.getString(4));
+    			vo.setType(rs.getString(5));
+    			list.add(vo);
+    		}
+    		rs.close();
     		
     	}catch(Exception ex)
     	{
