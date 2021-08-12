@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>JSPProject7</display-name>
+  <context-param> <!-- Map : response,request -->
+    <param-name>driver</param-name>
+    <!-- key -->
+    <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+    <!-- value -->
+  </context-param>
+  <context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:oracle:thin:@localhost:1521:XE</param-value>
+  </context-param>
+  <context-param>
+    <param-name>username</param-name>
+    <param-value>hr</param-value>
+  </context-param>
+  <context-param>
+    <param-name>password</param-name>
+    <param-value>happy</param-value>
+  </context-param>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
