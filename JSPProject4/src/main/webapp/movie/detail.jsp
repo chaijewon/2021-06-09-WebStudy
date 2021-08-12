@@ -79,7 +79,7 @@ $(function(){
            <a href="#" class="btn btn-sm btn-danger">예매</a>
            <a href="#" class="btn btn-sm btn-success">찜하기</a>
            <span class="btn btn-sm btn-primary" id="like">좋아요(0)</span>
-           <a href="list.jsp" class="btn btn-sm btn-info">목록</a>
+           <a href="../main/main.jsp?mode=1" class="btn btn-sm btn-info">목록</a>
           </td>
         </tr>
       </table>

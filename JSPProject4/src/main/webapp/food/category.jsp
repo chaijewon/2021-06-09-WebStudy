@@ -39,7 +39,7 @@ h1{
      %>
              <div class="col-md-3">
 			    <div class="thumbnail">
-			      <a href="food.jsp?cno=<%=vo.getCno()%>">
+			      <a href="../main/main.jsp?cno=<%=vo.getCno()%>&mode=4">
 			        <img src="<%=vo.getPoster() %>" title="<%=vo.getSubject() %>" style="width:100%">
 			        <div class="caption">
 			          <p><%=vo.getTitle() %></p>
@@ -59,9 +59,9 @@ h1{
         	 CategoryVO vo=list.get(i);
         	 // HTML로 화면 출력 
      %>
-             <div class="col-md-3">
+             <div class="col-md-4">
 			    <div class="thumbnail">
-			      <a href="food.jsp?cno=<%=vo.getCno()%>">
+			      <a href="../main/main.jsp?cno=<%=vo.getCno()%>&mode=4">
 			        <img src="<%=vo.getPoster() %>" title="<%=vo.getSubject() %>" style="width:100%">
 			        <div class="caption">
 			          <p><%=vo.getTitle() %></p>
@@ -85,7 +85,7 @@ h1{
      %>
              <div class="col-md-3">
 			    <div class="thumbnail">
-			      <a href="food.jsp?cno=<%=vo.getCno()%>">
+			      <a href="../main/main.jsp?cno=<%=vo.getCno()%>&mode=4">
 			        <img src="<%=vo.getPoster() %>" title="<%=vo.getSubject() %>" style="width:100%">
 			        <div class="caption">
 			          <p><%=vo.getTitle() %></p>

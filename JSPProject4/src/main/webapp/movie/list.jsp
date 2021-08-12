@@ -58,7 +58,7 @@ h1{
      %>
 		      <div class="col-md-3">
 			    <div class="thumbnail">
-			      <a href="detail.jsp?mno=<%=vo.getMno()%>">
+			      <a href="main.jsp?mno=<%=vo.getMno()%>&mode=2">
 			        <img src="<%=vo.getPoster() %>" alt="Lights" style="width:245px;height:300px">
 			        <div class="caption">
 			          <p><%=vo.getTitle() %></p>

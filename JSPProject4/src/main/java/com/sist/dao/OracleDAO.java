@@ -316,7 +316,7 @@ public class OracleDAO {
     	try
     	{
     		getConnection();
-    		String sql="SELECT poster,name,address,price,type "
+    		String sql="SELECT poster,name,address,price,type,score "
     				  +"FROM food_house "
     				  +"WHERE address LIKE '%'||?||'%'";
     		ps=conn.prepareStatement(sql);
@@ -330,6 +330,7 @@ public class OracleDAO {
     			vo.setAddress(rs.getString(3));
     			vo.setPrice(rs.getString(4));
     			vo.setType(rs.getString(5));
+    			vo.setScore(rs.getDouble(6));;
     			list.add(vo);
     		}
     		rs.close();

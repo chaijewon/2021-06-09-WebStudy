@@ -15,6 +15,8 @@
    addr=addr.substring(0,addr.indexOf(" "));
    //System.out.println("addr="+addr);// 구 , 시
    ArrayList<FoodVO> list=dao.houseLocationData(addr);
+   String addr1=vo.getAddress();
+   addr1=addr1.substring(0,addr1.indexOf('지'));
 %>
 <!DOCTYPE html>
 <html>
@@ -57,35 +59,59 @@ h1{
       </table>
     </div>
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-7">
         <table class="table">
          <tr>
            <td colspan="2"><h3><%=vo.getName() %>&nbsp;<span style="color:orange"><%=vo.getScore() %></span></h3></td>
          </tr>
          <tr>
            <td width=20% class="text-right">주소</td>
-           <td width=80%><%=vo.getAddress() %></td>
+           <td width=80%><%=vo.getAddress().substring(0,vo.getAddress().indexOf("지")) %>
+             <br><sub style="color:gray"><%=vo.getAddress().substring(vo.getAddress().indexOf("지")) %></sub>
+           </td>
          </tr>
          <tr>
            <td width=20% class="text-right">전화</td>
            <td width=80%><%= vo.getTel() %></td>
          </tr>
+         <%
+            if(!vo.getType().equals("no"))
+            {
+         %>
          <tr>
            <td width=20% class="text-right">음식종류</td>
-           <td width=80%><%=vo.getType() %></td>
+           <td width=80%><%= vo.getType() %></td>
          </tr>
+         <%
+            }
+            if(!vo.getPrice().equals("no"))
+           {
+         %>
          <tr>
            <td width=20% class="text-right">가격대</td>
-           <td width=80%><%=vo.getPrice() %></td>
+           <td width=80%><%= vo.getPrice() %></td>
          </tr>
+         <%
+           }
+            if(!vo.getParking().equals("no"))
+            {
+         %>
          <tr>
            <td width=20% class="text-right">주차</td>
            <td width=80%><%=vo.getParking() %></td>
          </tr>
+         <%
+            }
+            if(!vo.getTime().equals("no"))
+            {
+         %>
          <tr>
            <td width=20% class="text-right">영업시간</td>
            <td width=80%><%=vo.getTime() %></td>
          </tr>
+         <%
+            }
+         %>
          <tr>
            <td width=20% class="text-right">메뉴</td>
            <td width=80%>
@@ -115,12 +141,55 @@ h1{
              <a href="#" class="btn btn-sm btn-success">예약</a>
              <a href="#" class="btn btn-sm btn-info">찜</a>
              <a href="#" class="btn btn-sm btn-warning">리뷰</a>
-             <a href="food.jsp?cno=<%=vo.getCno() %>" class="btn btn-sm btn-danger">목록</a>
+             <a href="../main/main.jsp?cno=<%=vo.getCno() %>&mode=4" class="btn btn-sm btn-danger">목록</a>
            </td>
          </tr>
         </table>
+      <div style="height:30px"></div>
+      <div id="map" style="width:100%;height:350px;"></div>
+      <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0485ed4f0d0ece879a4510ed7f48e6&libraries=services"></script>
+      <script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };  
+		
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+		
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch("<%= addr1%>", function(result, status) {
+		
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+		
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+		
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;"><%=vo.getName()%></div>'
+		        });
+		        infowindow.open(map, marker);
+		
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		    } 
+		});    
+		</script>
+        
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-5">
+        <h3 style="color:orange">인근 맛집</h3>
         <table clas="table">
           <tr>
             <td>
@@ -134,7 +203,7 @@ h1{
                     <table class="table">
                      <tr>
                        <td width=30% class="text-center" rowspan="4">
-                         <img src="<%=fvo.getPoster().substring(0,fvo.getPoster().indexOf("^")) %>" width=90 height=90>
+                         <img src="<%=fvo.getPoster().substring(0,fvo.getPoster().indexOf("^")) %>" width=100%>
                        </td>
                        <td width=70%><%=fvo.getName() %>&nbsp;<span style="color:orange"><%=fvo.getScore() %></span></td>
                      </tr>
