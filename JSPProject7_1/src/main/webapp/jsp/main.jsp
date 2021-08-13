@@ -51,7 +51,7 @@ h1{
 	      <a class="navbar-brand" href="#">JSP내장객체</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li><a href="main.jsp?mode=1">request</a></li>
+	      <li><a href="request.jsp?mode=1">request</a></li>
 	      <li><a href="main.jsp?mode=2">response</a></li>
 	      <li><a href="main.jsp?mode=3">out</a></li>
 	      <li><a href="main.jsp?mode=4">pageContext</a></li>
@@ -60,6 +60,16 @@ h1{
 	  </div>
 	</nav>
 	<% pageContext.include(jsp); %> <%-- 조립식 --%>
+	<%--
+	     <jsp:include page=""> 컴파일 => pageContext.include(jsp); => 형식 (자바보다는 태그형으로 변경)
+	     response.sendRedirect()
+	     <c:redirect url="">
+	     for(int i=0;i<=10;i++)
+	      <c:forEach var="i" begin="0" end="10" step="1">
+	      
+	      MemeberDAO dao=new MemberDAO();
+	      <jsp:useBean id="dao" class="MemberDAO"> 뷰(화면) => 태그로 코딩 (JSTL) <%%>
+	 --%>
 </body>
 </html>
 

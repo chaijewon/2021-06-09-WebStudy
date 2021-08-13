@@ -113,6 +113,10 @@ public class OracleDAO {
 		GRADE       VARCHAR2(60)  
 		DIRECTOR    VARCHAR2(200) 
      */
+    public static void main(String[] args) {
+		OracleDAO dao=new OracleDAO();
+		dao.movieDetailData(1);
+	}
     public MovieVO movieDetailData(int mno)
     {
     	//MovieVO vo=new MovieVO();
@@ -126,6 +130,21 @@ public class OracleDAO {
     		ps=conn.prepareStatement(sql);
     		ps.setInt(1, mno);
     		ResultSet rs=ps.executeQuery();
+    		ResultSetMetaData metaData = rs.getMetaData();
+    		int cou = metaData.getColumnCount(); // 칼럼의 갯수를 갖는다.
+    		String str = metaData.getColumnName(1); // 컬럼명 "code"를 갖는다. 컬럼은 1부터 시작
+    		for (int i = 2; i <= cou; i++) {
+    		   str += "\t" + metaData.getColumnName(i);
+    		}
+    		StringTokenizer st=new StringTokenizer(str);
+    		while(st.hasMoreTokens())
+    		{
+    			String s=st.nextToken();
+    			s=s.toLowerCase();
+    			s=s.substring(0,1).toUpperCase()+s.substring(1);
+    			System.out.println(s);
+    			
+    		}
     		while(rs.next())
     		{
     			MovieVO vo=new MovieVO();
